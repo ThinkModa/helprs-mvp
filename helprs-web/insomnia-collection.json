@@ -1,0 +1,165 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-01-15T10:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_root",
+      "parentId": "wrk_helprs_job_api",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "url": "{{ _.base_url }}/api/v1",
+      "name": "Root",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1705312800000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_jobs",
+      "parentId": "fld_jobs",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "url": "{{ _.base_url }}/api/v1/jobs?status=open&company_id=company_123",
+      "name": "Get Available Jobs",
+      "description": "Fetch jobs available for workers to accept",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "status",
+          "value": "open",
+          "description": "Filter jobs by status",
+          "disabled": false
+        },
+        {
+          "name": "company_id",
+          "value": "company_123",
+          "description": "Company ID to filter jobs",
+          "disabled": false
+        }
+      ],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705312800000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_accept_job",
+      "parentId": "fld_jobs",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "url": "{{ _.base_url }}/api/v1/jobs/job_abc123/accept",
+      "name": "Accept Job",
+      "description": "Worker accepts a job assignment",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"worker_id\": \"worker_xyz789\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1705312800000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_helprs_job_api",
+      "parentId": null,
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "name": "Helprs Job API",
+      "description": "API for managing jobs between Org Admin dashboard and Worker mobile app",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "fld_jobs",
+      "parentId": "wrk_helprs_job_api",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "name": "Jobs",
+      "description": "Job management endpoints",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1705312800000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "env_development",
+      "parentId": "wrk_helprs_job_api",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "name": "Development",
+      "data": {
+        "base_url": "http://localhost:3004"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": -1705312800000,
+      "_type": "environment"
+    },
+    {
+      "_id": "env_production",
+      "parentId": "wrk_helprs_job_api",
+      "modified": 1705312800000,
+      "created": 1705312800000,
+      "name": "Production",
+      "data": {
+        "base_url": "https://helprs.com"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": -1705312800000,
+      "_type": "environment"
+    }
+  ]
+}

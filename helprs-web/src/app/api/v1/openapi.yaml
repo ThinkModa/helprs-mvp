@@ -1,0 +1,254 @@
+openapi: 3.0.0
+info:
+  title: Helprs Job API
+  description: API for managing jobs between Org Admin dashboard and Worker mobile app
+  version: 1.0.0
+  contact:
+    name: Helprs Team
+    email: support@helprs.com
+
+servers:
+  - url: http://localhost:3004/api/v1
+    description: Development server
+  - url: https://helprs.com/api/v1
+    description: Production server
+
+paths:
+  /jobs:
+    get:
+      summary: Get available jobs
+      description: Fetch jobs available for workers to accept
+      parameters:
+        - name: status
+          in: query
+          description: Filter jobs by status
+          required: false
+          schema:
+            type: string
+            enum: [open, scheduling, scheduled, in_progress, completed, paid]
+            default: open
+        - name: company_id
+          in: query
+          description: Company ID to filter jobs
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of available jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+                  count:
+                    type: integer
+                    description: Total number of jobs
+              example:
+                jobs:
+                  - id: "job_abc123"
+                    title: "House Cleaning"
+                    description: "Deep cleaning service for 3-bedroom house"
+                    status: "open"
+                    scheduled_date: "2024-01-15"
+                    scheduled_time: "09:00"
+                    estimated_duration: 180
+                    base_price: 150.00
+                    minimum_price: 120.00
+                    location_address: "123 Main St, City, State"
+                    worker_count: 3
+                    required_workers: 3
+                    accepted_workers: 0
+                    customer:
+                      first_name: "John"
+                      last_name: "Doe"
+                      phone: "+1234567890"
+                      email: "john@example.com"
+                    appointment_type:
+                      name: "House Cleaning"
+                      description: "Standard house cleaning service"
+                    form:
+                      name: "Cleaning Requirements"
+                    created_at: "2024-01-10T10:00:00Z"
+                    updated_at: "2024-01-10T10:00:00Z"
+                count: 1
+        '400':
+          description: Bad request - missing company_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /jobs/{id}/accept:
+    post:
+      summary: Accept a job
+      description: Worker accepts a job assignment
+      parameters:
+        - name: id
+          in: path
+          description: Job ID
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - worker_id
+              properties:
+                worker_id:
+                  type: string
+                  description: ID of the worker accepting the job
+            example:
+              worker_id: "worker_xyz789"
+      responses:
+        '200':
+          description: Worker successfully assigned to job
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  job_status:
+                    type: string
+                    enum: [open, scheduling, scheduled, in_progress, completed, paid]
+                  accepted_workers:
+                    type: integer
+                  required_workers:
+                    type: integer
+                  message:
+                    type: string
+              example:
+                success: true
+                job_status: "scheduling"
+                accepted_workers: 1
+                required_workers: 3
+                message: "Worker successfully assigned to job"
+        '400':
+          description: Bad request - job not available or worker already assigned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique job identifier
+        title:
+          type: string
+          description: Job title
+        description:
+          type: string
+          description: Job description
+        status:
+          type: string
+          enum: [open, scheduling, scheduled, in_progress, completed, paid, draft]
+          description: Current job status
+        scheduled_date:
+          type: string
+          format: date
+          description: Scheduled date for the job
+        scheduled_time:
+          type: string
+          format: time
+          description: Scheduled time for the job
+        estimated_duration:
+          type: integer
+          description: Estimated duration in minutes
+        base_price:
+          type: number
+          format: decimal
+          description: Base price for the job
+        minimum_price:
+          type: number
+          format: decimal
+          description: Minimum price for the job
+        location_address:
+          type: string
+          description: Job location address
+        worker_count:
+          type: integer
+          description: Number of workers needed
+        required_workers:
+          type: integer
+          description: Total workers required
+        accepted_workers:
+          type: integer
+          description: Number of workers who have accepted
+        customer:
+          $ref: '#/components/schemas/Customer'
+        appointment_type:
+          $ref: '#/components/schemas/AppointmentType'
+        form:
+          $ref: '#/components/schemas/Form'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    Customer:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+
+    AppointmentType:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+
+    Form:
+      type: object
+      properties:
+        name:
+          type: string
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
