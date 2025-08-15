@@ -1,0 +1,4582 @@
+
+New Appointment Confirmation Email
+API Mobile
+
+Template
+This screen
+The Home Team Logo
+Hi [Name]
+
+The Home Team looks forward to working with you! We’ll be meeting you at [location 1] with [crew size] team members on [date] at [time].
+
+In the meantime, please click here to watch a brief video. This will inform you of what you can anticipate now that you are apart of The Home Team.
+
+To manage your appointment, download The Home Team App. Use your email and phone number to sign in.
+
+
+
+END
+New Appointment Confirmation Email
+API Mobile
+
+
+
+New Appointment Added to Calendar
+Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Calendar view of jobs in dashboard
+This screen shows what the calendar view should look like when viewing jobs
+
+Interactive Elements
+View
+Calendar
+List
+Map
+Month
+Week
+Month
+Use arrow to go to previous month or next month
+City Filter
+locations
+Status Filter
+Staffed
+Unstaffed 
+Cancelled 
+Completed
+Unpaid 
+Type Filter
+Job Types
+Dates
+When clicking on a date ip opens a list view of jobs
+Number in calendar represents amount of jobs that day
+21
+43
+67
+56
+76
+65
+21
+13
+10
+90
+97
+33
+89
+20
+65
+78
+89
+98
+32
+35
+23
+45
+44
+21
+44
+67
+99
+67
+76
+55
+54
+48
+22
+90
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Calendar view of jobs in dashboard
+This screen shows what the calendar view should look like when viewing jobs
+
+Filter Logic
+
+When a filter is selected, the number in the calendar should change reflecting the amount of jobs applicable to that filter. Multiple filters can be selected at once
+
+When a particular date in the calendar is opened it opens up the list/day view.
+21
+43
+67
+56
+76
+65
+21
+13
+10
+90
+97
+33
+89
+20
+65
+78
+89
+98
+32
+35
+23
+45
+44
+21
+44
+67
+99
+67
+76
+55
+54
+48
+22
+90
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Calendar view of jobs in dashboard
+21
+43
+67
+56
+76
+65
+21
+13
+10
+90
+97
+33
+89
+20
+65
+78
+89
+98
+32
+35
+23
+45
+44
+21
+44
+67
+99
+67
+76
+55
+54
+48
+22
+90
+When new job is created it will automatically be placed in the calendar on the day it is scheduled for
+
+This screen shows what should happen when the view option is selected in the calendar
+
+View & Timeframe - When selecting view, a box should open that allows user to set parameters for how they’d like to view calendar. There are two drop down menus.
+
+
+
+
+View
+Timeframe
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Calendar view of jobs in dashboard
+21
+43
+67
+56
+76
+65
+21
+13
+10
+90
+97
+33
+89
+20
+65
+78
+89
+98
+32
+35
+23
+45
+44
+21
+44
+67
+99
+67
+76
+55
+54
+48
+22
+90
+Calendar
+List
+Map
+
+Month
+Week
+This screen shows what should happen when the view option is selected in the calendar
+
+Upon selecting the first drop down menu, it will provide the options you can choose:
+Calendar view (default)
+List View
+Map View
+Only one option may be selected. The map view may only be selected if the “city” filter is active.
+
+The second drop down menu will provide the following options:
+Month 
+Only one option may be selected.
+Go
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Calendar view of jobs in dashboard (LIST/ MONTH VIEW)
+When new job is created it will automatically be placed in the list order based off of job date
+
+This screen shows what should happen when the view option is selected in the calendar and list view is chosen.
+
+Clicking on a customer's name allows their specific job profile to be opened.
+
+When in list view there is  option to select “day” view. Simply add a divider that shows when it is a new day  as shown with week divider.
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
+Status
+Type
+Filter By
+View
+8/17  	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/18 	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Week of 8/19 - 8/25
+8/19  	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/19	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Search
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Calendar view of jobs in dashboard (LIST/ DAY VIEW)
+When a date on a calendar is selected.=, the list view will populate showing that particular day and all associated jobs
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
+Status
+Type
+Filter By
+View
+8/17  	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/18 	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Date August 19th, 2019 
+8/19  	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/19	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Search
+
+Calendar view of jobs in dashboard (MAP / MONTH VIEW)
+When new job is created a pin will automatically be placed on the map based off of location and date
+
+This screen shows what should happen when the view option is selected in the calendar and map view is chosen.
+
+Clicking on a pen should open up miniature profile of job. If view more is selected in miniature profile complete job profile is opened.
+
+When in map view there is additional option to select “day” view. When this is selected, a day filter pops up over map for user to be able to sift through dates, or open up calendar and select a specific date
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Date
+Customer Name
+Date
+Time
+Job Type
+Customer #
+
+
+Individual Job Profile View
+All new jobs are given a job profile which reflects all current information and logs and updates new information as details, updates and changes are made.
+
+Whenever a job is selected from the mapview or list view it will take you to the job profile
+
+Locations must have tags
+Truck pickup
+Jobsite 
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+Cancel
+
+Example of Job Profile View
+
+
+END
+New Appointment Added to Calendar
+Dashboard
+
+
+New Shift
+Team Member App
+
+Team member receives new job notification
+Lock Screen
+Time to level up! There is a new job opportunity on [Date, Time]!
+This screen represents team member receiving a new notification on their phone when screen is locked
+
+Team member view of unaccepted job preview
+This screen represents what happens when a team member slides open notification from phone home screen and is automatically taken to the shift  to view job preview
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Swipe to accept
+Team Members
+Job Type
+Light work
+Medium Weight
+Heavy Duty
+Map View
+Shows pinpoint on map but no address in map
+Team Members
+Shows picture icon of team members with first name, last initial.(unclickable)
+Job Details
+Customer name, # and address is blurred until shift is accepted.
+Additional Details
+Unclickable until shift is accepted
+Swipe to accept
+If crew member shift is accepted automatically. If Chief, pop up message populates asking if chief or crew
+
+Team member who is a chief and crew member view, after swiping to accept job
+This screen shows what pop up appears after a chief accepts a shift
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Team Members
+Swipe to accept
+Would you like to accept as Chief or Crew?
+Chief
+Crew
+
+Team member view after job is successfully accepted
+This screen shows what happens after a shift is successfully accepted
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+Congratulations the shift was successfully accepted!
+
+Template
+This screen shows what a shift that has been fully accepted looks like as a crew member or chief
+Location Image
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+image
+image
+image
+Job Type
+Light work
+Medium Weight
+Heavy Duty
+Location Image
+Shows image of location
+Team Members
+Shows picture icon of team members with first name, last initial.(clickable)
+Job Details
+Customer name, # and address is visible and (clickable)
+Additional Details
+(Clickable) 
+Images
+Images of job site submitted by customer
+
+End
+New Appointment
+Team Member App
+
+
+
+New Shift Appointment Added to Team Member Profile
+Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+First Name
+Last Name
+Overall Rating
+Hours Worked
+Position
+City
+Total 
+Earnings
+Phone 
+#
+Corey
+Hall
+Chief
+Starter
+Pittsburgh
+234
+$4,212
+4.8
+412-267-6654
+Filter By
+Position
+City
+Hours
+Earnings
+Rating
+Viewing list of team members
+This screen shows a general view of all team members.
+
+Filter options above allow team members to be filtered by certain aspects:
+
+Hours 
+0-12
+12-30
+30-60
+60-99
+100-120
+120-180
+180-240
+240-300
+300+
+Earnings
+$0
+$1-100
+$101-250
+$251-500
+$501-800
+$801-1200
+$1200+
+Rating
+1-1.9
+2-2.9
+3-3.9
+4-4.9
+5
+Start Date
+Start Date
+5/1/17
+Search
+Type name here...
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Corey 
+Hall
+Upcoming Shifts
+Shift History
+Stats
+Viewing individual team member profile
+This screen shows a general view of a team members profile from the dashboard
+
+Each section opens up accordian style when clicked on
+Position
+Phone #
+
+412-267-6654
+
+Chief
+Starter
+Pittsburgh
+Start Date
+5/1/17
+Contact
+Email
+
+Corey@gmail.com
+Bio
+Goals
+Personality Type
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Corey 
+Hall
+Upcoming Shifts
+First Name
+Last Name
+Customer Email
+Address
+Job Type
+Start/End Time
+Customer #
+Team Members
+Filter By
+Date(s)
+Job Type
+Viewing upcoming appointments in team member profile
+Phone #
+
+412-267-6654
+
+Chief
+Starter
+Pittsburgh
+Start Date
+5/1/17
+Contact
+Email
+
+Corey@gmail.com
+Bio
+Goals
+Personality Type
+Position
+This screen shows what happens when upcoming appointments is selected. View will show a list of upcoming jobs in row format starting with customers first & last name. Customers name is clickable to take to customer profile
+Date
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Corey 
+Hall
+Upcoming Shifts
+First Name
+Last Name
+Customer Email
+Address
+Job Type
+Start/End Time
+Customer #
+Team Members
+Filter By
+Date(s)
+Job Type
+Filtering view by calendar in team member profile
+Phone #
+
+412-267-6654
+
+Chief
+Starter
+Pittsburgh
+Start Date
+5/1/17
+Contact
+Email
+
+Corey@gmail.com
+Bio
+Goals
+Personality Type
+Position
+This screen shows what option to filter by date looks like.
+
+Should be calendar view, and allow multiple select of dates.
+Date
+Calendar
+
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Corey 
+Hall
+Upcoming Shifts
+First Name
+Last Name
+Customer Email
+Address
+Job Type
+Start/End Time
+Customer #
+Team Members
+Filter By
+Date(s)
+Job Type
+Filtering view by calendar in team member profile
+Phone #
+
+412-267-6654
+
+Chief
+Starter
+Pittsburgh
+Start Date
+5/1/17
+Contact
+Email
+
+Corey@gmail.com
+Bio
+Goals
+Personality Type
+Position
+This screen shows what option to filter by job type  looks like.
+
+Should be list view, and allow multiple selection of job types.
+Date
+Job Type
+
+
+
+END
+New Appointment Added to Team Member Profile
+Dashboard
+
+
+
+Initial Customer Login (Existing Customer)
+Customer App
+After customer books new appointment, account should automatically be generated for them in the mobile app
+
+Template
+This screen
+The Home Team Logo
+Hi [Name]
+
+The Home Team looks forward to working with you! We’ll be meeting you at [location 1] with [crew size] team members on [date] at [time].
+
+In the meantime, please click here to watch a brief video. This will inform you of what you can anticipate now that you are apart of The Home Team.
+
+To manage your appointment, download The Home Team App. Use your email and phone number to sign in.
+
+Initial login screen to the app
+This screen shows the login page for all users who download the app.
+
+User must first identify as customer or team member which will determine the type of information they see.
+The Home Team Logo
+Customer 
+Team Member
+Welcome to The Home Team!
+
+Initial login screen to the app
+This screen shows the login page for all users who download the app. Users coming from the confirmation email should have an account automatically created once their appointment is scheduled.
+
+Initial Username and Password will be customers email and phone number
+
+Sign-in button should not be clickable until username AND password have been entered.
+The Home Team Logo
+Booked online? Use your email and password for first time sign-ins
+Your Email
+Password
+Welcome to The Home Team!
+Sign In
+First time user? Click here to create an accoun
+Forgot Password?
+
+Confirmation page #1
+This screen will be the first screen upon logging in. User will confirm contact details which were submitted during checkout. 
+
+Information should auto-populate as submitted by appointment details. Create a small edit button to the side so customer can update information as needed.
+Next
+Welcome to The Home Team App. Here you can manage your appointments, schedule new appointments and update your profile! Please confirm your information below:
+First Name
+Last Name
+Phone #
+Email
+edit
+edit
+edit
+edit
+
+Confirmation page #2
+This screen will allow user to update username and password. Username should auto populate with email and contain an edit button next to field.
+
+Changing of password is a must. Password must contain a capital letter and number and be at least 6 characters
+
+Once password is confirmed, activate swipe function at the bottom. Customer must swipe from left to right, agreeing with terms of service.
+
+
+Swipe
+Please update your username and password
+Username
+Password
+Confirm Password
+edit
+By Swiping below you agree to Terms of Service
+
+Tutorial Page
+Good [time of day] 
+[Name]
+
+34
+Points
+3%
+Discount
+Discounts you can get with points
+This is the home screen! Your upcoming appointment can be found here. Click to see details!
+Your next upcoming appointment is [date] at [time]
+This screen represents the first screen a user with an existing appointment will see after completing initial sign-up. 
+Skip>>>
+
+Tutorial Page
+This screen represents the first screen a user sees after selecting their appointment
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+This is the inside of your appointment. Here you can update details, contact your team and access additional resources. Let's take a brief tour
+Swipe to continue >>>
+Skip>>>
+
+Tutorial Page
+This screen will show a user where to go to directly communicate with team members
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+As team members are added, you’ll be notified. You can click to view their profiles and contact info
+Team Members
+edit
+edit
+edit
+edit
+edit
+edit
+Swipe to continue >>>
+Skip>>>
+
+Tutorial Page
+This screen will show a customer how to edit their appointment details
+Location Image
+Additional Details
+Resources
+Team Members
+image
+image
+image
+Here you can update or change details by clicking “edit”.
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+edit
+edit
+edit
+edit
+edit
+edit
+Swipe to continue >>>
+Skip>>>
+
+Tutorial Page
+This screen will show a customer how to view/edit their additional details
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Resources
+Team Members
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Click here to see all your appointment details
+Additional Details
+Swipe to continue >>>
+Skip>>>
+
+This screen will show a customer how to add images of their jobsite to the shift for team members to see
+
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+edit
+edit
+edit
+edit
+edit
+edit
+Add images of areas or items relevant to your appointment. This will earn you discounts!
+image
+image
+image
+Swipe to continue >>>
+Tutorial Page
+Skip>>>
+
+This screen will show a customer how to access additional resources to interact with team members
+
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Team Members
+edit
+edit
+edit
+edit
+edit
+edit
+image
+image
+image
+To chat with your team directly and find additional resources click here!
+Resources
+Done!
+Tutorial Page
+Skip>>>
+
+Good [time of day] 
+[Name]
+
+Your next upcoming appointment is [date] at [time]
+34
+Points
+3%
+Discount
+Discounts you can get with points
+34 points to Complete tutorial of app
+33 Points to submit images of 3 items and areas we will be performing service
+33 Points for filling out our customer profile survey click here.
+Earn discounts towards your appointment by gaining points!
+Tutorial Page
+This screen will show a customer how to gain discounts towards their upcoming appointment
+
+
+Skip>>>
+
+Good [time of day] 
+[Name]
+
+Your next upcoming appointment is [date] at [time]
+Discounts you can get with points
+33 Points to submit images of 3 items and areas we will be performing service
+33 Points for filling out our customer profile survey click here.
+34
+Points
+3%
+Discount
+To schedule new appointments or get on-demand help click here!
+Tutorial Page
+This screen will show a customer how to schedule or request additional services
+
+
+Skip>>>
+
+Services Screen
+This screen
+Home Cleaning
+Lawn Care
+
+Lift & Carry
+Handy Services
+On-Demand Help
+Need help now? Click below!
+To schedule services for the future choose an option below
+This screen shows customers what appointments are available within their area.
+
+
+Done!
+Skip>>>
+
+Services Screen
+This screen
+Home Cleaning
+Lawn Care
+
+Lift & Carry
+Handy Services
+On-Demand Help
+Need help now? Click below!
+To schedule services for the future choose an option below
+
+Template
+This screen
+Job Type
+Date
+Time
+Image of location
+Job Type
+Date
+Time
+Job Type
+Date
+Time
+28th
+27th
+29th
+30th
+September
+September 28th, 2019
+September 29th, 2019
+
+
+END
+Initial Customer Login (Existing Customer)
+Customer App
+
+
+
+Navigating & Updating Appointment
+Customer App
+
+Customer Home Page
+Good [time of day] 
+[Name]
+
+34
+Points
+3%
+Discount
+Discounts you can get with points
+Your next upcoming appointment is [date] at [time]
+Whenever a customer opens the app to perform any tasks this will be the initial page
+
+
+Contacting Team
+Customer App
+
+Contacting Team Members
+In order to contact team members customer will click here.
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+Contacting Team Members
+In order to contact team members customer will click here.
+
+Rules:
+Only Chief # available right away
+Chief is always the first to show. 
+Additional team members contact becomes available 60 minutes before shift starts
+When message is selected, customer is taken to internal thread within app
+Add link to team members facebook profiles
+Activity is logged in activity log in dashboard
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+First Name  Last Name
+Position
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+Star rating
+Call
+Message
+First Name  Last Name
+Position
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+Star rating
+First Name  Last Name
+Position
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+Star rating
+Back
+
+
+Updating Appointment Details
+Customer App
+
+Updating Appointment Details
+Customer will click here to update or change appointment details
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+Once clicked, a customer can update all appointment details as listed.
+
+Rules:
+If customer changes date or time within 12 hrs of scheduled appointment, reschedule fee may apply
+If more hours or crew are needed customer must confirm updated estimate
+If cancel option is clicked, customer is taken to a new form.
+Submit button only appears when information change is made
+All updates are put in dashboard and notification sent to team members
+Activity is logged in activity log in dashboard
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Customers Name
+Date
+Start Time
+Hours needed
+Service Type
+Crew Size
+Number 
+Address
+
+Submit
+Updating Appointment Details
+Need to cancel? Click here. 
+Back
+
+If a customer clicks cancel, they are taken to another screen.
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Customers Name
+Date
+Start Time
+Hours needed
+Service Type
+Crew Size
+Number 
+Address
+
+Submit
+Updating Appointment Details (cancellation)
+Need to cancel? Click here. 
+Back
+
+Cancellation screen will go through the following prompts.
+If yes is selected, go back to update appointment details page with time and date option open to change
+If no move on to next screen
+
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+We understand things come up, would you like to reschedule?
+
+No, Cancel
+Updating Appointment Details (cancellation)
+Yes
+
+Cancellation screen will go through the following prompts.
+If job is within 12 hours populate cancellation fee message 
+If not move on to next prompt
+
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Your job is scheduled within the next 12 hours, jobs cancelled within 12 hours of start time are subject to a 50% cancellation fee. Would you still like to cancel? 
+
+No
+Updating Appointment Details (cancellation)
+Yes
+
+Cancellation screen will go through the following prompts.
+If job is outside of 12 hour cancellation window show the following message
+If they accept yes, take back to the original home screen of app and show 5% increase in discount amount on dashboard
+If no move on to next prompt
+
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+We really would love to work with you. We’d like to offer you an additional 5% off to let us help.
+
+No, thanks cancel
+Updating Appointment Details (cancellation)
+Yes
+
+Cancellation screen will go through the following prompts.
+If customer selects other, open a text field for customer to type in answer.
+Answer is required then hit submit
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+What is your reason for cancelling?
+Found a better price
+Change of plans
+Help from friends and family
+No longer need service
+Desired time not available
+Other
+
+Updating Appointment Details (cancellation)
+Submit
+
+Cancellation screen will go through the following prompts.
+If customer selects keep my appointment show confirmation message A.
+If customer swipes left to right show confirmation message B.
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Please swipe the bar from left to right to confirm cancel
+
+Updating Appointment Details (cancellation)
+Keep my appointment
+
+Cancellation screen will go through the following prompts.
+Confirmation message A.
+If yes is selected, go back to update appointment details page with time and date option open to change
+If no move on to next screen.
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Would you like to reschedule?
+
+Updating Appointment Details (cancellation)
+No, thanks
+Yes
+
+Cancellation screen will go through the following prompts.
+After hitting ok. Customer is taken back into the inside of the shift
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+All set your job is still scheduled for [date] & [time]
+
+Updating Appointment Details (cancellation)
+ok
+
+Cancellation screen will go through the following prompts.
+Confirmation message B.
+Once ok is hit, confirmation email will be sent.
+Customer will be taken back to the home screen dashboard
+
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+[name] Your appointment was successfully cancelled
+
+We’re sad to see you go. Hope everything works out! As a parting gift use code “HT2019” for 10% off any future services!
+
+All the best!
+
+
+
+Updating Appointment Details (cancellation)
+ok
+
+
+Updating Additional Appointment Details
+Customer App
+
+Updating additional Appointment Details
+Customer will click here to update or change additional appointment details
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+One clicked, a customer can update all additional  appointment details as listed.
+
+Rules:
+Updating stairs or elevators factors into a new quote, customer must accept updated quote or message saying time may take longer than originally scheduled
+All information that is updated team members receive a notification and appointment is updated in dashboard
+Activity is logged in activity log in dashboard
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Message to the team
+Parking Instructions
+Security/Gate instructions
+Pets
+Stairs
+Elevators
+
+Submit
+Updating additional Appointment Details
+Back
+
+
+Submitting Job Images
+Customer App
+
+Uploading images of job-site
+Customer will click here to update or change additional appointment details
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+One clicked, a customer can upload pictures pertaining to job-site
+
+Rules:
+Maximum of 15 images
+Once images are uploaded, they appear at bottom of screen in replace of icons.
+One can scroll through images in shift, when clicked a window opens with a larger view of image and one can continue to scroll from left to right through images in larger view
+Team members are notified within the app when images are added but not push notifications 
+Images are automatically added to team member shifts who have accepted shift and become available to team members who preview shift
+Images are added to job profile in dashboard
+Activity log is updated in job profile in dashboard
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Screen and option to upload up to 15 pictures of jobsite
+
+Submit
+Uploading images of job site
+Back
+
+Viewing uploaded images
+Customer will click here to expand view and slideshow of images
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+One clicked, a customer can upload pictures pertaining to job-site
+
+Rules:
+Customers can scroll through images from left to right
+Customers can also add more images by clicking upload more, they will be taken to original upload screen
+To exit full screen view customer simply clicks outside one of the pictures
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+Image
+
+Viewing images of job site
+Upload More
+
+
+Accessing Resources Page
+Customer App
+
+Viewing resources page
+Customer will click here to view additional resources
+Location Image
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+image
+image
+image
+edit
+edit
+edit
+edit
+edit
+edit
+Team Members
+Skip>>>
+
+Skip>>>
+Viewing resources page
+Customer will click here to view additional resources
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+
+Chat Thread
+Customer App
+
+Skip>>>
+Accessing customer <> Team Member Chat Thread
+Customer will click here to access chat thread
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+Skip>>>
+Team <> Customer Chat Thread
+When a customer clicks chat feature they can access a direct message thread with Chief and team members in shift
+
+Rules:
+Thread is disabled as soon as Chief clocks in
+Crew members cannot access chat until day of shift
+Chief receives notification via push when new message from customer
+All chats are added into the job profile within the dashboard
+All activities are logged within the dashboard
+Admin can access and participate in chat from within dashboard
+
+<<< Back
+Keyboard
+Type text here
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+
+
+Upload Photos
+Customer App
+
+Skip>>>
+Uploading job-site photos
+This will allow customers to upload images from the actual jobsite. This icon is inactive until Chief clocks in.
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+Skip>>>
+Viewing resources page
+Customer can upload multiple photos. One a photo is uploaded customer must tag the photo in a certain category. They then will have option to leave comment. After submission they can then upload additional photos through same process
+
+Rules:
+Photo Tags:
+Team Photo
+Quality Work
+Team at work
+All photos are added to job profile in the dashboard
+All activities are logged within dashboard activity log in job profile
+<<< Back
+Upload section for photos.
+
+
+Survey
+Customer App
+
+Skip>>>
+Completing Customer Survey
+Pre-job there will be a survey for customer to take. When clicking this link, it should open a webpage within the app to a typeform. The type form will have hidden fields so customer does not have to enter name or already know information.
+
+Rules
+If customer clicks link, activity is recorded in dashboard
+If survey is complete points are accumulated and discounts apply
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+
+FAQs
+Customer App
+
+Skip>>>
+FAQ section
+Customer can click FAQ’s at anytime. This will open webpage within app to our FAQ page from out marketing site.
+
+Rules:
+If customer clicks this link it is added to activity log
+Notification is sent to admin via dashboard
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+
+Support
+Customer App
+
+Skip>>>
+Support
+We will use a third party application for customers to communicate with our customer support team (zen desk). If customer support team is unavailable customer can choose to submit message via a “contact us” type form or send a message in the chat and it will be responded to as soon as support is back online
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+
+Damage Report
+Customer App
+
+Skip>>>
+Damage Report
+We will use a third party application for customers to communicate with our customer support team (zen desk). If customer support team is unavailable customer can choose to submit message via a “contact us” type form or send a message in the chat and it will be responded to as soon as support is back online
+Damage report
+FAQ’s
+Support
+Survey
+Upload Photos
+Chat
+<<< Back
+
+Skip>>>
+Damage Report
+Customer will type in detail what happened and then click next to submit images
+<<< Back
+We’re sorry for the inconvenience. Please submit a damage report and we will reach out within 24hrs. 
+Please type what happened here
+Next
+
+Skip>>>
+Damage Report
+Customer can upload as many images as necessary. Customer can then add comments to specific images in order to describe the damage present
+<<< Back
+Please upload all relevant images
+Next
+
+Skip>>>
+Damage Report
+We will use a third party application for customers to communicate with our customer support team (zen desk). If customer support team is unavailable customer can choose to submit message via a “contact us” type form or send a message in the chat and it will be responded to as soon as support is back online
+<<< Back
+Text recapping what happened
+Edit
+Images to scroll
+Add more images
+Submit
+
+
+
+END
+Navigating & Updating Appointment
+Customer App
+
+
+
+Updated Appointment
+Team Member App
+
+Team member receives new job notification
+Lock Screen
+Update! Details have been changed for your appointment on [date] at [time]
+This screen represents team member receiving a new notification on their phone when screen is locked
+
+Team member view after job has been updated
+This screen shows the pop up message which indicates what changes were made in the shift
+
+Rules:
+Crew members are only notified of the following changes:
+Date
+Start Time
+Hours needed
+Message to the team
+Pets
+Chiefs are notified of the following changes
+Date
+Start Time
+Hours needed
+Service Type
+Crew Size
+Address
+Message to the team
+Stairs
+Elevators
+Pets
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+[Customer Name] Updated [details in the appointment]
+ok
+
+Team member view after job has been updated
+This screen shows the pop up message which indicates what changes were made in the shift. 
+
+For specific changes crew members must acknowledge significant changes and accept them or swap them.
+
+Rules:
+Crew members must acknowledge and accept the following changes:
+Date
+Start Time
+Hours needed
+Pets
+Chiefs must acknowledge the following changes
+Date
+Start Time
+Hours needed
+Service Type
+Crew Size
+Address
+Stairs
+Elevators
+Pets
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+[Customer Name] Updated [details in the appointment]
+Accept
+Swap
+
+
+Updated Appointment Path 2
+Team Member App
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Team Members will have a home page that will act as a dashboard presenting them with important information. This path represents notifications they may receive
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+
+Notifications Page
+Notifications
+[customer name] has changed their appointment time from [time] to [time]
+Whenever a team member goes into the notifications page, they will see all job updates that they must acknowledge. 
+
+They will swipe right to accept changes and swipe left to swap shift
+
+Type of notifications
+Date
+Start Time
+Hours needed
+Pets
+Cancellations 
+[customer name] has changed their appointment date from [date] to [date]
+[customer name] has added a [pet] to their job details.
+[customer name] has added a [X] more hours to their job.
+[customer name] has cancelled their job.
+
+
+END
+Updated Appointment
+Team Member App
+
+
+
+Updating Appointment
+Dashboard
+
+Dashboard Home Page
+Upon entering the dashboard, admin will always be assigned to seeing the new tasks page.
+
+In order to edit a customer's appointment there are multiple routes.
+
+Route #1 - Calendar
+Route #2 - Customers
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
+
+Route #1 - Calendar
+Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+View
+Calendar view of jobs in dashboard
+This screen shows what the calendar view should look like when viewing jobs
+
+When updating a customers appointment user can click on date to find list of customers
+21
+43
+67
+56
+76
+65
+21
+13
+10
+90
+97
+33
+89
+20
+65
+78
+89
+98
+32
+35
+23
+45
+44
+21
+44
+67
+99
+67
+76
+55
+54
+48
+22
+90
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Calendar view of jobs in dashboard (LIST/ DAY VIEW)
+When in list view, user can search for customer in list, or simply search for their name in the database.
+
+Filters also work.
+
+User will click customers row to open up customer job profile.
+
+Rules:
+
+When filter is activated only names relevant to those filters will populate
+
+
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
+Status
+Type
+Filter By
+View
+8/18	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/18 	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Date 8/19
+8/19  	  9am          Jane Smith          Load/Unload        412-555-5555	   3/3
+8/19	  10am        Brock Lane               Unload            412-555-5555	   2/3
+Search
+Date 8/18
+
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+Cancel
+Individual Job Profile View (updating)
+User can edit all appointment details by clicking “edit” button in the bottom right corner. 
+
+Rules:
+All things in green can be edited and effect price
+All things in blue can be edited and do not affect price
+Date - If date is currently fully booked, customer must select a different date
+Start Time - If time is currently fully booked, customer must select a different time
+If additional team members are added within 12 hrs. A pop-up message appears indicating we cannot guarantee additional team members
+
+
+Individual Job Profile View (updating)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+Rules (cont’d):
+If new start time is during peak hours and price changes, pop up window must populate to acknowledge that.
+To add additional hours, simply change the end time.
+When location is changed, map does not populate however addresses auto populate with zip codes for confirmation
+Customer can add unlimited amount of locations
+If any element is changed that affects the job price (job type, boxes, furniture, stairs, elevators, #of hours, team members, additional protection plan) a new quote must be generated in the “quoted price” area. A pop up message acknowledging the new quote must be present and read to customer with a confirmation button.
+Additional elements that can alter price: peak hour pricing, 
+If customer makes any changes that affect the original quoted price and we do not have a card on file, pop-up must also indicate that a card is needed on file to confirm changes
+
+Cancel
+
+Individual Job Profile View (cancelling)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+When cancel button is hit. A pop up message will appear confirming.
+
+If cancellation is within 12 hrs of appointment start time, customer will be charged 50% of estimated job costs. That should also appear in the pop-up message.
+
+If customer does not have card on file, skip cancellation fee.
+
+Rules
+When job is cancelled remove from calendars
+Add into filter of cancelled jobs from calendar
+Send message to team members that job has been cancelled 
+Cancel
+We understand things come up, would you like to reschedule?
+Yes
+No, cancel
+
+Individual Job Profile View (cancelling within 12 hrs.)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+When cancel button is hit. A pop up message will appear confirming.
+
+If cancellation is within 12 hrs of appointment start time, customer will be charged 50% of estimated job costs. That should also appear in the pop-up message.
+
+If customer does not have card on file, skip cancellation fee.
+
+Rules
+When job is cancelled remove from calendars
+Add into filter of cancelled jobs from calendar
+Send message to team members that job has been cancelled 
+Cancel
+Your job is scheduled within the next 12 hours, jobs cancelled within 12 hours of start time are subject to a 50% cancellation fee. Would you still like to cancel? 
+Yes
+No, cancel
+
+Individual Job Profile View (cancelling within 12 hrs.)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+When cancel button is hit. A pop up message will appear confirming.
+
+If cancellation is within 12 hrs of appointment start time, customer will be charged 50% of estimated job costs. That should also appear in the pop-up message.
+
+If customer does not have card on file, skip cancellation fee.
+
+Rules
+When job is cancelled remove from calendars
+Add into filter of cancelled jobs from calendar
+Send message to team members that job has been cancelled 
+Cancel
+We really would love to work with you. We’d like to offer you an additional 5% off to let us help.
+Yes
+No, cancel
+
+Individual Job Profile View (cancelling within 12 hrs.)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+When cancel button is hit. A pop up message will appear confirming.
+
+If cancellation is within 12 hrs of appointment start time, customer will be charged 50% of estimated job costs. That should also appear in the pop-up message.
+
+If customer does not have card on file, skip cancellation fee.
+
+Rules
+When job is cancelled remove from calendars
+Add into filter of cancelled jobs from calendar
+Send message to team members that job has been cancelled 
+Cancel
+What is your reason for cancelling?
+Found a better price
+Change of plans
+Help from friends and family
+No longer need service
+Desired time not available
+Other
+
+Submit
+
+Individual Job Profile View (cancelling within 12 hrs.)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+When cancel button is hit. A pop up message will appear confirming.
+
+If cancellation is within 12 hrs of appointment start time, customer will be charged 50% of estimated job costs. That should also appear in the pop-up message.
+
+If customer does not have card on file, skip cancellation fee.
+
+Rules
+When job is cancelled remove from calendars
+Add into filter of cancelled jobs from calendar
+Send message to team members that job has been cancelled 
+Cancel
+Ok just to confirm you’d like to cancel your job for [date] at [time]
+
+Cancel
+
+Individual Job Profile View (cancelling)
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+A pop-up confirming job has been cancelled will appear. 
+After hitting ok, user will be taken back to home screen of dashboard
+Job will still be saved under customer in customer history
+Job has been successfully cancelled
+Ok
+
+
+Route #2 - Customers
+Dashboard
+
+Customer page
+When on the customer page, user will see a list of customers we have served in alphabetical order
+
+When clicking on customer name it opens up the customer profile page.
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+City
+Status
+Type
+Filter By
+Jane Smith    Pittsburgh   8/19/19   jsmith@gmail.com    412-444-4444   7/28/19
+Search
+Name  	  Location     Upcoming        Email              Phone#            Last Job Date 
+Jane Smith    Pittsburgh   8/19/19   jsmith@gmail.com    412-444-4444   7/28/19
+Jane Smith    Pittsburgh   8/19/19   jsmith@gmail.com    412-444-4444   7/28/19
+Jane Smith    Pittsburgh   8/19/19   jsmith@gmail.com    412-444-4444   7/28/19
+Jane Smith    Pittsburgh   8/19/19   jsmith@gmail.com    412-444-4444   7/28/19
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Jane
+Smith
+Upcoming Appointments
+First Name
+Last Name
+Chief #
+Address
+Job Type
+Start/End Time
+Chief
+Team Members
+Filter By
+Date(s)
+Job Type
+Filtering view by calendar in team member profile
+Phone #
+
+412-267-6654
+
+Pittsburgh
+Customer Since
+5/1/17
+Contact
+Email
+
+jsmith@gmail.com
+Bio
+Goals
+Personality Type
+Tapestry
+This screen shows what the customer profile looks like. Most information will be gained through interaction within the customer app. Tapestry will be manually entered
+
+Customer date should reflect the first time they booked.
+
+Job Types:
+Load
+Unload 
+load/unload 
+Helping hand
+In house move
+Job Status
+Staffed
+Unstaffed 
+Cancelled 
+Completed 
+
+Date
+edit
+Job Status
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Jane
+Smith
+Upcoming Appointments
+First Name
+Last Name
+Chief #
+Address
+Job Type
+Start/End Time
+Chief
+Team Members
+Filter By
+Date(s)
+Job Type
+Filtering view by calendar in team member profile
+Phone #
+
+412-267-6654
+
+Pittsburgh
+Customer Since
+5/1/17
+Contact
+Email
+
+jsmith@gmail.com
+Bio
+Goals
+Personality Type
+Tapestry
+Each appointment will appear in row format. When edit in row format is selected that particular job profile will open.
+
+Date
+edit
+
+Date  	  Time           Name                    Job Type               Phone #	 Status
+City
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+Customer Name
+
+Day, Date
+Start Time - End Time
+
+Phone 
+Email
+Time Zone
+
+Job Type
+Start Location
+Second Location…
+Job Size
+# of Furniture
+# of Boxes
+# of Stairs
+Elevators
+
+Pets
+
+Gate
+Security Instructions
+Message
+
+
+
+Quoted Price
+Actual Price
+
+Team Members (x/x)
+
+
+
+Additional Protection:
+
+Payment Information
+
+Chief Notes
+
+Uploads
+
+Reports
+
+Check Ins
+
+Activity Log
+Edit
+Cancel
+Individual Job Profile View (updating)
+Path will continue from here as dictated in path #1.
+
+User can edit all appointment details by clicking “edit” button in the bottom right corner. 
+
+
+END
+Updating Appointment
+Dashboard
+
+
+
+New Team Member Sign-Up
+Team Member App
+
+Initial login screen to the app
+This screen shows the login page for all users who download the app.
+
+User must first identify as customer or team member which will determine the type of information they see.
+The Home Team Logo
+Customer 
+Team Member
+Welcome to The Home Team!
+
+Initial login screen to the app
+Once a user identifies the a path they will identify if they have an account or not.
+
+If they do not have an account they will go to sign-in page 1
+
+If they do not have an account they will go to sign in page 2
+The Home Team Logo
+I have an account
+Create an account
+Welcome to The Home Team!
+
+Sign In Page 1
+This sign in page is for new users to create an account. 
+
+They will enter email or phone number as username and create a password.
+
+If user chooses to sign-in through social media options authorization process will take effect, then take them to the “General Information” page.
+
+Rules:
+Password must be at least 6 characters, have a uppercase letter and a numeric character
+Confirm password box only appears AFTER password has been typed in
+Sign-up button is only clickable after password is confirmed 
+
+
+The Home Team Logo
+Your Email
+Password
+Welcome to The Home Team!
+Sign Up
+Confirm Password
+
+Onboarding General Info Page
+This screen represents the initial information that a user will see after  signing up for an account.
+First Name (text field)
+Last Name (text field)
+Email Name (text field)
+Must verify existence on backend
+Phone # (text field)
+Must verify via text message
+DOB (date scroller with month, date, year. Year must start always 18 years from the current date)
+How did you hear about us? (drop down menu)
+Options 
+Instagram
+Facebook 
+Google 
+Referral 
+Other 
+On-campus 
+If “referral” is selected, text box opens where they can type persons name and predictive function will pull up relevant names
+If “other” is selected, text field will open for team member to enter additional option
+The Home Team Logo
+First Name
+Let’s get started!
+Swipe
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Click here to review  Terms of Service
+Continue
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before continue button is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Continue
+Click here to review  Terms of Service
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before swiping function is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Swipe
+By Swiping below you agree to Terms of Service
+Terms of Service
+Swipe to agree
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before continue button is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Continue
+Click here to review  Terms of Service
+
+
+END
+New Team Member Sign-Up
+Dashboard
+
+
+
+New Team Member Tutorial
+Team Member App
+
+Initial login screen to the app
+This screen shows the login page for all users who download the app.
+
+User must first identify as customer or team member which will determine the type of information they see.
+The Home Team Logo
+Customer 
+Team Member
+Welcome to The Home Team!
+
+Initial login screen to the app
+Once a user identifies the a path they will identify if they have an account or not.
+
+If they do not have an account they will go to sign-in page 1
+
+If they do not have an account they will go to sign in page 2
+The Home Team Logo
+I have an account
+Create an account
+Welcome to The Home Team!
+
+Sign In Page 1
+This sign in page is for new users to create an account. 
+
+They will enter email or phone number as username and create a password.
+
+If user chooses to sign-in through social media options authorization process will take effect, then take them to the “General Information” page.
+
+Rules:
+Password must be at least 6 characters, have a uppercase letter and a numeric character
+Confirm password box only appears AFTER password has been typed in
+Sign-up button is only clickable after password is confirmed 
+
+
+The Home Team Logo
+Your Email
+Password
+Welcome to The Home Team!
+Sign Up
+Confirm Password
+
+Onboarding General Info Page
+This screen represents the initial information that a user will see after  signing up for an account.
+First Name (text field)
+Last Name (text field)
+Email Name (text field)
+Must verify existence on backend
+Phone # (text field)
+Must verify via text message
+DOB (date scroller with month, date, year. Year must start always 18 years from the current date)
+How did you hear about us? (drop down menu)
+Options 
+Instagram
+Facebook 
+Google 
+Referral 
+Other 
+On-campus 
+If “referral” is selected, text box opens where they can type persons name and predictive function will pull up relevant names
+If “other” is selected, text field will open for team member to enter additional option
+The Home Team Logo
+First Name
+Let’s get started!
+Swipe
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Click here to review  Terms of Service
+Continue
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before continue button is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Continue
+Click here to review  Terms of Service
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before swiping function is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Swipe
+By Swiping below you agree to Terms of Service
+Terms of Service
+Swipe to agree
+
+Onboarding General Info Page Cont’d
+Rules cont’d
+If user signed up through social media account, auto populate as much information as possible and leave remaining fields empty
+User must click terms of service box before continue button is activated
+The Home Team Logo
+First Name
+Let’s get started!
+Last Name 
+Email
+Phone #
+DOB
+How did you hear about us?
+Continue
+Click here to review  Terms of Service
+
+Tutorial screen #1 
+THT Agreement
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Welcome to The Home Team App. We’ll give you a brief tutorial on how to navigate the app but first...
+
+Tutorial screen #1 
+THT Agreement
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+All team members must watch and make The Home Team commitment
+Video
+Swipe to agree
+
+Tutorial screen #1 
+THT Agreement
+Make pin throb so team member knows to pick it.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Awesome! Let’s get started. This is the map view for you to see local jobs in your area. You can see the job details by clicking a pin
+
+Tutorial screen #1 
+THT Agreement
+Make pin throb so team member knows to pick it.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Swipe to accept >>>
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+By clicking a location you can see job details and who else is working. Click the shift to see more details.
+
+Team member view of unaccepted job preview
+This screen represents what happens when a team member clicks on shift in the map view to see full details.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+This is the inside of a shift. Here you can see details on location and team. Once you accept a shift you can see full customer and shift details.
+Swipe to accept
+
+Team member view of unaccepted job preview
+This screen represents what happens when a team member clicks on shift in the map view to see full details.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+Congratulations you have accepted your first shift! Now all details in a shift are viewable. Now let's check out your dashboard
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Team Members will have a home page that will act as a dashboard presenting them with important information.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+This is your dashboard, here you can find your upcoming shifts, new available shifts and learn how to earn points. 
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Team Members will have a home page that will act as a dashboard presenting them with important information.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+Points allow you to level up. Leveling up gives you access to more job opportunities, home team rewards and higher pay
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Make throb to indicate to push
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+All team members start as a prospect. Click the icon below to learn more
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Video welcoming team member as a prospect and telling them what it takes to get to the next level. 
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+Video
+Swipe to begin
+
+
+END
+New Team Member Tutorial
+Team Member App
+
+Team Member Onboarding
+Team Member App
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+Team Member will then have access to dashboard to complete onboarding process
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Profile Set-Up
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+Team Member will then have access to dashboard to complete onboarding process
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Team Member Home Page
+Team Member will then have access to dashboard to complete onboarding process
+Profile Set-Up
+Please choose your top three personal goals (choose top 3)
+
+Make Money
+Meet New People
+Stay Active
+Grow Personally
+Grow Professionally
+Grow Leadership Skills
+Next
+
+Team Member Home Page
+Team Member will then have access to dashboard to complete onboarding process
+Profile Set-Up
+What activities do you enjoy? (choose top 3)
+
+Sporting Events
+Paintballing
+Top Golf
+Theme Parks
+Music Concerts
+Pool Parties
+Next
+
+Team Member Home Page
+Team Member will then have access to dashboard to complete onboarding process
+Profile Set-Up
+Tell us a fun fact about 
+yourself
+
+Text Box
+Next
+
+Team Member Home Page
+Show example
+Profile Set-Up
+Great Almost done, Let’s finish setting up your profile
+
+Choose your city (where you will accept jobs)
+
+Upload a professional headshot
+
+Gender (M/F/NB)
+
+Primary Address
+
+Primary #
+
+Emergency Contact Name
+
+Emergency Contact #
+Done
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+Team Member will then have access to dashboard to complete onboarding process
+Current Path: Trainee > Prospect
+1. Profile Set-Up (Complete)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Training
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+Video
+Swipe to begin
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+This is what your dashboard will look like. This bar with the dotted line is called the Path to Greatness
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+You will start as a prospect making $14/hr. By fulfilling jobs, getting great reviews and being an active team members you will earn points to move up the path
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+The further along the path you go the more opportunities you gain access to. Pay also increases along the way. Every 1000 points you will elevate to a new position
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+New positions earn higher pay and also have higher responsibilities. To learn more about future positions simply click the icon to watch a short video 
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+Make sure to check your dashboard daily as we’ll be posting additional ways for you to earn points by joining in team activities and challenges
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Training video describes two parts of training :App tutorial and quizzes.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+In the dashboard you will also see when you have new notifications regarding jobs you are assigned to. Be sure to check these notifications within 24hrs or the job will be given to someone else
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Make icon throb to indicate to click
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+Now let's check out where you can find new job opportunities and sign-up for work
+
+Tutorial screen #1 
+THT Agreement
+Make icon throb to indicate for individuals to click
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Here you can see available jobs in your area.
+
+Tutorial screen #1 
+THT Agreement
+Make icon throb to indicate for individuals to click
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Map view allows you to see jobs in proximity to you and each other. So you can make the most efficient schedule
+
+Tutorial screen #1 
+THT Agreement
+Make icon throb to indicate for individuals to click
+Available Shifts          My Shifts          All Shifts
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+You can select from the dates above to jobs on that particular day. Scroll to the left to see more dates
+
+
+Tutorial screen #1 
+THT Agreement
+Make icon throb to indicate for individuals to click
+
+View will only be their available shifts plus their assigned shifts
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+To toggle between your shifts, available shifts and all shifts click here.
+
+
+Tutorial screen #1 
+THT Agreement
+Make pin throb so team member knows to pick it.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Swipe to accept >>>
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+As you may remember you can click on a job to view more details. You can also accept it by swiping the bar from left to right. Give it a try.
+
+Tutorial screen #1 
+THT Agreement
+Animation showing it was accepted
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+After accepting a shift, you’ll notice that other shifts disappear that are at or around the same time as the accepted shift. This is so you can keep your calendar clean
+
+Tutorial screen #1 
+THT Agreement
+Animation showing it was accepted
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+There is also a list view for shifts, check it out!
+
+Team member jobs view
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+You can also view and accept jobs here as well. To accept a job simply swipe it right. Click on a job to see more details
+
+Team member view of unaccepted job preview
+This screen represents what happens when a team member clicks on shift in the map view to see full details.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+This is the inside of an accepted shift.
+
+Team member view of unaccepted job preview
+Make resources button throb to indicate to click
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+Feel free to browse around at some point, but for now let's check out the resource
+
+Skip>>>
+Viewing resources page
+Customer will click here to view additional resources
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+This is the chat feature where you can communicate with team members and customers prior to the job
+
+
+Skip>>>
+Viewing resources page
+Customer will click here to view additional resources
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+If for some reason you are unable to complete a shift which you are assigned to, you can choose the swap option. Swapping shifts costs points and 3 swaps in a month will automatically have your account deactivated
+
+Team member view of unaccepted job preview
+Make lighting bolt throb to indicate to click
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+And that's the inside of a shift. Feel free to play with more elements while in the trainee phase. For now, let’s check out the Go Live feature
+
+Skip>>>
+Customer will click here to view additional resources
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Option 1- Team Member Scheduling
+Wed
+15th
+This is the calendar page. All prospects start out providing their availability and will be auto scheduled based off their availability. 
+
+Skip>>>
+Customer will click here to view additional resources
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Option 1- Team Member Scheduling
+Wed
+15th
+Once you reach the level of starter you will be able to choose your own shifts and... 
+
+Skip>>>
+Customer will click here to view additional resources
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Option 1- Team Member Scheduling
+Wed
+15th
+You will activate the Go Live Feature. Click the icon to learn more
+
+Skip>>>
+Customer will click here to view additional resources
+<<< Back
+Option 1- Team Member Scheduling
+When clicking the Go Live button, you are saying you are available to help a customer within the next 45 minutes. 
+
+Skip>>>
+Customer will click here to view additional resources
+<<< Back
+Option 1- Team Member Scheduling
+When “Live” you will start of at your normal hourly rate. Every hour you are live, you will earn $1 additional an hr up to $20. You will earn that rate for any request that comes in.
+
+Skip>>>
+Option 2- Team Member Scheduling
+Customer will click here to view additional resources
+<<< Back
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Today - Saturday, September 12
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Let’s go ahead and set up your default availability for the next 2 weeks
+
+Skip>>>
+Option 2- Team Member Scheduling
+User will select their availability for the next two weeks. Have the option to create a default calendar or choose per day.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Today - Saturday, September 12
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Default Calendar                Custom Availability
+Next
+
+Team Member Home Page
+This will take user to training prompts within Typerform.
+Online Training
+Next you will go through our online training process. You must complete the final exam with an 90% or higher in order to activate your profile. Click “Next” to begin.
+Next
+
+Background Check
+
+Team Member Home Page
+This will take user to training prompts within Typerform.
+
+Subsequent 
+Rights
+Disclosure
+Authorization
+Background Check
+First Name
+Middle Name
+Last Name
+I confirm I have no middle name
+Date of Birth
+Social Security
+Please Confirm Social
+Current Zip Code
+Phone Number
+E-mail Address
+By clicking Continue you agree to Home Team, Privacy Policy, and consent to Checkr contacting you by email, phone, or SMS texts with information relating to your background check.
+Continue
+
+Personality Test
+
+Team Member Home Page
+This will take user to training prompts within Typerform.
+Personality Test
+You will complete the personality test and indicate your results on the following page. Once you complete the test please come back to the app and indicate your results
+Next
+
+Team Member Home Page
+This will be a dropdown menu where user will have option to choose from the following options:
+Architect
+Logician
+Commander
+Debater
+Advocate
+Mediator
+Protagonist
+Campaigner
+Logistician
+Defender
+Executive
+Counsel
+Virtuoso
+Adventurer
+Entrepreneur
+Entertainer
+Personality Test
+Please Select Your Results
+Select here...
+Next
+
+Direct Deposit
+
+Team Member Home Page
+This will take user to training prompts within Typerform.
+Direct Deposit
+Please enter your direct deposit information below. You will receive payment from jobs within three business days.
+Direct Deposit
+Account Number
+Confirm Account Number
+Enter
+
+END
+Team Member Onboarding
+Team Member App
+
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Team Member will then have access to dashboard to complete onboarding process
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+34
+Points
+$14.34
+Hrly Rate
+Opportunities to earn points
+Your next upcoming appointment is [date] at [time]
+Team Members will have a home page that will act as a dashboard presenting them with important information.
+You have [x number] of job notification
+Current Path: Prospect > Rookie
+
+Team member jobs view
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+
+Team member jobs view
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Swipe to accept >>>
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+
+Team member jobs view
+This screen represents the jobs view for team members. They can see and accept new jobs from here as outlined in the following slides
+September 17th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Neighborhood
+September 18th
+
+Team member who is a chief and crew member view, after swiping to accept job
+This screen shows what pop up appears after a chief accepts a shift
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Team Members
+Swipe to accept
+Would you like to accept as Chief or Crew?
+Chief
+Crew
+
+Team member view after job is successfully accepted
+This screen shows what happens after a shift is successfully accepted
+navigator
+Map view of general job location
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+Congratulations the shift was successfully accepted!
+
+Template
+This screen shows what a shift that has been fully accepted looks like as a crew member or chief
+Location Image
+Job Type
+Date
+Start Time - Est Finish Time
+Service Type
+Customer Name
+Customer #
+Address
+Additional Details
+Resources
+Team Members
+image
+image
+image
+Job Type
+Light work
+Medium Weight
+Heavy Duty
+Location Image
+Shows image of location
+Team Members
+Shows picture icon of team members with first name, last initial.(clickable)
+Job Details
+Customer name, # and address is visible and (clickable)
+Additional Details
+(Clickable) 
+Images
+Images of job site submitted by customer
+
+
+
+General Sign-In
+Team Member App
+
+Initial login screen to the app
+This screen shows the login page for all users who download the app.
+
+User must first identify as customer or team member which will determine the type of information they see.
+The Home Team Logo
+Customer 
+Team Member
+Welcome to The Home Team!
+
+Initial login screen to the app
+Once a user identifies the a path they will identify if they have an account or not.
+
+If they do not have an account they will go to sign-in page 1
+
+If they do not have an account they will go to sign in page 2
+The Home Team Logo
+I have an account
+Create an account
+Welcome to The Home Team!
+
+Sign In Page 2
+This sign in page is for existing users. If they already have an account they can simply sign in and are taken to home screen of app.
+The Home Team Logo
+Your Email
+Password
+Welcome to The Home Team!
+Sign In
+Forgot Password?
+
+
+END
+General Sign-In
+Team Member App
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+Template
+This screen
+
+
+
+
+Team Member Home Page
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+Team Member will then have access to dashboard to complete onboarding process
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Title Slide

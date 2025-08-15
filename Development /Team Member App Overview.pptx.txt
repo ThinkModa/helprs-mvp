@@ -1,0 +1,3952 @@
+Team Member Profile
+Dashboard
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+First Name
+Last Name
+Overall Rating
+Hours Worked
+Position
+City
+Total 
+Earnings
+Phone 
+#
+Corey
+Hall
+Chief
+Starter
+Pittsburgh
+234
+$4,212
+4.8
+412-267-6654
+Filter By
+Position
+City
+Hours
+Earnings
+Rating
+Start Date
+Start Date
+5/1/17
+Search
+Type name here...
+Status
+Accessing & viewing team member profile page
+A new team member profile is created when a new user is created in the team member app. As soon as a team member signs up, a profile is created.
+
+This page represents how to access team member profiles
+
+A team member  profile can be accessed in 2 ways:
+Through the team member page in the dashboard
+Through the job profile of an appointment they are on
+This flow represents option #1. The team member page in the dashboard shows a list of team members in alphabetical order. This list can be filtered by:
+Position
+Crew
+Chief
+Captain
+City
+Locations
+Hours
+0-50
+51-100
+101-150
+151-200
+201-250
+251-300
+Earnings
+$0-$250
+$251-500
+$$500-$1000
+Rating
+Start Date
+Status
+TE by Date
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Reporting
+
+Real-Time Dashboard
+First Name
+Last Name
+Overall Rating
+Hours Worked
+Position
+City
+Total 
+Earnings
+Phone 
+#
+Corey
+Hall
+Chief
+Starter
+Pittsburgh
+234
+$4,212
+4.8
+412-267-6654
+Filter By
+Position
+City
+Hours
+Earnings
+Rating
+Start Date
+Start Date
+5/1/17
+Search
+Type name here...
+Status
+Accessing & viewing team member profile page (cont’d)
+Position
+City
+Hours
+Earnings
+Rating
+Less than 3
+3.1- 4
+4 - 5
+Start Date
+Ascending
+Descending
+Status
+Trainee
+Active
+Inactive
+Simply click on the team members name in the row to access their profile.
+
+Rules:
+Most filters can be used in combination with one another.
+Team Member  profiles can be exported as a whole or with filters active into csv. File
+Export will contain ALL profile information except individual jobs
+Export will contain a tally of total shifts worked
+TE by Date
+Export
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Open Shifts
+
+Rewards Program
+
+Reporting
+
+Real-Time Dashboard
+Corry
+Hall
+Upcoming Shifts
+Phone #
+
+412-267-6654
+
+Member Since
+5/17/2017
+Contact
+Email
+
+Chall@gmail.com
+Goals
+Interests
+Personality Type
+Pittsburgh
+Tapestry
+Team Member Profile Page - Account Status
+This page represents a team members profile page. Here are the guidelines to determining an account status:
+
+Active means:
+Has created an account within the app
+Completed Onboarding & is able to take jobs
+Has logged into or interacted within the app within the past 60 days
+
+Inactive means
+Has created an account within the app and never complete onboarding 
+Has not logged in or interacted with the app in over 60 days
+
+Trainee means
+Has created an account an is in the onboarding process
+
+Last Login: Date, Time
+Account Status
+Chief
+Starter
+Activate/Deactivate
+Shift History
+Stats
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Open Shifts
+
+Rewards Program
+
+Reporting
+
+Real-Time Dashboard
+Corry
+Hall
+Upcoming Shifts
+Phone #
+
+412-267-6654
+
+Member Since
+5/17/2017
+Contact
+Email
+
+Chall@gmail.com
+Goals
+Interests
+Personality Type
+Pittsburgh
+Tapestry
+Team Member Profile - Elements & Origins
+Name
+Gathered from app sign-in
+Location
+Based off app sign-in
+Tapestry
+Manually entered by admin
+Bio
+Generated from interests and goals 
+Goals
+Provided during onboarding process and updated through app
+Personality Type
+Provided during onboarding process
+Interests
+Provided during onboarding process
+Contact
+Provided during onboarding process
+Position & Level
+Updated automatically in app while working and engaging
+Upcoming Shifts
+Updated as new shifts accepted
+Shift History
+Updated after a completed shift
+Stats
+Updated periodically as new relevant stats are accrued.
+Last Login: Date, Time
+Account Status
+Chief
+Starter
+Activate/Deactivate
+Shift History
+Stats
+
+END
+Team Member Profile
+Dashboard
+
+User Authorization
+Team Member App
+
+Initial screen when opening app
+This is the initial screen shown to a user upon opening the app.
+
+After user identifies as customer or team member, they will be redirected to the appropriate login screen.
+
+This path will show the Team Member authorization process. 
+The Home Team Logo
+Customer 
+Team Member
+Welcome to The Home Team!
+
+Initial login screen for all team members
+The Home Team Logo
+Your Email
+Password
+Welcome to The Home Team!
+Sign In
+First time user? Click here to create an account
+Forgot Password?
+This is the initial screen shown to a user who has selected the team member path.
+
+Scenario 1: Existing Team Member
+If a team member already has an account they can login using previously selected preferred method
+
+
+Scenario 2: New Team Member: 
+If this is a new team member they will go through the general sign-up process. 
+
+New Team Member First Time Sign-In
+Customer App
+
+Next
+General information page and Terms of Service for new user (team member)
+This is the screen shown to a new team member who does not have an account.
+
+This page will allow them to enter relevant information to create an account. All information is required.
+
+Rules:
+All required fields must be entered.
+Email must be confirmed on the backend. (no user involvement) 
+How did you hear about us options:
+Instagram
+Facebook 
+Google
+Referral 
+On-Campus
+Other
+If “referral” is selected, text box opens where they can type persons name and predictive function will pull up relevant names
+If “other” is selected, text field will open for team member to enter additional option
+Please enter the 
+information below
+First Name
+Last Name
+Phone #
+Email
+DOB
+How did you hear about us?
+
+Next
+Terms of Service for new user (Team Member)
+After team member clicks continue from the previous page, Terms of Service box will appear. 
+
+Rules:
+Team member must scroll through 10% of TOS before swipe feature is interactive
+Team member must swipe entire finger from left to right.
+Add an animation once swipe function is complete
+Please enter the 
+information below
+First Name
+Last Name
+Phone #
+Email
+Terms of Service
+Swipe to agree>>>
+
+Next
+Login options for new user (Team Member).
+This is the screen shown to a new team member who does not have an account..
+
+This page will allow them to choose how they would like to create an account and log-in..
+
+They can either:
+Login with a social media account
+Create an account with an email and password
+
+IF they choose to create username and password:
+
+Rules:
+Password must be at least 6 characters, be alphanumeric and contain 1 uppercase and 1 lowercase
+Email must be a valid email
+Verify password box does not appear until after password is entered. 
+Create a username and password or connect social media account
+Enter email for username
+Create Password
+Verify Password
+
+END
+User Authorization
+Team Member
+
+Team Member App Walkthrough
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+Upcoming Shift Module
+
+In the home screen of the team member app, user will be able to see a module which represents their next upcoming shift. 
+
+Upon clicking that module, the user will be taken inside the next upcoming shift where they can view and manage shift details.
+
+Points
+$$$$
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Team Member Home Page
+This page represents the homepage for an existing team member.
+
+Elements:
+
+
+Rules:
+Welcome message
+Reflects Team members first name, time of day (morning, afternoon, evening)
+Points 
+Points are generated by completing tasks which admin will generate on the backend in the dashboard
+Hourly Rate
+Hourly increase reflects progress made from point accumulation on the backend by admin in the dashboard
+Progress Bar
+Progress bar shows a team where they are in comparison to where they can end up based off of accumulating points
+
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+F.
+B.
+C.
+D.
+E.
+G.
+H.
+I.
+A.
+
+Team Member Home Page (cont’d)
+This represents the initial home screen for all users on the team member side.
+
+Elements:
+
+
+Rules (cont’d):
+Welcome message
+Points
+Discounts
+Progress Bar
+Points & Rewards Program*
+This is an accordion style menu that a team can open and learn about activities they can perform to earn more points. Links to activities will be present in this box and generated by admin in the dashboard
+Upcoming Appointments*
+This will be a clickable element representing the next upcoming shift. Upon clicking it will open up the shift details
+Notifications* 
+Anytime an appointment update or request is made team member will receive notification in home page. It will open up a temporary notification page where a team member can view and approve/deny appointment updates.
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+F.
+B.
+C.
+D.
+E.
+G.
+H.
+I.
+A.
+
+Team Member Home Page (cont’d)
+This represents the initial home screen for all users on the team member side.
+
+Elements:
+
+
+Rules (cont’d):
+Welcome message
+Points
+Discounts
+Progress Bar
+Discount Details
+Upcoming Appointments
+Notifications 
+Message Board*
+These will be messages with links to outside material and resources for customer to check out. Materials will be created and shared within dashboard by admin. Team members will earn points for engaging.
+Navigation Bar*
+The navigation bar will allow user to navigate to different relevant screens throughout the app
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+F.
+B.
+C.
+D.
+E.
+G.
+H.
+I.
+A.
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Video
+Next >>>
+
+E. Points & Rewards Feature
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Currently: Prospect
+Up Next: Rookie
+ 
+•Complete Home Team App Tutorial - 25 Points
+• Complete your Team Member Profile - 50 Points
+• Check out The Home Team Newsletter - 30 Point
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Points & Rewards program in team member app
+This explains and shows the points feature module in the dashboard of the team member app. 
+
+The module is accordion style, so when the plus button is clicked, an accordion style menu opens up revealing current ways a team member can earn more points, as well as what those points will lead to.
+
+They will also be able to see tasks/ points earned over the past 30 days.
+
+Certain initiatives will be in text format with hyperlinks to sources which will enable them to complete certain tasks
+
+Initiatives, and their hyperlinks will be assigned in the dashboard and will be specific to:
+A location
+A certain team member position and/or rank
+An individual 
+
+
+
++ New Appointment
+
+New Tasks
+
+Notifications
+
+Calendars
+
+Members
+
+Customers
+
+Locations
+
+Rewards Program
+
+Reporting
+
+Real-Time Dashboard
+Points & Rewards Program in Dashboard
+In Dashboard Admin must be able to create and send out notifications for Points & Rewards program to both customers and team members. 
+
+These will be the necessary inputs to create and send a points & rewards program:
+
+Location
+Choose which location will receive points and rewards offer
+User Type
+Customer
+Team Member
+User Role
+Customer
+Active
+Inactive
+Incomplete
+Team Member
+Prospect
+Rookie
+Starter
+All-Star
+Veteran
+Legend
+Points assigned
+Number of points for offer
+Text
+What will the offer say in the app
+Hyperlinks
+Hyperlink (to app or website) to click within app and complete task
+
+
+F. Upcoming Appointment Module
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Upcoming Shift Module
+
+In the home screen of the team member app, user will be able to see a module which represents their next upcoming shift. 
+
+Upon clicking that module, the user will be taken inside the next upcoming shift where they can view and manage shift details.
+
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Upcoming Shift Module
+Once a user clicks their upcoming shift, it will take them inside of that shift where they can view/edit and update details.
+Resources
+
+G.Notifications for Upcoming Appointments
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Appointment Notifications
+Whenever there are relevant appointment updates, a module will appear indicating such to the user. Upon clicking the module user will be taken to the notifications page
+
+Notifications
+Notifications Page
+Once a user clicks the notifications module, they will be taken to the notifications page.
+
+Whenever a team member goes into the notifications page, they will see all job updates that they must acknowledge. 
+
+They will swipe right to accept changes and swipe left to swap shift
+
+Type of notifications
+Date
+Start Time
+Hours needed
+Pets
+Cancellations 
+Notifications
+[customer name] has changed their appointment time from [time] to [time]
+[customer name] has changed their appointment date from [date] to [date]
+[customer name] has added a [pet] to their job details.
+[customer name] has added a [X] more hours to their job.
+[customer name] has cancelled their job.
+
+Notifications
+Notifications Page
+Once a user clicks the notifications module, they will be taken to the notifications page.
+
+Whenever a team member goes into the notifications page, they will see all job updates that they must acknowledge. 
+
+They will swipe right to accept changes and swipe left to swap shift
+
+Type of notifications
+Date
+Start Time
+Hours needed
+Pets
+Cancellations 
+Notifications
+[customer name] has changed their appointment time from [time] to [time]
+[customer name] has changed their appointment date from [date] to [date]
+Next Shift: {Date), [Time]
+
+H. Home Team Message Board
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Home Team Message Board Module
+Admin of The Home Team can send out special messages with links to outside resources where they can access and gain additional points. By clicking the module will open up the specific message
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+Learn more about the “Law of Attraction” by watching this short video
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Home Team Message Board Module
+The Team Member can access the additional resources through the link found within the message board. 
+
+Admin can add messages into the message board from Admin Dashboard.
+
+Rules:
+Choose location
+Choose team member type
+Choose rank
+Type message
+Upload link
+Set time to start and expire
+
+I. Navigation Bar
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+2.
+1.
+4.
+3.
+5.
+Navigation Bar
+The navigation bar is how users will move from page to page throughout the app. The navigation bar consists of 5 components:
+
+The Home Screen
+Shifts
+Calendar
+Notifications
+User Profile
+
+The following slides will show the initial screen for all pages.
+
+Home Page
+Customer App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Home Page
+
+This will be the home page of the app. It will also act as a dashboard where users can receive relevant updates/notifications and take action 
+
+2. Shifts Page
+Team Member App
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Shifts Page (list view)
+This page will allow team members to view available, scheduled and all shifts in a list format.
+
+The “+” button in the top right corner is only available in app for those assigned as “Chief”. This button allows a chief to create a new shift within the app.
+Neighborhood
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+
+Shifts Page (map view)
+This page will allow team members to view available, scheduled and all shifts in a map format.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+
+Viewing Shift (Map View/Available)
+
+Available Shifts (Map View)
+When in the “available view” a user can select appointments to view details and accept.
+
+Rules:
+When a shift is selected, page will auto-center on shift and bring up an appointment details preview.
+If shift has two locations map will auto-center and show both locations.
+Team member can accept shift from preview, or click to see full details inside shift.
+After a shift has been accepted, all shifts which start 30 minutes before start time or 30 minutes after should disappear from map view.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Swipe to accept >>>
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+
+Available Shifts (Map View, 2 locations)
+When multiple locations are involved in a shift, user should always see the final destination where the shift will end
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+Swipe to accept >>>
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+Finish Location
+
+Viewing Shift (Map View/My Shifts)
+
+My Shifts (Map View)
+When a shift is selected in “My Shift” view, user will see shift preview and “View Shift” options.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+View Shift
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+
+My Shifts (Map View, 2 locations)
+When multiple locations are involved in a shift, user should always see the final destination where the shift will end when selecting that shift
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+View Shift
+Image of Home OR Map Location
+Job Category
+Load / Unload, 3 Rooms... see more...
+Start-End Time
+Distance from location
+Finish Location
+
+Viewing Shift (Map View/All Shifts)
+
+All Shifts (Map View)
+When in all shift mode, accepted shifts will be green, accepted shifts will be green. When a shift is selected, it will auto center, show relevant preview and show last location (when applicable).
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+
+Viewing Shift (List View / Available Shifts
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Shifts Page (Available Shifts & My Shifts)
+When viewing shifts on in available view, team members can view shifts and accept by swiping right. 
+
+Rules:
+When a shift is accepted, shifts starting 30 minutes before start time of shift or 30 minutes after end time of shift will disappear.
+Date in date toolbar can be selected, or user can continuously scroll down list and new dates will show once all shifts for current dates have been shown.
+When on “My Shifts” no swiping feature is available. 
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Shifts Page (All Shifts)
+When viewing shifts in all shifts view, team members can swipe available shifts.  
+
+Rules:
+Accepted shifts have a color to indicate
+Available shifts have no color and can be swiped to accepted
+
+Inside a Shift
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Inside a shift (available)
+When a user views the inside of an available shift, the information indicated will show as follows. All relevant information
+
+Details:
+Job Category
+Job Category is determined by job size.
+Location Image
+Image of home or location on map if home image unavailable
+Team Members
+Image of team member profiles and names
+Job Details
+Customer, # and address is not viewable or clickable
+Additional Details
+Additional details unclickable 
+Swipe to accept
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Inside a shift (assigned)
+Resources
+When a user views the inside of an accepted shift, the information indicated will show as follows. All relevant information
+
+Details:
+Job Category
+Job Category is determined by job size.
+Location Image
+Image of home or location on map if home image unavailable
+Team Members
+Image of team member profiles and names
+Job Details
+Customer, # and address is now viewable and clickable
+Additional Details
+Additional details viewable 
+
+Elements of a Shift
+
+Inside an accepted shift
+Upon clicking a shift it will open so user can see all details related to shift.
+
+Upon scrolling they will see an option to view additional images associated with shift
+
+Interactive elements within the appointment:
+Team Icon
+A pop up opens with team members bio and the option to message / call team members
+General Appointment Details (Greyed Box)
+A pop up opens with capability for user to request an edit to specific shift details
+Additional Details
+An accordion style menu opens with additional shift details. 
+Resources (module never moves)
+A resources page opens with additional user resources related to shift
+Images icons (see next page)
+User can view relevant images to their shift
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+
+Inside an accepted shift (cont’d)
+At the bottom of the page, the user can view images related to their shift. By scrolling and clicking the images.
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+image
+image
+image
+
+Contact Team Member(s)
+
+Contacting team members
+When a user selects any of the team members in the top corner, a pop-up menu of entire team opens up. 
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Resources
+Team
+
+Contacting team members
+
+Once selected, team members will see other team members profile picture and bio. They can then call or message team members.
+
+Upon selecting the option, phone opens up option to call or text.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Resources
+Team
+Load / Unload
+Start-End Time
+Service Type
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Additional Details
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Start-End Time
+Team Member Name
+Team Member Name
+Team Leader
+    Message / Call
+Edit
+Member Since
+Avg. Star Rating %
+Jobs Completed #
+First Name, 
+Last Name
+
+Call/Text
+Hi I am a student at [University] studying [Major]. I enjoy [Activity 1] & [Activity 2] My goal while with The Home Team is to [#1 Goal]
+I’m here to help so give me a call anytime!
+Member Since
+Avg. Star Rating %
+Jobs Completed #
+First Name, 
+Last Name
+
+Hi I am a student at [University] studying [Major]. I enjoy [Activity 1] & [Activity 2] My goal while with The Home Team is to [#1 Goal]
+I’m here to help so give me a call anytime!
+Team Leader
+Crew Member
+Call/Text
+
+Shift Edits / Edit Requests 
+
+Viewing and requesting appointment updates
+Only Chiefs and Co-Captains can update or request appointment updates. Upon clicking the edit button, appointment details page opens up. Appointment details will be in an editable format.
+
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+
+Viewing and requesting appointment updates
+This page represents where a user can edit their appointment details. Page should resemble that of the booking process for a customer.
+
+No changes made are final, rather when Chief/Co-Captain makes a requests, notification is sent to customer to approve or deny.
+
+
+
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Date
+Start Time
+Crew Size
+Hours Needed
+Service Type
+Job Size
+Appointment Details
+Submit
+<<<Back
+
+
+Accessing & Viewing Resources Page
+
+Viewing resources page
+The resources link will take a user to a page that offers additional resources to communicate with customers, corporate and additional resources.
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Resources
+
+Viewing resources page (Crew)
+The resources link will take a user to a page that offers additional resources to communicate with customers, corporate and additional resources.
+
+Chat
+Swap Request
+FAQs
+Support
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+
+
+Resources - Chat Thread
+
+Chat thread (Crew)
+The chat thread allows a team member and customer to communicate directly within the app. Team member will click the indicated icon to open up the chat thread.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+
+Skip>>>
+<<< Back
+Keyboard
+Type text here
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Inside the chat thread
+When a user is inside the chat thread they can view and send messages directly to the team leader, other crew members and customer. 
+
+Rules:
+Only Chief and Customer can participate in chat thread prior to day of appointment.
+On the day of the appointment crew members can participate in chat thread
+Crew members can see chat thread however, cannot participate
+Chief and Customer receive push notifications when a new message is received
+All chats are dated, time stamped and sender stamped
+All chat activity is recorded and logged in the job profile located in the admin dashboard
+Admin can access and participate in chat from within the admin dashboard
+Chat thread is disabled as soon as the Chief clocks in
+
+
+Resources - Swap Option
+
+Swap Option (Crew)
+The swap option allows team members to request a swap with other team members. If team member selects this option, a notification will be sent to all eligible team members who can accept appointment.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+
+Swap Option (Crew)
+Upon clicking a message will appear indicating the implications of a team member making a swap request. If team member chooses yes, they will move on to next page. If “cancel” is selected they will go back to resources page.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+You have requested to swap a shift, you will automatically lose “x” amount of points for placing this request. Would you like to proceed?
+Yes
+Cancel
+
+Swap Option (Crew)
+Team member must agree to swap terms after selecting to move forward
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+I UNDERSTAND THAT I AM RESPONSIBLE FOR COMPLETING THIS SHIFT UNTIL REQUESTS IS ACCEPTED. IF REQUEST IS NOT ACCEPTED I MUST PERFORM SHIFT. IF I DO NOT PERFORM SHIFT AND REQUESTS WAS NOT ACCEPTED I UNDERSTAND MY ACCOUNT WILL BE DEACTIVATED INDEFINITELY
+SWIPE TO AGREE
+
+Swap Option (Crew)
+After confirming they’d like to swap shift, they will be prompted to indicate why they’d like to swap shift.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+Please describe why you’d like to swap shift.
+Submit
+Type here...
+
+Swap Option (Crew)
+The swap option allows team members to request a swap with other team members. If team member selects this option, a notification will be sent to all eligible team members who can accept appointment.
+
+Shift will have a yellow hue in the shift preview in list and map view indicating that swap requests has been made. 
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Swap
+Your requests has been submitted. YOU ARE STILL RESPONSIBLE FOR PERFORMING THIS SHIFT. Once a team member accepts your requests you will be notified and no longer be responsible for performing this shift
+Swipe to close
+
+
+Resources - FAQs
+
+FAQs (Crew)
+When a team member selects the FAQ page they will be taken to a webpage within the home team website.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Cancel Swap
+
+
+Resources - Support
+
+Support Option (Crew)
+When support is selected, team member will be taken to a chat thread to communicate with a relevant support member.
+
+If no team member is available, they will be able to send in support requests that will be received in admin dashboard.
+
+
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+FAQ’s
+Support
+Chat
+<<< Back
+Cancel Swap
+
+Support option with live help available
+A chat thread will be available to communicate with support team member
+Skip>>>
+<<< Back
+Keyboard
+Type text here
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+
+Support option, live help unavailable
+A message will be submitted that will be received through admin dashboard for a future response.
+FAQs
+Support is currently offline, please submit a contact form below
+
+
+End Crew Resources
+
+
+Chief Resources
+
+Viewing resources page (Chief)
+The resources link will take a user to a page that offers additional resources to communicate with customers, corporate and additional resources.
+
+The Chief will have the following additional resources:
+
+Checklist
+Upload photos
+Damage report
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+Upload Photos
+FAQ’s
+Support
+Checklist
+<<< Back
+Damage Report
+Swap
+Chat
+Add time
+
+
+Resources- Checklist
+
+Checklist page for (Chief)
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+Upload Photos
+FAQ’s
+Support
+Checklist
+<<< Back
+Damage Report
+Swap
+Chat
+The checklist page where will be where the Chief documents required interactions between themselves and the customer. The checklist page will feature a different set of questions based off proximity to job start time. Checklist will be broken up into 3 sections.
+
+24hrs after accepting
+72hrs before shift
+Day of shift
+Add time
+
+Checklist page for (Chief)
+Step 1: Confirming appointment details
+Step 2: Update customer on any relevant changes
+Step 3: Inform customer of team members
+Step 4: inform customer of schedule and offer additional hours/crew
+Step 5: inform customer of discount opportunities 
+Step 6: ensure customer is prepared
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Within 24hrs of accepting shift:
+Confirm details
+Introduce self 
+Discuss process
+Working conditions 
+What the home team agreement is
+Submit images
+Customer goals 
+Customer values
+Customer experience 
+Within 72hrs of accepting shift:
+Confirm details are the same
+Inform of any changes
+Upsales (hrs, guys)
+Timeframe 
+Discounts opportunities 
+Preparation 
+Step 1: Introduction 
+
+Hi [Customer] my name is [Name] and I will be your team leader. Just wanted to call to introduce myself, confirm your details and lay out our process. Is this a good time for you? Great!
+
+Step 2: Review job details
+
+Review all details for accuracy
+
+Step 3: Take notes on job environment
+
+Hallways, elevators, truck parking etc.
+
+Step 4: Explain Home Team agreement & mission
+
+Our goal is to safely assist you while maintaining integrity of your home and personal belongings
+
+Step 5: Inform of opportunities for discounts
+
+Submit images through app, complete survey in app, take quiz in app
+
+Step 6: Record customer goals, values and experience
+
+Goal of hiring us
+Value the most in experience
+What could make this experience enjoyable
+
+Checklist page for (Chief)
+Within 24hrs of accepting a shift, the Chief must contact the customer in order to introduce themself, acquire additional details and inform customer of opportunities. 
+
+Step 1: In this section of the app, team member will have a script to read from for introduction.
+
+Step 2: Job details relating to specific shift will be present here and chief will review details to ensure accuracy.
+
+Step 3: Chief will have script, detailing what to asks and text box available for customer to respond
+
+Step 4: Chief will have script of home team agreement and outline process from now until completion
+
+Step 5: Chief will have script of each opportunity to explain
+
+Step 6: Chief will have a script and text box to fill in customer response
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 1: Introduction 
+
+Hi [Customer] my name is [Name] and I will be your team leader. Just wanted to call to introduce myself, confirm your details and lay out our process. Is this a good time for you? Great!
+
+Step 2: Review job details
+
+Review all details for accuracy
+
+Step 3: Take notes on job environment
+
+Hallways, elevators, truck parking etc.
+
+Step 4: Explain Home Team agreement & mission
+
+Our goal is to safely assist you while maintaining integrity of your home and personal belongings
+
+Step 5: Inform of opportunities for discounts
+
+Submit images through app, complete survey in app, take quiz in app
+
+Step 6: Record customer goals, values and experience
+
+Goal of hiring us
+Value the most in experience
+What could make this experience enjoyable
+
+
+Checklist 1 - 24hrs after accepting
+
+Checklist 1 - Step 1
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 1: Introduction 
+
+Hi [Customer] my name is [Name] and I will be your team leader. Just wanted to call to introduce myself, confirm your details and lay out our process. Is this a good time for you?
+
+Checklist 1 - Step 1 (if not a good time)
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Date
+Time
+Set Reminder
+Step 1: Introduction 
+
+Ok, when would be a good time to reach back out?
+
+Checklist 1 - Step 2
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 2: Review job details
+
+I see we have you for [crew size] for [hours] on [date] at [time] is that accurate? Cool, we’ll be meeting you at [address] and finishing at [address] correct? Ok great.
+
+
+Update
+
+Checklist 1 - Step 2 (if update is needed)
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 2: Review job details
+
+I see we have you for [crew size] for [hours] on [date] at [time] is that accurate? Cool, we’ll be meeting you at [address] and finishing at [address] correct? Ok great.
+
+
+Update
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Date
+Start Time
+Crew Size
+Hours Needed
+Service Type
+Job Size
+Appointment Details
+Submit
+<<<Back
+
+Checklist 1 - Step 3
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 3: Take notes on job environment
+
+Ok could you please describe for me where the truck will be parked, and what the walk from the home to the truck will look like?
+
+
+
+Type here...
+
+Checklist 1 - Step 4
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 4: Explain Home Team agreement & mission
+
+Our mission is to create a safe, professional work environment to perform services in while keeping the integrity of your items and areas intact
+
+
+
+Next
+
+Checklist 1 - Step 5
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 5: Inform of opportunities for discounts
+
+Just so you are aware, you do have an opportunity to earn discounts by completing a customer survey, submitting a video of a walkthrough of your jobsite and many more. Download the home team app today in order to access these opportunities and more
+
+
+
+Next
+
+Checklist 1 - Step 6
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 6: Record customer goals, values and experience
+
+Last just a few quick questions for myself and the team to be aware of...
+
+
+
+What is the main goal we can accomplish for you?
+
+Type here...
+What do you value most in a service experience?
+
+Type here...
+How can we make this experience awesome for you??
+
+Type here...
+Next
+
+Checklist 1 - conclusion 
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Conclusion
+
+Awesome well that’s it! This is my personal number if you need to contact me, also feel free to message me directly through the app for any questions, comments or updates. In the meantime good luck preparing for your upcoming transition!
+
+
+
+Submit
+
+
+Checklist 2- 72hrs before shift
+
+Checklist 1 - Step 1
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 1: Introduction 
+
+Hi [Customer] it’s [Name] with The Home Team your team leader. Just wanted to call to check in prior to your appointment.. Is this a good time for you?
+
+Checklist 2- Step 1 (if not a good time)
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 1: Introduction 
+
+Ok, when would be a good time to reach back out?
+Date
+Time
+Set Reminder
+
+Checklist 2- Step 2
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 2: Confirm Details
+
+I see we have you down for [crew size] on [date] at [time] with a starting address of [location 1] ending at [location 2] is that all still accurate?
+
+Update
+
+Checklist 2 - Step 3
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 3: Team & ETA
+
+Great. Looks like our arrival window will be between [time] and [time]. Your team will be [team members name(s)] and myself helping. Based off of similar jobs, we’d recommend an additional team member to ensure we complete the job in the allotted time. Would you want to add another team member or extend your appointment?
+
+Update
+
+Checklist 2 - Step 4
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 4: Inform of opportunities for discounts
+
+Just so you are aware, you do have an opportunity to earn discounts by completing a customer survey, submitting a video of a walkthrough of your jobsite and many more. Download the home team app today in order to access these opportunities and more
+
+
+
+Next
+
+Checklist 2 - Step 3
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 5: Preparedness 
+
+On move day the essentials to being prepared are:
+Having all boxes closed and taped shut
+Having all furniture disassembled 
+Having all pathways cleared. 
+
+Knowing this On a scale from 1-10 how prepared would you say you are?
+
+
+
+Checklist 2 - Step 5
+
+If customer says anything under a 9, if customer rates a 9 or above, go to completion screen
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 5: Preparedness 
+
+What areas do you still need more time to prepare?
+
+Boxes
+Pathways
+Furniture
+
+Submit
+
+Checklist 2 - Step 6
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+<<< Back
+Step 6: Explain Home Team agreement & mission
+
+Great well we are all set! Again feel free to call me for anything at all. I’ll reach out the day of to let you know our eta. In the meantime check out the app, earn some discounts and we look forward to working with you!
+
+
+
+Submit
+
+
+Resources- Uploading Photos
+
+Uploading photos of job-site activities
+This feature will allow chiefs to upload photos of job site and job site activity to submit to corporate. 
+
+This feature is enabled once the Chief clocks in, however is in-accessible until Chief clocks in.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+Upload Photos
+FAQ’s
+Support
+Checklist
+<<< Back
+Damage Report
+Swap
+Chat
+Add time
+
+Skip>>>
+<<< Back
+Upload section for photos.
+Uploading photos of job-site activities
+Chief can upload multiple photos. Once a photo is uploaded Chief must tag the photo to a certain category. They will then have option to leave comment. After submission they can then upload additional photos through same process
+
+Rules:
+Photo Tags:
+Team Photo
+Quality Work
+Team at work
+All photos are added to job profile in the dashboard
+All activities are logged within dashboard activity log in job profile
+
+
+Resources- Damage Report
+
+Damage Report
+If ever there are any issues on a job-site Chief can create and submit a damage report of the incident.
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+Upload Photos
+FAQ’s
+Support
+Checklist
+<<< Back
+Damage Report
+Swap
+Chat
+Add time
+
+Skip>>>
+<<< Back
+We’re sorry for the inconvenience. Please submit a damage report and we will reach out within 24hrs. 
+Please type what happened here
+Next
+Damage Report Feature Details
+Upon selecting the damage report option, chief will be able type in a message indicating what happened in a text field. 
+
+Upon typing the “next” option will appear for user to go on to the next prompt.
+
+Skip>>>
+<<< Back
+Please upload all relevant images
+Next
+Damage Report Feature Uploading Images
+On this page chief can upload as many images as necessary. Chief can then add comments to a picture prior to uploading it in order to detail damage related to the picture.
+
+Skip>>>
+<<< Back
+Text recapping what happened
+Edit
+Images to scroll
+Add more images
+Submit
+Damage Report Feature Completion
+On this page, chief will view image details and text prior to submitting. Once chief reviews details they can hit submit and the report will be sent. 
+
+Rules:
+Damage report will be sent and attached to the job profile
+Report submission will be logged in the activity log
+Admin receives a notification of new damage report in the dashboard
+
+
+
+
+Resources- Add Time
+
+Add Time
+Sometimes an appointment may need to be extended and we do not have the customers card on file. If a customer's card is not on file the “add time” icon should be present (third party jobs)
+
+When this option is selected, team member will place deposit on card of $1 for future billing, and extend out appointment.
+
+Rules:
+Add time icon should only appear if no payment details are on file
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Skip>>>
+Upload Photos
+FAQ’s
+Support
+Checklist
+<<< Back
+Damage Report
+Swap
+Chat
+Add time
+
+Add Time
+When a customer needs more time, Chief will complete the following form. 
+
+Additional team members needed?
+Dropdown menu
+Yes or No
+How many?
+Drop down menu
+1-3
+What address
+Address field with map
+
+Rules:
+If chief selects yes to “more team members are needed” then all other questions will be activated, if not Chief will go straight to payment details
+If “New Shift” option is selected, Chief will be taken through the new shift process. Customers general information will auto populate (name, #, email)
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+
+Are additional Team Members Needed?
+
+
+How Many?
+
+
+What address?
+
+
+Payment Details
+
+
+
+Add Time
+Submit
+<<<Back
+Card #
+Billing Zip
+CVC #
+Name on Card
+New Shift
+
+
+Creating a new shift (Chiefs Only)
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Shifts Page (list view)
+This page will allow team members to view available, scheduled and all shifts in a list format.
+
+The “+” button in the top right corner is only available in app for those assigned as “Chief”. This button allows a chief to create a new shift within the app.
+
+Creating a shift details
+When creating a new shift, chief will be taken through relevant prompts per screen.
+
+
+Service Type
+Drop down menu
+Helping hand
+In-house move
+Loading / Unloading
+Job Type
+Drop down menu
+Loading 
+Unloading 
+Load & Unload
+Date & Time
+Calendar option
+Hours 
+Drop down menu
+1-8 (depending on time)
+Crew Size
+Drop down menu
+1-5
+Job Size
+Drop down menu
+Studio 
+1 - 5 bed
+
+
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Service Type
+
+
+Job Type
+
+
+Date & Time
+
+
+Hours
+
+
+Crew Size
+
+
+Job Size
+
+
+
+
+New Shift
+Next
+<<<Back
+
+Details cont’d
+
+Furniture
+Drop down menu
+Options from booking process
+Boxes
+Drop down menu
+Options from booking process
+Stairs
+Drop down menu
+Options from booking process
+Address
+Predictable address & map
+Customer First Name
+Text field
+Customer Last Name
+Text field
+Customer #
+Text field
+Customer E-mail
+Text field 
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Furniture
+
+
+Boxes
+
+
+Stairs
+
+
+Address
+
+
+Customer First Name
+
+
+Customer Last Name
+
+
+Customer #
+
+
+Customer Email
+
+
+
+
+New Shift
+Next
+<<<Back
+Creating a shift details
+
+Creating a shift details
+Details cont’d
+
+Pets
+Dropdown menu
+Parking Instructions
+Text field
+Security Instructions
+Text field
+Message to the team
+Text field 
+
+Once a new shift is submitted it will be available in the app to all team members. An appointment will also be created in the app for the customer.
+Additional Details
+Resources
+Load / Unload
+Image of Home OR Map Location
+Start-End Time
+Service Type
+See Bio
+Team Member Name
+See Bio
+Team Member Name
+Team Leader
+    Message / Call
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Edit
+Pets
+
+
+Parking Instructions
+
+
+Security Instructions
+
+
+Message to The Team
+
+
+Payment Details (optional)
+
+
+
+New Shift
+Submit
+<<<Back
+Card #
+Billing Zip
+CVC #
+Name on Card
+
+End
+2. Shifts Page
+Team Member App
+
+
+3. Calendar
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Calendar Page
+
+Click the indicated icon will take user to the calendar page
+
+Skip>>>
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Wed
+15th
+Calendar Page - Go Live scheduling
+
+This page will be used by team members to create their calendar and indicate their availability. They can swipe to the left and see all future dates for the next 15 days.
+
+They will simply swipe down from a start time to a stop time indicating when they are available.
+
+Times they indicate they are available we will auto schedule them for shifts that are booked during that time.
+
+Rules:
+Shifts will be assigned based off of position, rank, hours worked and overall rating.
+On an auto assigned shift, the first team member will be the blended best of the above indicated criteria, the next team member will be the blended worst and that pattern will repeat until shift is staffed.
+There is no limit to how long a team member can go live in a day.
+When a team member goes live they earn additional pay of $2 and 50% more points per shift.
+Scheduling is by the half an hour increments
+
+Skip>>>
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Wed
+15th
+Calendar Page - Go Live scheduling
+
+By clicking the lightning bolt icon in the corner, team members can access the “Go Live Now” feature.
+
+Skip>>>
+<<< Back
+Calendar Page - Go Live Now
+
+Go Live now allows team members to make themselves available for on demand work. When a customer makes a same day or on-demand requests it will go to members who are “Live”.
+
+“Going Live” is activated by hitting the lighting bolt. You can end going live by also clicking the lighting bolt.
+
+
+Rules:
+When a member is live they earn 10 points an hour
+When assigned to a live shift they earn double the points
+While live team members pay increases by $1/hr. From whatever their initial pay is to a maximum of $21/hr
+Live feature is automatically deactivated after 8pm same day
+
+End
+3. Calendar Page
+Team Member App
+
+
+4. Notifications & Community Feed
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Home Page
+
+This will be the home page of the app. It will also act as a dashboard where users can receive relevant updates/notifications and take action 
+
+[customer name] has changed their appointment time from [time] to [time]
+[customer name] has changed their appointment date from [date] to [date]
+[customer name] has added a [pet] to their job details.
+[customer name] has added a [X] more hours to their job.
+[customer name] has cancelled their job.
+Notifications Page
+
+This page will allow users to see relevant notifications as well as check out The Home Team news feed which will have relevant post and content that users can engage in and interact with.
+
+Rules: 
+Only updates that could potentially change a team members schedule or affect their work environment are placed in the notifications page.
+Start time
+Number of hours
+Date change 
+Cancellations 
+Pets 
+All notifications must be cleared by the end of the day by swiping right to accept or swiping left to place swap request.
+Clicking on an appointment will open up the shift details
+       Notifications                        Community Feed
+
+Community Feed
+On this page users will be able to see and engage with Home Team posts by other customers and team members.
+
+Upon the team member selecting the plus button they can create a post
+
+Rules:
+Feed is available for up to 30 days worth of posts
+City is based off of the city user has identified themselves in
+Tags are taken from the tag section when images are posted
+Comments are public
+Image
+Like
+Comment
+Likes 18
+View Comments
+Image
+Like
+Comment
+Likes 18
+View Comments
+Tag
+Tag
+City
+City
+       Notifications                        Community Feed
+Caption
+Caption
+Report
+
+Community Feed Posting Process
+User will choose an image and click next
+Selected image shows up here
+Cancel
+Next
+
+Community Feed
+User will then write a caption and select a predetermined tag(s) to their posting
+Selected image shows up here
+Back
+Write Caption
+Select Tags
+Post
+
+
+
+
+END
+4. Notifications & Community Feed
+Team Member App
+
+
+5. Profile & Settings
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Home Page
+
+This will be the home page of the app. It will also act as a dashboard where users can receive relevant updates/notifications and take action 
+
+User Profile & Settings
+From this page a user can manage their profile, personal information and communicate with corporate.
+Account Settings
+Personal Information
+Resources
+Get Help
+Give Feedback
+
+Terms of Service
+Log Out
+First name
+Last Name
+Metrics
+FL0000
+Referral Code
+Position
+Rank
+Team
+
+Account Settings
+Team Member
+
+Account Settings
+On this page a user an edit username, password and additional information by selecting the indicated area.
+Username and password, 
+General page to update username and password
+Location
+Page where team member can select what location they want to receive and see job notifications
+Address
+User can view and update personal shipping address
+Hobbies 
+User can update hobbies
+Goals 
+User can update goals
+Notifications
+User can determine notifications received and type
+Username & Password
+Location
+Hobbies 
+Goals
+Notifications
+Address
+First name
+Last Name
+Account Settings
+
+Team
+Team Member
+
+Account Settings
+On this page a user can view what team they are on, see it’s Captain and see other team members. Team members can request a trade at anytime.
+Current Team: Name
+Team Captain: Name
+Request a Trade
+First name
+Last Name
+Team
+Team Members: 
+Name
+Name
+Name
+Name
+
+Personal Information
+Team Member
+
+Personal Information
+From this page a user can update their personal information. By clicking “edit” all information becomes editable. “Edit” turns into “save” when editing information. Once information is saved, page goes back to original settings with updated information.
+First Name
+Edit
+First name
+Last Name
+Personal Information
+Last Name
+Phone Number
+Email
+
+Metrics
+Team Member
+
+Metrics Page
+On this page a user will be able to see their metrics compared to local and national team members. Metrics will include:
+
+Total Earnings*
+0-12,000
+Total Hrs Worked
+0-6000
+Total Shifts Completed*
+0-900
+Total Points Earned
+0-100000
+Current Hourly Rate
+13-22
+Team Rating
+0-5
+Customer Rating
+0-5
+Overall Rating*
+0-5
+Total Points Lost
+0-30000
+
+Metrics with stars will have a summary sentence indicating when they are likely to hit a milestone.
+
+
+User can also see exact same stats from a team metrics view as indicated above. 
+Metrics
+       My Metrics                        Team Metrics
+Hourly Pay
+Total Hours Worked
+Currently you are earning $x per hour. That is x% above/below local team members and x% above below the national average. At your current pace you’ll earn $x amount by [date]
+Currently you are earning $x per hour. That is x% above/below local team members and x% above below the national average
+Me
+Local Team Members
+National Team Members
+
+Get Help
+Team Member
+
+Get Help
+The Get Help page will take a user to a live chat page if available. If not, user will be taken to a general “contact us” page where they can submit their inquiry. There will also be a link to our FAQs page found on our website.
+Skip>>>
+<<< Back
+Keyboard
+Type text here
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+First Name Last Initial Date & Time
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+Blah blah hi, this time blah message
+
+Get Help
+The Get Help page will take a user to a live chat page if available. If not, user will be taken to a general “contact us” page where they can submit their inquiry. There will also be a link to our FAQs page found on our website.
+FAQs
+
+Get Help
+The Get Help page will take a user to a live chat page if available. If not, user will be taken to a general “contact us” page where they can submit their inquiry. There will also be a link to our FAQs page found on our website.
+
+Feedback
+Team Member
+
+Account Settings
+Personal Information
+Resources
+Get Help
+Give Feedback
+
+Terms of Service
+Log Out
+First name
+Last Name
+Metrics
+FL0000
+Referral Code
+Position
+Rank
+Feedback Page
+When a user selects the feedback option, a typeform will populate within the app.
+
+Resources
+Team Member
+
+Account Settings
+Personal Information
+Resources
+Get Help
+Give Feedback
+
+Terms of Service
+Log Out
+First name
+Last Name
+Metrics
+FL0000
+Referral Code
+Position
+Rank
+Resources Page
+When a user selects the resources option, they will be redirected to a webpage that has links to all resources.
+
+
+END
+5. Profile & Settings
+Team Member App
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Notification and Feed Page
+
+Clicking the indicated icon will take user to the notifications and team feed page
+
+
+Pre-Shift Acknowledgement
+Team Member
+
+Pre-Shift Acknowledgement
+One hour prior to a shift, team members must acknowledge they will still be participating on the shift. This is done by an acknowledgement message that auto populates an hour before the job. 
+
+Upon opening the app this is the only screen a team member is able to see until they indicate if they will be on shift or not.
+
+Rules
+If they indicate yes, nothing else is done.
+If they indicate no, or do not indicate within 30 minutes of shift, the shift is sent to all available workers in the area for them to accept.
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Your next upcoming appointment is [date] at [time]
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Your shift for [Name] starts in [Countdown]. Please acknowledge you are still good to go for this job
+Good to go!
+I can’t make it
+
+Pre-Shift Flow
+Team Leader
+
+Pre-Shift Acknowledgement
+Team member is able to access upcoming shift from home page or shift list page.
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Opportunities to earn points
+You have [x number] of job notification
+Current Status
+Next Level
+Message Board
+Your shift for [Customer] is about to start! Click here to clock-in
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Clocking In
+Resources
+Team leaders will see a button to clock in 30 minutes prior to the start of a shift. This will be a floating button that is above the resources button.
+
+Rules:
+If team leader is not clocked in 5 minutes prior to shift, option appears for general team members to clock in
+Upon clicking the clock-in.
+Clock In/Out
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Clocking In (Cont’d)
+Resources
+Once team leader clicks “clock-in”, modal pops up. This modal allows option for team leader to clock in each team member (including themself).
+
+Once team leader clocks team member in, “clock-in” option changes to “clock-out”
+If all team members are present, team leader can simply click “Clock In All” option. 
+In order to exit modal, team member will hit “back” button
+Corey Hall (Me)
+Chief
+Mark Strong
+Crew
+Clock In
+Clock In
+Clock In All
+<<<Back
+Next
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Pre-Shift Form
+Resources
+Once team member(s) have been clocked in, team leader begins the pre-shift form. 
+Awesome, you’re team is clocked in. Let’s go through the Pre-Shift prompts. Click “next” to get started.
+Clock-In
+Next
+Intro &
+Walkthrough
+Game Plan
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Intro & Walkthrough Instructions
+Resources
+Team Leader will see a brief script. Once introduction script has been read, team leader will move on to next prompt.
+Introduce the team and yourself to customer and politely ask for a tour of the job-site
+Clock-In
+Next
+Intro &
+Walkthrough
+Game Plan
+“Hi I’m [First & Last Name] and I’ll be your team leader. If we could, let’s start of with a walkthrough of the job-site and areas we’ll be working in.”
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Intro & Walkthrough Instructions (cont’d)
+
+Resources
+As walkaround is happening, team member will be able to snap photos of job-site and upload to job-profile.
+
+Rules:
+Unlimited images can be uploaded
+Take pictures of any damage, or areas that you will be doing the most work. Be sure to call out any special circumstances like:
+Clock-In
+Next
+Intro &
+Walkthrough
+Game Plan
+Open boxes 
+Unclear pathways
+Damaged items
+Upload Images
+
+Intro & Walkthrough Instructions - Uploading Images
+
+Prompt for team leader when uploading images
+Selected image shows up here
+Cancel
+Next
+
+Intro & Walkthrough Instructions - Uploading Images (cont’d)
+ 
+Team Leader can write description about the image or area. Tags will include:
+Furniture
+Room
+Truck
+Unprepared
+Damage
+Additional requests
+Selected image shows up here
+Back
+Write Caption
+Select Tags
+Submit
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Game Plan Instructions 
+Resources
+Once team leader has taken appropriate pictures and completed walk through, they will then choose which team members will perform what tasks. Multiple tasks can be assigned to one team member.
+Go outside, formulate game plan with team members and select positions.
+Clock-In
+Game Plan
+Next
+Intro &
+Walkthrough
+Load / Unload Truck
+
+Bring items to truck
+
+Bring Items outside home
+
+Load / Unload Truck
+
+Bring items to truck
+
+Bring Items outside home
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Conclusion of Pre-Shift Walkthrough
+Resources
+After team members are selected, pre-shift form is complete.
+You are set to go. Use the resources page if you need any assistance. Our #1 priority is creating an awesome experience for our customers. With that in mind, let’s go be great!
+Clock-In
+Game Plan
+Go!
+Intro &
+Walkthrough
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Inside a shift (assigned)
+Resources
+
+Pre-Shift Flow End
+Team Leader
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Clocking Out Post Shift
+Resources
+Once a shift is complete, team leader will clock out to begin job completion process
+Clock In/Out
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions
+Resources
+Prompt which is shown after team leader selects clock out
+Now that the job is complete, take the customer through a final walkthrough with the team. Have team member(s) assist with any tasks left over and be sure to take pictures of items or areas the customer notes.
+Final Walkthrough
+
+Next
+Upload Images
+
+Completion Form
+“Hey Mr/Mrs (Name). I believe we are about wrapped up, just wanted to take the final walk around and see what else we can help with and any items or areas we need to take note of”
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Prompt shown after script message. Team member will take pictures and upload images of completed areas
+Final Walkthrough
+Please take images of completed job site. Images should include:
+Next
+Completion Form
+
+Empty rooms
+Packed truck
+Left over items
+Upload Images
+Upload Images
+
+
+Outro & Walkthrough Instructions - Uploading Images
+
+Process for team member to select or take images of indicated areas
+Selected image shows up here
+Cancel
+Next
+
+Outro & Walkthrough Instructions - Uploading Images (cont’d)
+ 
+Uploading of images. 
+
+Caption will be a comment specific to the image.
+Tags will be as follows:
+Inside truck
+Empty room
+Leftover items
+Chair
+Table
+Couch
+Tv Stand 
+Pictures
+Misc.
+Team member is able to select multiple tags per image.
+
+
+Selected image shows up here
+Back
+Write Caption
+Select Tags
+Submit
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Once images are uploaded team member will be taken to original uploading screen. 
+
+Uploaded images will appear above the next button so team member can view preview of small images
+
+Once images are completely uploaded team member can hit next.
+
+Team leader must take at least three images in order for next button to appear.
+Final Walkthrough
+Please take images of completed job site. Images should include:
+Next
+Completion Form
+
+Empty rooms
+Packed truck
+Left over items
+Upload Images
+Upload Images
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+If customer has (MH) tag, team member must request payment code from customer.
+Collected payment codes go into the job profile of the customer.
+Once code is entered “next” button can be selected.
+“Click Here” link will take you to a brief instruction page. (Not a current priority)
+Upload Images
+
+Final Walkthrough
+Please collect payment code from customer. Ask customer for 6-digit payment code provided by U-Haul. Click here if they need help.
+Next
+Completion Form
+
+Enter here...
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Upload Images
+
+Final Walkthrough
+This is what the customer said a successful job would look like. Were we able to achieve this?
+Next
+Completion Form
+
+Yes
+No
+“I’d like for the team to complete…”
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+If team member indicates that we were unable to complete a shift successfully. They will be taken to the following page.
+Upload Images
+
+Final Walkthrough
+Why not?
+(Choose all that apply)
+Next
+Completion Form
+
+Not enough time
+Customer changed goal
+Poor team performance
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+In order to clock a team member out the team leader must rate the team member and choose a brief description of why they rated them as follows. This will be repeated for and by all team members
+If team member is given less than 5 stars, secondary options appear as shown on the next screen.
+Team member must give star rating and indicate at least one reason why.
+Depending on a star rating, team member will have a specific label shown Team label based off of star rating:
+5 Star: All-Star
+4 Star: Team Player
+3 Star: Work in Progress
+2 Star: Bench Worthy
+1 Star: Trade Em
+Upload Images
+
+Final Walkthrough
+Please Rate Team Member
+(Choose all that apply)
+Next
+Completion Form
+
+Professional
+Communication
+Hard Worker
+Courteous
+Helpful
+Knowledgeable
+Leave a comment
+All-Star
+
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Options shown if team member receives less than 5 stars
+Upload Images
+
+Final Walkthrough
+Please Rate Team Member
+(Choose all that apply)
+Completion Form
+
+Unprofessional
+Communication
+Lazy
+Inconsiderate
+Unknowledgeable
+Not Helpful
+Leave a comment
+Trade Em
+
+Next
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Team leader must also rate customer after clocking out. 
+If customer is given less than 5 stars, secondary options appear as shown on the next screen.
+Team member must give star rating and indicate at least one reason why.
+Depending on a star rating, customer will have a specific label shown Customer label based off of star rating (yes same as team members):
+5 Star: All-Star
+4 Star: Team Player
+3 Star: Work in Progress
+2 Star: Bench Worthy
+1 Star: Trade Em
+
+Upload Images
+
+Final Walkthrough
+Please Rate Customer
+(Choose all that apply)
+Completion Form
+
+Courteous
+Considerate
+Prepared
+Professional
+Organized
+Communication
+Leave a comment
+Love’em
+
+Next
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Options shown if customer receives less than 5 stars
+
+Upload Images
+
+Final Walkthrough
+Please Rate Customer
+(Choose all that apply)
+Completion Form
+
+Rude
+Unrealistic
+Unprepared
+Unprofessional
+Disorganized
+Communication
+Leave a comment
+Leave’em
+
+Next
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Team Leader will complete lifemode of customer profile. They will select all relevant tags for that customers lifemode.
+Information will be placed in customer profile.
+Next will be chosen after team member selects at least three tags
+Upload Images
+
+Final Walkthrough
+Please Select Lifemode of Customer
+(Choose all that apply)
+Completion Form
+
+Yard
+New Furniture
+Apartment
+Married
+Home
+Kids
+Leave a comment
+Next
+Married
+Single
+Male
+Female
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+After lifemode is indicated, team leader will type a personalized message to the customer. “Next” option will appear once a message has been typed. 
+
+This message will go into the customer profile and will be used to send customer follow-up email/postcard.
+Upload Images
+
+Final Walkthrough
+Please leave a personalized message to customer
+(Customer will receive this message in a postcard 
+so make it relevant and personal to their experience. Mention their pet, kids, new job etc.
+Completion Form
+
+Write message here...
+Next
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Outro & Walkthrough Instructions (cont’d)
+
+Resources
+Once prompts are complete user will see completion message. Upon clicking done, user will be taken to home screen of app.
+Upload Images
+
+Final Walkthrough
+Congratulations great work today. Let's keep it up!
+
+Completion Form
+
+Done
+
+Post-Shift Flow
+Team Leader
+
+Pre-Shift Flow End
+Team Leader
+
+Skip>>>
+Calendar Page - Go Live scheduling
+
+By clicking the lightning bolt icon in the corner, team members can access the “Go Live Now” feature.
+Sunday, March 1st
+
+ 8am
+-
+11am
+11am
+- 
+2pm
+2pm
+-
+5pm
+
+5pm
+-
+8pm
+All
+Day
+Monday, March 2nd
+
+ 8am
+-
+11am
+11am
+- 
+2pm
+2pm
+-
+5pm
+
+5pm
+-
+8pm
+All
+Day
+Tuesday, March 3rd
+
+ 8am
+-
+11am
+11am
+- 
+2pm
+2pm
+-
+5pm
+
+5pm
+-
+8pm
+All
+Day
+Wednesday, March 4th
+
+ 8am
+-
+11am
+11am
+- 
+2pm
+2pm
+-
+5pm
+
+5pm
+-
+8pm
+All
+Day
+Saturday, February 29th
+
+ 8am
+-
+11am
+11am
+- 
+2pm
+2pm
+-
+5pm
+
+5pm
+-
+8pm
+All
+Day
+Week of March 2nd-8th
+Save Changes

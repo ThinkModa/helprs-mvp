@@ -1,0 +1,580 @@
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Opening Page after sign-in
+This is the initial screen a user will see after they create an account. This will show a brief message for user, and a quick tutorial on what the app offers.
+Welcome to The Home Team. Let’s take a quick tour
+Next >>>
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Shift acceptance tutorial
+This screen will show an image of an iphone with the home team app. It will be a brief animation showing:
+
+Map view process of a shift being accepted 
+List view of shift being accepted 
+
+Animation should be on loop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Quickly see and accept opportunities in your local area
+Next >>>
+<<<Back
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Inside a shift tutorial
+This screen will show an image of an iphone with the home team app. It will be a brief animation showing:
+
+Inside of shift showing team member icon clicked and team members showing up
+Inside of shift showing details icon being clicked and details appearing
+
+Animation should be on loop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+View job details, team members and resources with one click
+Next >>>
+<<<Back
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Dashboard tutorial 
+This screen will show an image of an iphone with the home team app. It will be a brief animation showing:
+
+New notification appearing on dashboard page
+Notification being clicked
+Points system bar increasing on dashboard page and hourly pay rate increasing
+
+Animation should be on loop.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Here you can see notifications. track your progress and become a legend!
+Next >>>
+<<<Back
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Tutorial completion page
+This will be a brief video. Once the video is complete, the swipe option will appear for user to move on to next phase.
+
+
+
+
+
+
+
+
+“By choosing our own path, we choose our destination.”
+Video
+Swipe to begin   >>>
+
+Onboarding Dashboard
+
+Dashboard - Onboarding User
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+This will be the dashboard for a team member who is currently going through the onboarding process. 
+
+A user will only be able to complete the steps one at a time and in sequential order.
+
+As a step is completed, the next will become unlocked. Once a step is completed it will be shaded in grey to indicate that it is complete. Steps that are eligible to be complete will be in blue.
+
+Each time a step is complete, user status will be updated, progress bar will be updated.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Dashboard - Onboarding User
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+This will be the dashboard for a team member who is currently going through the onboarding process. 
+
+A user will only be able to complete the steps one at a time and in sequential order.
+
+As a step is completed, the next will become unlocked. Once a step is completed it will be shaded in grey to indicate that it is complete. Steps that are eligible to be complete will be in blue.
+
+Each time a step is complete, user status will be updated, progress bar will be updated.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Dashboard - Onboarding User
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+This will be the dashboard for a team member who is currently going through the onboarding process. 
+
+A user will only be able to complete the steps one at a time and in sequential order.
+
+As a step is completed, the next will become unlocked. Once a step is completed it will be shaded in grey to indicate that it is complete. Steps that are eligible to be complete will be in blue.
+
+Each time a step is complete, user status will be updated, progress bar will be updated.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Dashboard - Onboarding User
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+This will be the dashboard for a team member who is currently going through the onboarding process. 
+
+A user will only be able to complete the steps one at a time and in sequential order.
+
+As a step is completed, the next will become unlocked. Once a step is completed it will be shaded in grey to indicate that it is complete. Steps that are eligible to be complete will be in blue.
+
+Each time a step is complete, user status will be updated, progress bar will be updated.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Dashboard - Onboarding User
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+This will be the dashboard for a team member who is currently going through the onboarding process. 
+
+A user will only be able to complete the steps one at a time and in sequential order.
+
+As a step is completed, the next will become unlocked. Once a step is completed it will be shaded in grey to indicate that it is complete. Steps that are eligible to be complete will be in blue.
+
+Each time a step is complete, user status will be updated, progress bar will be updated.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (est. 3 min)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+
+Profile Set-Up
+
+Profile Set-Up 
+User will be able to select top three personal goals. Next button will be visible once three options have been selected.
+Profile Set-Up
+Please choose your top three personal goals (choose top 3)
+
+Make Money
+Meet New People
+Stay Active
+Grow Personally
+Grow Professionally
+Grow Leadership Skills
+Next
+
+Profile Set-Up (cont’d)
+
+User will be able to select top three activities. Next button will be visible once three options have been selected.
+
+Profile Set-Up
+What activities do you enjoy? (choose top 3)
+
+Sporting Events
+Paintballing
+Top Golf
+Theme Parks
+Music Concerts
+Pool Parties
+Next
+
+This is an optional page where team member can write a quick fun fact:
+
+Maximum 80 characters
+Searching for words that are curse words or explisitives will immediately be reported
+Sh**
+Fu**
+Da**
+He**
+Cock
+As*
+Bit**
+Profile Set-Up
+Tell us a fun fact about 
+yourself
+
+Text Box
+Next
+Profile Set-Up (cont’d)
+
+
+Profile Set-Up
+Great Almost done, Let’s finish setting up your profile
+
+Choose your city (where you will accept jobs)
+
+Upload a professional headshot
+
+Gender (M/F/NB)
+
+Primary Address
+
+Primary #
+
+Emergency Contact Name
+
+Emergency Contact #
+Done
+Profile Set-Up (cont’d)
+
+User will enter all requested information on the page. Once all information is entered, “done” option can be clicked.
+
+Good [time of day] 
+[Name] Time to be great!
+
+0
+Points
+$13.00
+Hourly Rate
+Up Next: Training
+Currently: Profile Set-Up
+Once step is complete, modal will be highlighted and next phase will be unlocked.
+Current Path: Trainee > Prospect
+1. Profile Set-Up (Complete)
+2. Training (est. 20 min)
+3. Background Check (est. 1 min)
+4. Personality Test (est. 10 min)
+5. Direct Deposit (est. 1 min)
+Dashboard - Onboarding User
+
+Training
+
+Online Training
+Next you will go through our online training process. You must complete the final exam with an 90% or higher in order to activate your profile. Click “Next” to begin.
+Next
+Training Module
+User will come to this page and read brief message. Upon clicking on “next” they will be taken to the “typeform” page.
+
+Users score will be tracked in typeform to receive their score upon completion. 
+
+If user has a passing score, they next module will be unlocked. If a passing score is not received they will retake test in typeform.
+
+Background Check
+
+User will be taken to this page where they will enter background check information requested. Subsequent pages must be present prior to users information being sent in for background check. Please reference link for more details.
+
+Subsequent 
+Rights
+Disclosure
+Authorization
+
+https://apply.checkr.com/apply/thehometeam/773cb2bcc5be
+Background Check
+First Name
+Middle Name
+Last Name
+I confirm I have no middle name
+Date of Birth
+Social Security
+Please Confirm Social
+Current Zip Code
+Phone Number
+E-mail Address
+By clicking Continue you agree to Home Team, Privacy Policy, and consent to Checkr contacting you by email, phone, or SMS texts with information relating to your background check.
+Continue
+Background Check
+
+Personality Test
+
+User will come to this page and read brief message. Upon clicking on “next” they will be taken to the “16personalities” page. User will take personality test and upon completing, go to the subsequent page.
+
+https://www.16personalities.com/free-personality-test 
+Personality Test
+You will complete the personality test and indicate your results on the following page. Once you complete the test please come back to the app and indicate your results
+Next
+Personality Test
+
+This will be a dropdown menu where user will have option to choose from the following options:
+Architect
+Logician
+Commander
+Debater
+Advocate
+Mediator
+Protagonist
+Campaigner
+Logistician
+Defender
+Executive
+Counsel
+Virtuoso
+Adventurer
+Entrepreneur
+Entertainer
+Personality Test
+Please Select Your Results
+Select here...
+Next
+Personality Test (cont’d)
+
+Direct Deposit
+
+Direct Deposit
+Once user has completed all subsequent steps they will set up their stripe account and set up direct deposit.
+Direct Deposit
+Please enter your direct deposit information below. You will receive payment from jobs within three business days.
+Direct Deposit
+Account Number
+Confirm Account Number
+Enter
+
+
+September 17th
+Job Category
+Unload, 3 Rooms, 2 Team... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+September 18th
+Job Category
+Load / Unload, 3 Rooms... see more...
+Image of Home OR Map Location
+Start-End Time
+Distance from location
+Neighborhood
+Shifts Page (list view)
+This page will allow team members to view available, scheduled and all shifts in a list format.
+
+The “+” button in the top right corner is only available in app for those assigned as “Chief”. This button allows a chief to create a new shift within the app.
+
+Shifts Page (map view)
+This page will allow team members to view available, scheduled and all shifts in a map format.
+M          T          W         T          F         S          S
+12        13         14       15         16       17         18  
+Available Shifts          My Shifts          All Shifts
+
+Date
+Start Time - Est Finish Time
+Service Type
+Job Size
+Customer Name
+Customer #
+Address
+Additional Details
+Job Category
+Image of Home OR Map Location
+Distance from location
+Est. Drive Time
+Team
+Inside a shift (available)
+When a user views the inside of an available shift, the information indicated will show as follows. All relevant information
+
+Details:
+Job Category
+Job Category is determined by job size.
+Location Image
+Image of home or location on map if home image unavailable
+Team Members
+Image of team member profiles and names
+Job Details
+Customer, # and address is not viewable or clickable
+Additional Details
+Additional details unclickable 
+Swipe to accept
+
+Skip>>>
+<<< Back
+8
+am
+9
+am
+10
+am
+11
+am
+12
+pm
+1
+pm
+2
+pm
+4
+pm
+3
+pm
+5
+pm
+6
+pm
+Tomorrow
+12th
+Monday
+13th
+Tuesday
+14th
+Wed
+15th
+Calendar Page - Go Live scheduling
+
+By clicking the lightning bolt icon in the corner, team members can access the “Go Live Now” feature.
+
+Skip>>>
+<<< Back
+Calendar Page - Go Live Now
+
+Go Live now allows team members to make themselves available for on demand work. When a customer makes a same day or on-demand requests it will go to members who are “Live”.
+
+“Going Live” is activated by hitting the lighting bolt. You can end going live by also clicking the lighting bolt.
+
+
+Rules:
+When a member is live they earn 10 points an hour
+When assigned to a live shift they earn double the points
+While live team members pay increases by $1/hr. From whatever their initial pay is to a maximum of $21/hr
+Live feature is automatically deactivated after 8pm same day

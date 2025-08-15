@@ -1,0 +1,239 @@
+HELPRS MVP - DATABASE SCHEMA ISSUES TO CREATE MANUALLY
+=====================================================
+
+Go to your Linear project: https://linear.app/helprs/project/helprs-mvp-59abb3d536f4/overview
+
+Create these issues manually:
+
+1. DESIGN MULTI-TENANT DATABASE ARCHITECTURE
+   Priority: High
+   Estimate: 8 hours
+   Description:
+   Design the core database architecture for multi-tenant SaaS platform:
+   
+   Requirements:
+   - Company isolation with company_id foreign keys
+   - Row Level Security (RLS) policies for data separation
+   - Support for unlimited workers/customers per company
+   - Scalable design for future features (AI, analytics, customer app)
+   
+   Tables to Design:
+   - companies (multi-tenant foundation)
+   - users (authentication & roles)
+   - workers (extended user profiles)
+   - customers (company-specific)
+   - calendars (flexible organization)
+   - worker_roles (company-specific roles)
+   - forms & form_fields (custom forms)
+   - appointment_types (service definitions)
+   - jobs (scheduled work)
+   - time_entries (clock in/out)
+   - payments (worker payouts & customer payments)
+   - ratings (worker/customer feedback)
+
+2. CREATE DATABASE MIGRATION FILES
+   Priority: High
+   Estimate: 4 hours
+   Description:
+   Create proper migration files for Supabase deployment:
+   
+   Tasks:
+   - Create initial migration file with complete schema
+   - Include all table definitions with proper relationships
+   - Add indexes for performance optimization
+   - Include enum types (user_role, subscription_tier, job_status, etc.)
+   - Add RLS policies in migration
+   - Test migration on local Docker environment
+   - Deploy to remote Supabase project
+   
+   Files to Create:
+   - supabase/migrations/YYYYMMDDHHMMSS_initial_schema.sql
+   - Include all CREATE TABLE statements
+   - Include all CREATE INDEX statements
+   - Include all RLS policies
+
+3. IMPLEMENT ROW LEVEL SECURITY (RLS) POLICIES
+   Priority: High
+   Estimate: 6 hours
+   Description:
+   Implement comprehensive RLS policies for multi-tenant isolation:
+   
+   Security Requirements:
+   - Company-based data isolation
+   - Role-based access control (Super Admin, Org Admin, Worker)
+   - User authentication checks in all policies
+   - Proper foreign key relationships enforced
+   
+   Policies to Implement:
+   - Companies: Super Admin full access, company isolation
+   - Users: Company-based access, role-based permissions
+   - Workers: Company isolation, user relationship checks
+   - Customers: Company isolation
+   - Calendars: Company isolation
+   - Jobs: Company isolation, worker assignment checks
+   - Payments: Job-based isolation
+   - Ratings: Job-based isolation
+   
+   Testing:
+   - Verify company A cannot see company B data
+   - Verify workers only see their assigned jobs
+   - Verify admins only see their company data
+
+4. CREATE DATABASE TEST SUITE
+   Priority: High
+   Estimate: 4 hours
+   Description:
+   Create comprehensive test suite for database operations:
+   
+   Test Categories:
+   1. Company Creation & Isolation
+      - Create multiple companies
+      - Verify data separation
+      - Test RLS policies
+   
+   2. User Authentication & Roles
+      - Create users with different roles
+      - Test role-based permissions
+      - Verify company associations
+   
+   3. Worker Management
+      - Create workers and assign roles
+      - Set availability schedules
+      - Test lead worker assignments
+   
+   4. Job Scheduling
+      - Create calendars and appointment types
+      - Schedule jobs with workers
+      - Test job status workflows
+   
+   5. Payment Workflows
+      - Create time entries
+      - Process worker payments
+      - Test payment status tracking
+   
+   6. Rating System
+      - Test worker-to-worker ratings
+      - Verify rating calculations
+      - Test multi-tenant isolation
+   
+   Test Data:
+   - Create seed.sql with comprehensive test data
+   - Test all CRUD operations
+   - Verify data integrity and relationships
+
+5. CREATE DATABASE DOCUMENTATION
+   Priority: Medium
+   Estimate: 3 hours
+   Description:
+   Create comprehensive database documentation:
+   
+   Documentation Requirements:
+   1. Entity Relationship Diagram (ERD)
+      - Visual representation of all tables
+      - Show relationships and cardinality
+      - Include foreign key relationships
+   
+   2. Data Model Documentation
+      - Table descriptions and purposes
+      - Field definitions and constraints
+      - Business rules and validations
+   
+   3. API Endpoint Specifications
+      - List required API endpoints
+      - Define request/response formats
+      - Document authentication requirements
+   
+   4. Business Rules Documentation
+      - Multi-tenant isolation rules
+      - Role-based access control
+      - Payment workflow rules
+      - Rating system rules
+   
+   5. Database Schema Reference
+      - Complete table definitions
+      - Index descriptions
+      - RLS policy documentation
+   
+   Deliverables:
+   - ERD diagram (PNG/PDF)
+   - API specification document
+   - Database schema reference
+   - Business rules documentation
+
+6. SET UP LOCAL DEVELOPMENT ENVIRONMENT
+   Priority: High
+   Estimate: 2 hours
+   Description:
+   Configure local development environment with Docker:
+   
+   Environment Setup:
+   - Install and configure Supabase CLI
+   - Set up local Docker containers
+   - Configure separate ports for multiple projects
+   - Link to remote Supabase project
+   
+   Configuration Tasks:
+   - Create supabase/config.toml with custom ports
+   - Configure database, API, Studio, and Inbucket ports
+   - Test local database connection
+   - Verify schema synchronization
+   
+   Port Configuration:
+   - API: 54331 (instead of 54321)
+   - Database: 54332 (instead of 54322)
+   - Studio: 54333 (instead of 54323)
+   - Inbucket: 54334 (instead of 54324)
+   - Analytics: 54337 (instead of 54327)
+   
+   Testing:
+   - Verify local database starts correctly
+   - Test schema deployment
+   - Verify remote synchronization
+
+7. IMPLEMENT DATABASE INDEXES FOR PERFORMANCE
+   Priority: Medium
+   Estimate: 2 hours
+   Description:
+   Create database indexes for optimal query performance:
+   
+   Index Requirements:
+   - Company-based queries (company_id)
+   - User authentication (email, company_id)
+   - Worker assignments (worker_id, company_id)
+   - Job scheduling (scheduled_date, status)
+   - Payment tracking (job_id, worker_id)
+   - Rating queries (job_id, from_worker_id)
+   
+   Indexes to Create:
+   - idx_users_company_id ON users(company_id)
+   - idx_users_email ON users(email)
+   - idx_workers_company_id ON workers(company_id)
+   - idx_jobs_company_id ON jobs(company_id)
+   - idx_jobs_scheduled_date ON jobs(scheduled_date)
+   - idx_jobs_status ON jobs(status)
+   - idx_payments_job_id ON payments(job_id)
+   - idx_time_entries_job_id ON time_entries(job_id)
+   
+   Performance Testing:
+   - Test query performance with large datasets
+   - Verify index usage with EXPLAIN ANALYZE
+   - Monitor query execution times
+
+COMPLETION STATUS:
+=================
+✅ COMPLETED:
+- Design Multi-Tenant Database Architecture
+- Create Database Migration Files  
+- Implement Row Level Security (RLS) Policies
+- Create Database Test Suite
+- Set Up Local Development Environment
+
+🔄 IN PROGRESS:
+- Create Database Documentation (0% complete)
+
+⏳ TODO:
+- Implement Database Indexes for Performance
+
+TOTAL ESTIMATED HOURS: 29 hours
+COMPLETED HOURS: 24 hours (83% complete)
+
