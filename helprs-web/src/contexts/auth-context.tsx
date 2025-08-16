@@ -103,7 +103,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signIn = async (email: string, password: string) => {
     try {
       // For testing purposes, handle test credentials
-      if (email === 'admin@helprs.com' && password === 'admin123') {
+      if (email === 'admin@helprs.com' && password === 'test') {
         // Mock Super Admin user
         const mockUser: DatabaseUser = {
           id: 'admin_123',
@@ -123,7 +123,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return {}
       }
 
-      if (email === 'org@helprs.com' && password === 'org123') {
+              if (email === 'org@helprs.com' && password === 'test') {
         // Mock Org Admin user
         const mockUser: DatabaseUser = {
           id: 'org_123',

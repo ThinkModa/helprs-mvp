@@ -14,7 +14,7 @@ import { Ionicons } from '@expo/vector-icons'
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('worker@helprs.com')
-  const [password, setPassword] = useState('password123')
+  const [password, setPassword] = useState('test')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -75,11 +75,11 @@ export default function LoginScreen() {
             </View>
             <View style={styles.credentialItem}>
               <Text style={styles.credentialLabel}>Password:</Text>
-              <Text style={styles.credentialValue}>password123</Text>
+              <Text style={styles.credentialValue}>test</Text>
             </View>
             <TouchableOpacity 
               style={styles.quickLoginButton}
-              onPress={() => handleQuickLogin('worker@helprs.com', 'password123')}
+              onPress={() => handleQuickLogin('worker@helprs.com', 'test')}
             >
               <Text style={styles.quickLoginText}>Use Test Credentials</Text>
             </TouchableOpacity>

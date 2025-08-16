@@ -103,7 +103,7 @@ export default function LoginPage() {
               marginBottom: '4px'
             }}>
               <span style={{ color: '#6b7280' }}>Super Admin:</span>
-              <span style={{ color: '#374151', fontFamily: 'monospace' }}>admin@helprs.com / admin123</span>
+              <span style={{ color: '#374151', fontFamily: 'monospace' }}>admin@helprs.com / test</span>
             </div>
             <div style={{
               display: 'flex',
@@ -111,12 +111,12 @@ export default function LoginPage() {
               fontSize: '13px'
             }}>
               <span style={{ color: '#6b7280' }}>Org Admin:</span>
-              <span style={{ color: '#374151', fontFamily: 'monospace' }}>org@helprs.com / org123</span>
+              <span style={{ color: '#374151', fontFamily: 'monospace' }}>org@helprs.com / test</span>
             </div>
           </div>
           <div style={{ display: 'flex', gap: '8px' }}>
             <button
-              onClick={() => handleQuickLogin('admin@helprs.com', 'admin123')}
+              onClick={() => handleQuickLogin('admin@helprs.com', 'test')}
               style={{
                 padding: '8px 16px',
                 fontSize: '13px',
@@ -140,7 +140,7 @@ export default function LoginPage() {
               Super Admin
             </button>
             <button
-              onClick={() => handleQuickLogin('org@helprs.com', 'org123')}
+              onClick={() => handleQuickLogin('org@helprs.com', 'test')}
               style={{
                 padding: '8px 16px',
                 fontSize: '13px',

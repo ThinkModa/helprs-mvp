@@ -3,9 +3,9 @@
 const getApiBaseUrl = () => {
   // For development, prioritize network IP for mobile devices
   if (__DEV__) {
-    return 'http://192.168.1.118:3000/api/v1';
+    return 'http://localhost:3000/api/v1';
   }
-  return 'http://192.168.1.118:3000/api/v1';
+  return 'http://localhost:3000/api/v1';
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -63,9 +63,8 @@ export interface AcceptJobResponse {
 
 class ApiService {
   private async makeRequest<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    // Try multiple URLs for development (prioritize network IP)
+    // Try multiple URLs for development
     const urls = [
-      'http://192.168.1.118:3000/api/v1',
       'http://localhost:3000/api/v1',
       'http://10.0.2.2:3000/api/v1', // Android emulator
     ];

@@ -426,7 +426,7 @@ export default function JobsScreen() {
             return (
               <View key={`list-${date}-${index}-${Date.now()}`}>
                 {/* Date Separator */}
-                <View style={styles.dateSeparator}>
+                <View style={[styles.dateSeparator, index === 0 && { marginTop: 0 }]}>
                   <Text style={styles.dateSeparatorText}>{dateInfo.fullDate}</Text>
                   <Text style={styles.dateSeparatorCount}>
                     {jobsForDate.length} job{jobsForDate.length !== 1 ? 's' : ''}
