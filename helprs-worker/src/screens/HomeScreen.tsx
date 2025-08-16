@@ -32,39 +32,41 @@ const mockNotifications = [
 ]
 
 export default function HomeScreen() {
-  const [jobs, setJobs] = useState<Job[]>([])
+  const [nextJob, setNextJob] = useState<Job | null>(null)
   const [notifications, setNotifications] = useState(mockNotifications)
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Load jobs from API
-  const loadJobs = async () => {
+  const TEST_WORKER_ID = 'worker-1' // Mock worker ID for testing
+
+  // Load next upcoming job from API
+  const loadNextJob = async () => {
     try {
       setError(null)
-      const response = await apiService.getOpenJobs()
-      setJobs(response.jobs)
+      const response = await apiService.getNextJob(TEST_WORKER_ID)
+      setNextJob(response.next_job)
     } catch (err) {
-      console.error('Failed to load jobs:', err)
-      setError('Failed to load jobs. Please check your connection.')
+      console.error('Failed to load next job:', err)
+      setError('Failed to load next job. Please check your connection.')
     } finally {
       setLoading(false)
     }
   }
 
-  // Refresh jobs
+  // Refresh next job
   const onRefresh = async () => {
     setRefreshing(true)
-    await loadJobs()
+    await loadNextJob()
     setRefreshing(false)
   }
 
-  // Load jobs on mount and set up auto-refresh
+  // Load next job on mount and set up auto-refresh
   useEffect(() => {
-    loadJobs()
+    loadNextJob()
     
     // Auto-refresh every 30 seconds
-    const interval = setInterval(loadJobs, 30000)
+    const interval = setInterval(loadNextJob, 30000)
     
     return () => clearInterval(interval)
   }, [])
@@ -80,23 +82,22 @@ export default function HomeScreen() {
     return time.substring(0, 5) // Convert "09:00" to "9:00 AM" format
   }
 
-  const JobCard = ({ job }: { job: Job }) => (
-    <TouchableOpacity style={styles.jobCard}>
-      <View style={styles.jobHeader}>
-        <View style={styles.jobCategory}>
-          <Text style={styles.categoryText}>
+  const NextJobCard = ({ job }: { job: Job }) => (
+    <View style={styles.nextJobCard}>
+      <View style={styles.nextJobHeader}>
+        <View style={styles.nextJobTypeContainer}>
+          <Text style={styles.nextJobTypeText}>
             {job.appointment_type?.name || 'Job'}
           </Text>
         </View>
-        <Text style={styles.earningsText}>${job.base_price}</Text>
+        <View style={styles.nextJobStatusBadge}>
+          <Text style={styles.nextJobStatusText}>Next Up</Text>
+        </View>
       </View>
       
-      <Text style={styles.jobTitle}>{job.title}</Text>
-      {job.description && (
-        <Text style={styles.jobDescription}>{job.description}</Text>
-      )}
+      <Text style={styles.nextJobTitle}>{job.title}</Text>
       
-      <View style={styles.jobDetails}>
+      <View style={styles.nextJobDetails}>
         <View style={styles.detailRow}>
           <Ionicons name="calendar-outline" size={16} color="#64748B" />
           <Text style={styles.detailText}>
@@ -107,45 +108,34 @@ export default function HomeScreen() {
         {job.estimated_duration && (
           <View style={styles.detailRow}>
             <Ionicons name="time-outline" size={16} color="#64748B" />
-            <Text style={styles.detailText}>{job.estimated_duration} minutes</Text>
+            <Text style={styles.detailText}>
+              {Math.round(job.estimated_duration / 60)} hours
+            </Text>
           </View>
         )}
         
         {job.location_address && (
           <View style={styles.detailRow}>
             <Ionicons name="location-outline" size={16} color="#64748B" />
-            <Text style={styles.detailText}>{job.location_address}</Text>
-          </View>
-        )}
-        
-        <View style={styles.detailRow}>
-          <Ionicons name="people-outline" size={16} color="#64748B" />
-          <Text style={styles.detailText}>
-            {job.accepted_workers}/{job.required_workers} workers
-          </Text>
-        </View>
-
-        {job.customer && (
-          <View style={styles.detailRow}>
-            <Ionicons name="person-outline" size={16} color="#64748B" />
-            <Text style={styles.detailText}>
-              {job.customer.first_name} {job.customer.last_name}
+            <Text style={styles.detailText} numberOfLines={1}>
+              {job.location_address}
             </Text>
           </View>
         )}
       </View>
       
-      <View style={styles.jobFooter}>
-        <View style={styles.pointsContainer}>
-          <Ionicons name="star" size={16} color="#F59E0B" />
-          <Text style={styles.pointsText}>150 points</Text>
+      <View style={styles.nextJobFooter}>
+        <View style={styles.nextJobPayContainer}>
+          <Ionicons name="cash-outline" size={20} color="#10B981" />
+          <Text style={styles.nextJobPayText}>
+            ${job.calculated_pay || job.base_price}
+          </Text>
         </View>
-        <View style={styles.earningsContainer}>
-          <Ionicons name="cash-outline" size={16} color="#10B981" />
-          <Text style={styles.earningsText}>${calculateEarnings(job)}/hr</Text>
-        </View>
+        <TouchableOpacity style={styles.viewJobButton}>
+          <Text style={styles.viewJobButtonText}>View Details</Text>
+        </TouchableOpacity>
       </View>
-    </TouchableOpacity>
+    </View>
   )
 
   const NotificationItem = ({ notification }: { notification: any }) => (
@@ -183,36 +173,91 @@ export default function HomeScreen() {
         {error && (
           <View style={styles.errorContainer}>
             <Text style={styles.errorText}>{error}</Text>
-            <TouchableOpacity onPress={loadJobs} style={styles.retryButton}>
+            <TouchableOpacity onPress={loadNextJob} style={styles.retryButton}>
               <Text style={styles.retryText}>Retry</Text>
             </TouchableOpacity>
           </View>
         )}
 
-        {/* Upcoming Jobs Section */}
+        {/* Next Upcoming Job Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Available Jobs</Text>
-            <TouchableOpacity onPress={loadJobs}>
+            <Text style={styles.sectionTitle}>Next Upcoming Job</Text>
+            <TouchableOpacity onPress={loadNextJob}>
               <Text style={styles.seeAllText}>Refresh</Text>
             </TouchableOpacity>
           </View>
           
           {loading ? (
             <View style={styles.loadingContainer}>
-              <Text style={styles.loadingText}>Loading jobs...</Text>
+              <Text style={styles.loadingText}>Loading next job...</Text>
             </View>
-          ) : jobs.length === 0 ? (
+          ) : !nextJob ? (
             <View style={styles.emptyContainer}>
               <Ionicons name="briefcase-outline" size={48} color="#CBD5E1" />
-              <Text style={styles.emptyText}>No jobs available</Text>
-              <Text style={styles.emptySubtext}>Check back later for new opportunities</Text>
+              <Text style={styles.emptyText}>No upcoming jobs</Text>
+              <Text style={styles.emptySubtext}>Check the Jobs tab for available opportunities</Text>
             </View>
           ) : (
-            jobs.map((job) => (
-              <JobCard key={job.id} job={job} />
-            ))
+            <NextJobCard job={nextJob} />
           )}
+        </View>
+
+        {/* Points Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Points</Text>
+            <TouchableOpacity>
+              <Text style={styles.seeAllText}>View History</Text>
+            </TouchableOpacity>
+          </View>
+          
+          <View style={styles.pointsCard}>
+            <View style={styles.pointsContent}>
+              <Ionicons name="star" size={24} color="#F59E0B" />
+              <View style={styles.pointsTextContainer}>
+                <Text style={styles.pointsValue}>1,250</Text>
+                <Text style={styles.pointsLabel}>Total Points</Text>
+              </View>
+            </View>
+            <View style={styles.pointsProgress}>
+              <Text style={styles.pointsProgressText}>Next Level: 2,000</Text>
+              <View style={styles.progressBar}>
+                <View style={[styles.progressFill, { width: '62.5%' }]} />
+              </View>
+            </View>
+          </View>
+        </View>
+
+        {/* Payments Section */}
+        <View style={styles.section}>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.sectionTitle}>Recent Payments</Text>
+            <TouchableOpacity>
+              <Text style={styles.seeAllText}>View All</Text>
+            </TouchableOpacity>
+          </View>
+          
+          <View style={styles.paymentsCard}>
+            <View style={styles.paymentItem}>
+              <View style={styles.paymentInfo}>
+                <Text style={styles.paymentAmount}>$45.00</Text>
+                <Text style={styles.paymentDate}>Today</Text>
+              </View>
+              <View style={styles.paymentStatus}>
+                <Text style={styles.paymentStatusText}>Completed</Text>
+              </View>
+            </View>
+            <View style={styles.paymentItem}>
+              <View style={styles.paymentInfo}>
+                <Text style={styles.paymentAmount}>$32.50</Text>
+                <Text style={styles.paymentDate}>Yesterday</Text>
+              </View>
+              <View style={styles.paymentStatus}>
+                <Text style={styles.paymentStatusText}>Completed</Text>
+              </View>
+            </View>
+          </View>
         </View>
 
         {/* Notifications Section */}
@@ -306,6 +351,176 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 12,
     fontWeight: '500',
+  },
+  nextJobCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
+    borderWidth: 2,
+    borderColor: '#3B82F6',
+  },
+  nextJobHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  nextJobTypeContainer: {
+    backgroundColor: '#EFF6FF',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  nextJobTypeText: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#1E40AF',
+  },
+  nextJobStatusBadge: {
+    backgroundColor: '#3B82F6',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  nextJobStatusText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  nextJobTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1E293B',
+    marginBottom: 12,
+  },
+  nextJobDetails: {
+    marginBottom: 16,
+  },
+  nextJobFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  nextJobPayContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  nextJobPayText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#10B981',
+    marginLeft: 8,
+  },
+  viewJobButton: {
+    backgroundColor: '#3B82F6',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 8,
+  },
+  viewJobButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  pointsCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  pointsContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  pointsTextContainer: {
+    marginLeft: 12,
+  },
+  pointsValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#1E293B',
+  },
+  pointsLabel: {
+    fontSize: 14,
+    color: '#64748B',
+  },
+  pointsProgress: {
+    marginTop: 8,
+  },
+  pointsProgressText: {
+    fontSize: 12,
+    color: '#64748B',
+    marginBottom: 6,
+  },
+  progressBar: {
+    height: 6,
+    backgroundColor: '#E2E8F0',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#F59E0B',
+    borderRadius: 3,
+  },
+  paymentsCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  paymentItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  paymentInfo: {
+    flex: 1,
+  },
+  paymentAmount: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1E293B',
+  },
+  paymentDate: {
+    fontSize: 12,
+    color: '#64748B',
+    marginTop: 2,
+  },
+  paymentStatus: {
+    backgroundColor: '#DCFCE7',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+  },
+  paymentStatusText: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: '#166534',
   },
   loadingContainer: {
     padding: 20,

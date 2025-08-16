@@ -54,7 +54,7 @@ export default function AppointmentCreationPanel({
   onAppointmentCreated
 }: AppointmentCreationPanelProps) {
   const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     calendarId: '',
     appointmentTypeId: '',
     customerInfo: {
@@ -68,48 +68,78 @@ export default function AppointmentCreationPanel({
     scheduledDate: selectedDate,
     scheduledTime: '09:00',
     formResponses: {} as Record<string, any>
-  })
+  }
+
+  const [formData, setFormData] = useState(initialFormData)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showCustomerDropdown, setShowCustomerDropdown] = useState(false)
   const [expandedForms, setExpandedForms] = useState<Record<string, boolean>>({})
 
-  // Mock data - will be replaced with real API calls
-  const mockCustomers: Customer[] = [
-    { id: '1', first_name: 'John', last_name: 'Smith', phone: '+1234567890', email: 'john@email.com' },
-    { id: '2', first_name: 'Jane', last_name: 'Doe', phone: '+1234567891', email: 'jane@email.com' },
-    { id: '3', first_name: 'John', last_name: 'Johnson', phone: '+1234567892', email: 'john.j@email.com' }
-  ]
+  const [customers, setCustomers] = useState<Customer[]>([])
+  const [appointmentTypes, setAppointmentTypes] = useState<AppointmentType[]>([])
+  const [forms, setForms] = useState<Form[]>([])
+  const [loadingData, setLoadingData] = useState(true)
 
-  const mockAppointmentTypes: AppointmentType[] = [
-    { id: '1', name: 'Cleaning Service', description: 'Standard cleaning service', base_duration: 60, base_price: 75.00, minimum_price: 50.00, assignment_type: 'manual_assign' },
-    { id: '2', name: 'Maintenance Check', description: 'Routine maintenance', base_duration: 30, base_price: 45.00, minimum_price: 30.00, assignment_type: 'auto_assign' },
-    { id: '3', name: 'Security Patrol', description: 'Security monitoring', base_duration: 120, base_price: 120.00, minimum_price: 80.00, assignment_type: 'self_assign' }
-  ]
+  // Load data from APIs
+  const loadData = async () => {
+    try {
+      setLoadingData(true)
+      
+      // Load customers
+      const customersResponse = await fetch('/api/v1/customers?company_id=test-company-1')
+      const customersData = await customersResponse.json()
+      setCustomers(customersData.customers || [])
 
-  const mockForms: Form[] = [
-    {
-      id: '1',
-      name: 'Customer Information Form',
-      description: 'Basic customer details',
-      form_required: true,
-      fields: [
-        { id: '1', label: 'Customer Name', field_type: 'textbox', required: true },
-        { id: '2', label: 'Phone Number', field_type: 'textbox', required: true },
-        { id: '3', label: 'Special Instructions', field_type: 'textbox', required: false }
-      ]
-    },
-    {
-      id: '2',
-      name: 'Service Requirements',
-      description: 'Detailed service specifications',
-      form_required: false,
-      fields: [
-        { id: '4', label: 'Service Type', field_type: 'dropdown', required: true, options: ['Standard', 'Deep Clean', 'Premium'] },
-        { id: '5', label: 'Urgent Service', field_type: 'yes_no', required: true }
-      ]
+      // Load appointment types
+      const appointmentTypesResponse = await fetch('/api/v1/appointment-types?company_id=test-company-1')
+      const appointmentTypesData = await appointmentTypesResponse.json()
+      setAppointmentTypes(appointmentTypesData.appointment_types || [])
+
+      // Load forms
+      const formsResponse = await fetch('/api/v1/forms?company_id=test-company-1')
+      const formsData = await formsResponse.json()
+      setForms(formsData.forms || [])
+
+    } catch (error) {
+      console.error('Error loading data:', error)
+    } finally {
+      setLoadingData(false)
     }
-  ]
+  }
+
+  // Load forms for specific appointment type
+  const loadFormsForAppointmentType = async (appointmentTypeId: string) => {
+    try {
+      const response = await fetch(`/api/v1/forms?appointment_type_id=${appointmentTypeId}&company_id=test-company-1`)
+      const data = await response.json()
+      setForms(data.forms || [])
+    } catch (error) {
+      console.error('Error loading forms for appointment type:', error)
+    }
+  }
+
+  const resetForm = () => {
+    setFormData({
+      ...initialFormData,
+      scheduledDate: selectedDate
+    })
+    setErrors({})
+    setCurrentStep(1)
+    setShowCustomerDropdown(false)
+    setExpandedForms({})
+  }
+
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  // Load forms when appointment type changes
+  useEffect(() => {
+    if (formData.appointmentTypeId) {
+      loadFormsForAppointmentType(formData.appointmentTypeId)
+    }
+  }, [formData.appointmentTypeId])
 
   useEffect(() => {
     if (selectedDate) {
@@ -119,6 +149,13 @@ export default function AppointmentCreationPanel({
       }))
     }
   }, [selectedDate])
+
+  // Reset form when modal opens
+  useEffect(() => {
+    if (isOpen) {
+      resetForm()
+    }
+  }, [isOpen])
 
   const handleInputChange = (field: string, value: any) => {
     setFormData(prev => ({
@@ -210,10 +247,10 @@ export default function AppointmentCreationPanel({
     }
 
     // Validate required forms
-    const selectedAppointmentType = mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)
+    const selectedAppointmentType = appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)
     if (selectedAppointmentType) {
       // This would normally check which forms are assigned to this appointment type
-      mockForms.forEach(form => {
+      forms.forEach(form => {
         if (form.form_required) {
           form.fields.forEach(field => {
             if (field.required) {
@@ -239,10 +276,12 @@ export default function AppointmentCreationPanel({
       // Create draft appointment object
       const newAppointment = {
         id: `appointment-${Date.now()}`,
-        title: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName} - ${mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.name || 'Appointment'} (Draft)`,
-        date: formData.scheduledDate ? formData.scheduledDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+        title: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName} - ${appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.name || 'Appointment'} (Draft)`,
+        date: formData.scheduledDate ? 
+          `${formData.scheduledDate.getFullYear()}-${String(formData.scheduledDate.getMonth() + 1).padStart(2, '0')}-${String(formData.scheduledDate.getDate()).padStart(2, '0')}` : 
+          new Date().toISOString().split('T')[0],
         time: formData.scheduledTime,
-        duration: mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.base_duration || 60,
+        duration: appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.base_duration || 60,
         calendarId: formData.calendarId,
         customerName: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName}`,
         customerInfo: formData.customerInfo,
@@ -261,6 +300,7 @@ export default function AppointmentCreationPanel({
 
       console.log('Saving draft appointment:', newAppointment)
       await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
+      resetForm()
       onClose()
     } catch (error) {
       console.error('Error saving draft:', error)
@@ -274,13 +314,50 @@ export default function AppointmentCreationPanel({
 
     setIsSubmitting(true)
     try {
-      // Create appointment object
+      // Get selected appointment type for pricing
+      const selectedAppointmentType = appointmentTypes.find(type => type.id === formData.appointmentTypeId)
+      const basePrice = selectedAppointmentType?.base_price || 0
+
+      // Create job in database
+      const jobData = {
+        title: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName} - ${selectedAppointmentType?.name || 'Appointment'}`,
+        description: `Appointment for ${formData.customerInfo.firstName} ${formData.customerInfo.lastName}`,
+        scheduled_date: formData.scheduledDate ? 
+          `${formData.scheduledDate.getFullYear()}-${String(formData.scheduledDate.getMonth() + 1).padStart(2, '0')}-${String(formData.scheduledDate.getDate()).padStart(2, '0')}` : 
+          new Date().toISOString().split('T')[0],
+        scheduled_time: formData.scheduledTime,
+        estimated_duration: selectedAppointmentType?.base_duration || 60,
+        base_price: basePrice,
+        minimum_price: selectedAppointmentType?.minimum_price || 0,
+        location_address: '', // Could be added to form
+        worker_count: formData.workerCount,
+        customer_id: null, // Will create customer if needed
+        appointment_type_id: formData.appointmentTypeId,
+        form_id: forms.length > 0 ? forms[0].id : null, // Use first form for now
+        company_id: 'test-company-1'
+      }
+
+      const response = await fetch('/api/v1/jobs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jobData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to create job')
+      }
+
+      const result = await response.json()
+
+      // Create appointment object for local state
       const newAppointment = {
-        id: `appointment-${Date.now()}`,
-        title: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName} - ${mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.name || 'Appointment'}`,
-        date: formData.scheduledDate ? formData.scheduledDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-        time: formData.scheduledTime,
-        duration: mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.base_duration || 60,
+        id: result.job.id,
+        title: jobData.title,
+        date: jobData.scheduled_date,
+        time: jobData.scheduled_time,
+        duration: jobData.estimated_duration,
         calendarId: formData.calendarId,
         customerName: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName}`,
         customerInfo: formData.customerInfo,
@@ -298,7 +375,7 @@ export default function AppointmentCreationPanel({
       }
 
       console.log('Saving appointment:', newAppointment)
-      await new Promise(resolve => setTimeout(resolve, 1000)) // Simulate API call
+      resetForm()
       onClose()
     } catch (error) {
       console.error('Error saving appointment:', error)
@@ -307,17 +384,17 @@ export default function AppointmentCreationPanel({
     }
   }
 
-  const filteredCustomers = mockCustomers.filter(customer =>
+  const filteredCustomers = customers.filter(customer =>
     customer.first_name.toLowerCase().includes(formData.customerInfo.firstName.toLowerCase()) ||
     customer.last_name.toLowerCase().includes(formData.customerInfo.firstName.toLowerCase())
   )
 
-  const filteredAppointmentTypes = mockAppointmentTypes.filter(apt => {
+  const filteredAppointmentTypes = appointmentTypes.filter(apt => {
     // This would normally filter based on the selected calendar
     return true
   })
 
-  const selectedAppointmentType = mockAppointmentTypes.find(apt => apt.id === formData.appointmentTypeId)
+  const selectedAppointmentType = appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)
 
   if (!isOpen) return null
 
@@ -348,9 +425,21 @@ export default function AppointmentCreationPanel({
           justifyContent: 'space-between',
           alignItems: 'center'
         }}>
-          <h2 style={{ margin: 0, fontSize: '20px', fontWeight: '600', color: '#111827' }}>
-            Create Appointment
-          </h2>
+          <div>
+            <h2 style={{ margin: 0, fontSize: '20px', fontWeight: '600', color: '#111827' }}>
+              Create Appointment
+            </h2>
+            {formData.scheduledDate && (
+              <div style={{ fontSize: '14px', color: '#6b7280', marginTop: '4px' }}>
+                {formData.scheduledDate.toLocaleDateString('en-US', { 
+                  weekday: 'long', 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}
+              </div>
+            )}
+          </div>
           <button
             onClick={onClose}
             style={{
@@ -594,8 +683,7 @@ export default function AppointmentCreationPanel({
                     fontSize: '14px'
                   }}
                 />
-                <input
-                  type="time"
+                <select
                   value={formData.scheduledTime}
                   onChange={(e) => handleInputChange('scheduledTime', e.target.value)}
                   style={{
@@ -603,9 +691,21 @@ export default function AppointmentCreationPanel({
                     padding: '10px 12px',
                     border: '1px solid #d1d5db',
                     borderRadius: '6px',
-                    fontSize: '14px'
+                    fontSize: '14px',
+                    background: 'white'
                   }}
-                />
+                >
+                  {Array.from({ length: 96 }, (_, i) => {
+                    const hour = Math.floor(i / 4)
+                    const minute = (i % 4) * 15
+                    const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`
+                    return (
+                      <option key={timeString} value={timeString}>
+                        {timeString}
+                      </option>
+                    )
+                  })}
+                </select>
               </div>
             </div>
 
@@ -663,13 +763,13 @@ export default function AppointmentCreationPanel({
           )}
 
           {/* Step 5: Form Integration */}
-          {selectedAppointmentType && mockForms.length > 0 && (
+          {selectedAppointmentType && forms.length > 0 && (
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#111827', marginBottom: '16px' }}>
                 Forms
               </h3>
               
-              {mockForms.map(form => (
+              {forms.map(form => (
                 <div key={form.id} style={{ marginBottom: '16px' }}>
                   <div
                     onClick={() => toggleFormExpansion(form.id)}

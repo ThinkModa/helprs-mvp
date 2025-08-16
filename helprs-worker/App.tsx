@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons'
 
 // Screens
 import HomeScreen from './src/screens/HomeScreen'
-import ScheduleScreen from './src/screens/ScheduleScreen'
+import JobsScreen from './src/screens/JobsScreen'
 import JobDetailsScreen from './src/screens/JobDetailsScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
 import LoginScreen from './src/screens/LoginScreen'
@@ -23,7 +23,7 @@ export type RootStackParamList = {
 
 export type MainTabParamList = {
   Home: undefined
-  Schedule: undefined
+  Jobs: undefined
   Profile: undefined
 }
 
@@ -39,8 +39,8 @@ function MainTabs() {
 
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline'
-          } else if (route.name === 'Schedule') {
-            iconName = focused ? 'calendar' : 'calendar-outline'
+          } else if (route.name === 'Jobs') {
+            iconName = focused ? 'briefcase' : 'briefcase-outline'
           } else if (route.name === 'Profile') {
             iconName = focused ? 'person' : 'person-outline'
           } else {
@@ -67,8 +67,8 @@ function MainTabs() {
         options={{ title: 'Dashboard' }}
       />
       <Tab.Screen 
-        name="Schedule" 
-        component={ScheduleScreen}
+        name="Jobs" 
+        component={JobsScreen}
         options={{ title: 'Jobs' }}
       />
       <Tab.Screen 

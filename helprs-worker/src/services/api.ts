@@ -1,5 +1,14 @@
 // API service for mobile app
-const API_BASE_URL = 'http://192.168.1.118:3000/api/v1'; // Your local network IP
+// Try multiple connection methods for development
+const getApiBaseUrl = () => {
+  // For development, prioritize network IP for mobile devices
+  if (__DEV__) {
+    return 'http://192.168.1.118:3000/api/v1';
+  }
+  return 'http://192.168.1.118:3000/api/v1';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 const TEST_COMPANY_ID = 'test-company-1';
 
 export interface Job {
@@ -12,10 +21,11 @@ export interface Job {
   estimated_duration: number | null;
   base_price: number;
   minimum_price: number | null;
+  calculated_pay: number;
   location_address: string | null;
-  worker_count: number;
-  required_workers: number;
-  accepted_workers: number;
+  assigned_worker_id: string | null;
+  assignment_date: string | null;
+  assignment_type: string | null;
   customer: {
     first_name: string;
     last_name: string;
@@ -25,6 +35,11 @@ export interface Job {
   appointment_type: {
     name: string;
     description: string | null;
+    base_duration: number;
+  } | null;
+  assigned_worker: {
+    id: string;
+    hourly_rate: number;
   } | null;
   form: {
     name: string;
@@ -48,29 +63,60 @@ export interface AcceptJobResponse {
 
 class ApiService {
   private async makeRequest<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        ...options,
-      });
+    // Try multiple URLs for development (prioritize network IP)
+    const urls = [
+      'http://192.168.1.118:3000/api/v1',
+      'http://localhost:3000/api/v1',
+      'http://10.0.2.2:3000/api/v1', // Android emulator
+    ];
 
-      if (!response.ok) {
-        throw new Error(`API request failed: ${response.status}`);
+    for (const baseUrl of urls) {
+      try {
+        console.log(`Trying API URL: ${baseUrl}${endpoint}`);
+        const response = await fetch(`${baseUrl}${endpoint}`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          ...options,
+        });
+
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log(`API request successful: ${baseUrl}${endpoint}`);
+        return result;
+      } catch (error) {
+        console.error(`Failed to connect to ${baseUrl}${endpoint}:`, error);
+        // Continue to next URL
       }
-
-      return await response.json();
-    } catch (error) {
-      console.error('API request error:', error);
-      throw error;
     }
+
+    // If all URLs fail, throw the last error
+    throw new Error('All API endpoints failed. Please check your network connection and ensure the web server is running.');
   }
 
   // Get available jobs for the test company
   async getJobs(status: string = 'open'): Promise<JobsResponse> {
     return this.makeRequest<JobsResponse>(
       `/jobs?status=${status}&company_id=${TEST_COMPANY_ID}`
+    );
+  }
+
+  // Get jobs by type (available, my_jobs, all_jobs)
+  async getJobsByType(type: 'available' | 'my_jobs' | 'all_jobs', workerId?: string): Promise<JobsResponse> {
+    let endpoint = `/jobs?type=${type}&company_id=${TEST_COMPANY_ID}`;
+    if (type === 'my_jobs' && workerId) {
+      endpoint += `&worker_id=${workerId}`;
+    }
+    return this.makeRequest<JobsResponse>(endpoint);
+  }
+
+  // Get worker's next upcoming job
+  async getNextJob(workerId: string): Promise<{ next_job: Job | null }> {
+    return this.makeRequest<{ next_job: Job | null }>(
+      `/workers/${workerId}/next-job?company_id=${TEST_COMPANY_ID}`
     );
   }
 
@@ -87,7 +133,7 @@ class ApiService {
 
   // Get jobs with different statuses
   async getOpenJobs(): Promise<JobsResponse> {
-    return this.getJobs('open');
+    return this.getJobsByType('available');
   }
 
   async getScheduledJobs(): Promise<JobsResponse> {
@@ -96,6 +142,21 @@ class ApiService {
 
   async getInProgressJobs(): Promise<JobsResponse> {
     return this.getJobs('in_progress');
+  }
+
+  // Get available jobs (open jobs that can be accepted)
+  async getAvailableJobs(): Promise<JobsResponse> {
+    return this.getJobsByType('available');
+  }
+
+  // Get worker's assigned jobs
+  async getMyJobs(workerId: string): Promise<JobsResponse> {
+    return this.getJobsByType('my_jobs', workerId);
+  }
+
+  // Get all jobs
+  async getAllJobs(): Promise<JobsResponse> {
+    return this.getJobsByType('all_jobs');
   }
 }
 

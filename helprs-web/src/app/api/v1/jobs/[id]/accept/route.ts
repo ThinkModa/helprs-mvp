@@ -6,10 +6,10 @@ type Job = any;
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const jobId = params.id;
+    const { id } = await params;
     const { worker_id } = await request.json();
 
     if (!worker_id) {
@@ -25,7 +25,7 @@ export async function POST(
     const { data: job, error: jobError } = await supabase
       .from('jobs')
       .select('*')
-      .eq('id', jobId)
+      .eq('id', id)
       .single();
 
     if (jobError || !job) {
@@ -46,7 +46,7 @@ export async function POST(
     const { data: existingAssignment, error: checkError } = await supabase
       .from('job_workers')
       .select('*')
-      .eq('job_id', jobId)
+      .eq('job_id', id)
       .eq('worker_id', worker_id)
       .single();
 
@@ -61,7 +61,7 @@ export async function POST(
     const { count: currentWorkers } = await supabase
       .from('job_workers')
       .select('*', { count: 'exact', head: true })
-      .eq('job_id', jobId);
+      .eq('job_id', id);
 
     const requiredWorkers = job.worker_count || 1;
     const newWorkerCount = (currentWorkers || 0) + 1;
@@ -70,7 +70,7 @@ export async function POST(
     const { error: assignError } = await supabase
       .from('job_workers')
       .insert({
-        job_id: jobId,
+        job_id: id,
         worker_id: worker_id,
         assigned_at: new Date().toISOString()
       });
@@ -91,16 +91,28 @@ export async function POST(
       newStatus = 'scheduling';
     }
 
-    // Update job status if it changed
+    // Update job with assignment details and status
+    const updateData: any = {
+      assigned_worker_id: worker_id,
+      assignment_date: new Date().toISOString(),
+      assignment_type: 'self_assign'
+    };
+    
     if (newStatus !== job.status) {
-      const { error: statusError } = await supabase
-        .from('jobs')
-        .update({ status: newStatus })
-        .eq('id', jobId);
+      updateData.status = newStatus;
+    }
 
-      if (statusError) {
-        console.error('Error updating job status:', statusError);
-      }
+    const { error: updateError } = await supabase
+      .from('jobs')
+      .update(updateData)
+      .eq('id', id);
+
+    if (updateError) {
+      console.error('Error updating job assignment:', updateError);
+      return NextResponse.json(
+        { error: 'Failed to update job assignment' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({
