@@ -61,7 +61,8 @@ export default function AppointmentCreationPanel({
       firstName: '',
       lastName: '',
       phone: '',
-      email: ''
+      email: '',
+      address: ''
     },
     workerCount: 1,
     assignmentType: 'manual_assign' as 'self_assign' | 'auto_assign' | 'manual_assign',
@@ -195,7 +196,8 @@ export default function AppointmentCreationPanel({
         firstName: customer.first_name,
         lastName: customer.last_name,
         phone: customer.phone,
-        email: customer.email
+        email: customer.email,
+        address: customer.address || ''
       }
     }))
     setShowCustomerDropdown(false)
@@ -241,6 +243,9 @@ export default function AppointmentCreationPanel({
     }
     if (!formData.customerInfo.email) {
       newErrors.email = 'Email is required'
+    }
+    if (!formData.customerInfo.address) {
+      newErrors.address = 'Address is required'
     }
     if (formData.workerCount < 1) {
       newErrors.workerCount = 'At least 1 worker is required'
@@ -329,9 +334,15 @@ export default function AppointmentCreationPanel({
         estimated_duration: selectedAppointmentType?.base_duration || 60,
         base_price: basePrice,
         minimum_price: selectedAppointmentType?.minimum_price || 0,
-        location_address: '', // Could be added to form
+        location_address: formData.customerInfo.address,
         worker_count: formData.workerCount,
         customer_id: null, // Will create customer if needed
+        // Customer information for automatic customer creation
+        customer_first_name: formData.customerInfo.firstName,
+        customer_last_name: formData.customerInfo.lastName,
+        customer_phone: formData.customerInfo.phone,
+        customer_email: formData.customerInfo.email,
+        customer_address: formData.customerInfo.address,
         appointment_type_id: formData.appointmentTypeId,
         form_id: forms.length > 0 ? forms[0].id : null, // Use first form for now
         company_id: 'test-company-1'
@@ -662,6 +673,31 @@ export default function AppointmentCreationPanel({
               {errors.email && (
                 <div style={{ fontSize: '12px', color: '#ef4444', marginTop: '4px' }}>
                   {errors.email}
+                </div>
+              )}
+            </div>
+
+            <div style={{ marginBottom: '16px' }}>
+              <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                Address *
+              </label>
+              <textarea
+                value={formData.customerInfo.address}
+                onChange={(e) => handleCustomerInfoChange('address', e.target.value)}
+                style={{
+                  width: '100%',
+                  padding: '10px 12px',
+                  border: errors.address ? '1px solid #ef4444' : '1px solid #d1d5db',
+                  borderRadius: '6px',
+                  fontSize: '14px',
+                  minHeight: '80px',
+                  resize: 'vertical'
+                }}
+                placeholder="Enter service address"
+              />
+              {errors.address && (
+                <div style={{ fontSize: '12px', color: '#ef4444', marginTop: '4px' }}>
+                  {errors.address}
                 </div>
               )}
             </div>

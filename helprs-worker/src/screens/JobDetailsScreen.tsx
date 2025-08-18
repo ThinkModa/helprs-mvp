@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import {
   View,
   Text,
@@ -7,22 +7,51 @@ import {
   TouchableOpacity,
   SafeAreaView,
   TextInput,
+  Alert,
+  Animated,
+  PanResponder,
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { Job } from '../types/database'
+import { Job, FormResponse } from '../services/api'
+import { apiService } from '../services/api'
+
+const TEST_WORKER_ID = 'worker-1' // Mock worker ID for testing
 
 interface JobDetailsScreenProps {
   route: {
     params: {
       job: Job
+      isAccepted?: boolean
     }
   }
 }
 
 export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
-  const { job } = route.params
-  const [isAccepted, setIsAccepted] = useState(false)
-  const [showCustomerInfo, setShowCustomerInfo] = useState(false)
+  const { job: initialJob, isAccepted: initialIsAccepted = false } = route.params
+  const [job, setJob] = useState(initialJob)
+  const [isAccepted, setIsAccepted] = useState(initialIsAccepted)
+  const [showAdditionalDetails, setShowAdditionalDetails] = useState(false)
+  const [formResponses, setFormResponses] = useState<FormResponse[]>([])
+  const [isAcceptingJob, setIsAcceptingJob] = useState(false)
+  
+  // Animation values for swipe gesture
+  const translateX = useRef(new Animated.Value(0)).current
+  const swipeProgress = useRef(new Animated.Value(0)).current
+  const [isSwiping, setIsSwiping] = useState(false)
+
+  useEffect(() => {
+    const fetchFormResponses = async () => {
+      if (job.id) {
+        try {
+          const response = await apiService.getFormResponses(job.id)
+          setFormResponses(response.form_responses)
+        } catch (error) {
+          console.error('Error fetching form responses:', error)
+        }
+      }
+    }
+    fetchFormResponses()
+  }, [job.id])
 
   const calculateEarnings = (job: Job) => {
     const hours = (job.estimated_duration || 0) / 60
@@ -30,168 +59,318 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
     return (hours * hourlyRate).toFixed(2)
   }
 
-  const formatTime = (time: string) => {
-    return time.substring(0, 5)
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    const today = new Date()
+    const tomorrow = new Date(today)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    
+    if (date.toDateString() === today.toDateString()) {
+      return 'Today'
+    } else if (date.toDateString() === tomorrow.toDateString()) {
+      return 'Tomorrow'
+    } else {
+      return date.toLocaleDateString('en-US', { 
+        weekday: 'long',
+        month: 'long', 
+        day: 'numeric' 
+      })
+    }
   }
 
-  const handleAcceptJob = () => {
-    setIsAccepted(true)
-    setShowCustomerInfo(true)
+  const formatTime = (time: string | null) => {
+    if (!time) return 'TBD'
+    // Support HH:MM or HH:MM:SS formats
+    const [hourStr, minuteRest] = time.split(':')
+    const minutes = (minuteRest || '00').slice(0, 2)
+    let hours = parseInt(hourStr, 10)
+    if (Number.isNaN(hours)) return 'TBD'
+    const ampm = hours >= 12 ? 'pm' : 'am'
+    hours = hours % 12 || 12
+    return `${hours}:${minutes} ${ampm}`
   }
 
-  const handleClockIn = () => {
-    // TODO: Implement clock in functionality
-    console.log('Clock in pressed')
+  const calculateEndTime = (startTime: string | null, duration: number | null) => {
+    if (!startTime || !duration) return 'TBD'
+    const start = new Date(`2000-01-01T${startTime}`)
+    const end = new Date(start.getTime() + duration * 60000)
+    const hours24 = end.getHours()
+    const minutes = end.getMinutes().toString().padStart(2, '0')
+    const ampm = hours24 >= 12 ? 'pm' : 'am'
+    const hours12 = (hours24 % 12) || 12
+    return `${hours12}:${minutes} ${ampm}`
   }
 
-  const handleClockOut = () => {
-    // TODO: Implement clock out functionality
-    console.log('Clock out pressed')
+  const handleSwipeToAccept = async () => {
+    if (isAcceptingJob) return // Prevent multiple calls
+    
+    setIsAcceptingJob(true)
+    try {
+      console.log('Accepting job:', job.id)
+      const response = await apiService.acceptJob(job.id, TEST_WORKER_ID)
+      
+      if (response.success) {
+        // Update local state to reflect accepted job
+        setJob(prevJob => ({
+          ...prevJob,
+          status: response.job_status,
+          assigned_worker_id: TEST_WORKER_ID,
+          assignment_date: new Date().toISOString(),
+        }))
+        setIsAccepted(true)
+        
+        // Show success message briefly
+        Alert.alert(
+          'Job Accepted!',
+          `Successfully accepted the job. Status: ${response.job_status}`,
+          [
+            {
+              text: 'OK',
+              onPress: () => {
+                // Job details will now show as accepted
+              }
+            }
+          ]
+        )
+      } else {
+        Alert.alert('Error', 'Failed to accept job. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error accepting job:', error)
+      Alert.alert('Error', 'Failed to accept job. Please check your connection and try again.')
+    } finally {
+      setIsAcceptingJob(false)
+    }
+  }
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        setIsSwiping(true)
+        translateX.setValue(0)
+        swipeProgress.setValue(0)
+      },
+      onPanResponderMove: (_, gestureState) => {
+        const translationX = Math.max(0, gestureState.dx)
+        translateX.setValue(translationX)
+        const progress = Math.max(0, Math.min(1, translationX / 200)) // 200px threshold
+        swipeProgress.setValue(progress)
+      },
+      onPanResponderRelease: (_, gestureState) => {
+        const translationX = gestureState.dx
+        
+        if (translationX > 150) { // Swipe threshold
+          // Trigger job acceptance
+          handleSwipeToAccept()
+        }
+        
+        // Reset animations
+        Animated.parallel([
+          Animated.timing(translateX, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+          Animated.timing(swipeProgress, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+        ]).start()
+        
+        setIsSwiping(false)
+      },
+    })
+  ).current
+
+  const handleResources = () => {
+    // TODO: Implement resources functionality
+    console.log('Resources pressed')
+  }
+
+  const handleAdditionalDetails = () => {
+    setShowAdditionalDetails(!showAdditionalDetails)
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Map Section */}
-        <View style={styles.mapContainer}>
-          <View style={styles.mapPlaceholder}>
-            <Ionicons name="map" size={48} color="#64748B" />
-            <Text style={styles.mapText}>Map View</Text>
-            <Text style={styles.mapSubtext}>{job.location_address}</Text>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>
+            {job.appointment_type?.name || 'Job Category'}
+          </Text>
+        </View>
+
+        {/* Image/Map Section */}
+        <View style={styles.imageMapContainer}>
+          <View style={styles.imageMapPlaceholder}>
+            <Ionicons name="location" size={48} color="#64748B" />
+            <Text style={styles.imageMapText}>Image of Home OR Map Location</Text>
+          </View>
+        </View>
+
+        {/* Job Stats */}
+        <View style={styles.statsContainer}>
+          <View style={styles.statItem}>
+            <Ionicons name="location" size={20} color="#64748B" />
+            <Text style={styles.statLabel}>
+              {job.location_address ? 'Distance from location' : 'Location TBD'}
+            </Text>
+          </View>
+          <View style={styles.statItem}>
+            <Ionicons name="time" size={20} color="#64748B" />
+            <Text style={styles.statLabel}>
+              {job.scheduled_time ? 'Est. Drive Time' : 'Time TBD'}
+            </Text>
+          </View>
+          <View style={styles.statItem}>
+            <View style={styles.teamIcons}>
+              <Ionicons name="happy" size={16} color="#64748B" />
+              <Ionicons name="happy" size={16} color="#64748B" />
+              <Ionicons name="happy" size={16} color="#64748B" />
+            </View>
+            <Text style={styles.statLabel}>Team</Text>
           </View>
         </View>
 
         {/* Job Details */}
         <View style={styles.detailsContainer}>
-          <View style={styles.jobHeader}>
-            <Text style={styles.jobTitle}>{job.title}</Text>
-            <View style={styles.jobCategory}>
-              <Text style={styles.categoryText}>Generic</Text>
-            </View>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>Date</Text>
+            <Text style={styles.detailValue}>{formatDate(job.scheduled_date)}</Text>
           </View>
-
-          <Text style={styles.jobDescription}>{job.description}</Text>
-
-          {/* Job Stats */}
-          <View style={styles.statsContainer}>
-            <View style={styles.statItem}>
-              <Ionicons name="time-outline" size={20} color="#64748B" />
-              <View style={styles.statContent}>
-                <Text style={styles.statLabel}>Duration</Text>
-                <Text style={styles.statValue}>{job.estimated_duration} min</Text>
-              </View>
-            </View>
-            <View style={styles.statItem}>
-              <Ionicons name="cash-outline" size={20} color="#64748B" />
-              <View style={styles.statContent}>
-                <Text style={styles.statLabel}>Earnings</Text>
-                <Text style={styles.statValue}>${calculateEarnings(job)}</Text>
-              </View>
-            </View>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>Start Time</Text>
+            <Text style={styles.detailValue}>
+              {formatTime(job.scheduled_time)}
+            </Text>
           </View>
-
-          {/* Form Fields */}
-          <View style={styles.formSection}>
-            <Text style={styles.sectionTitle}>Job Details</Text>
-            <View style={styles.formField}>
-              <Text style={styles.fieldLabel}>Special Instructions</Text>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Enter any special instructions..."
-                multiline
-                numberOfLines={3}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.fieldLabel}>Notes</Text>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Add notes about the job..."
-                multiline
-                numberOfLines={2}
-              />
-            </View>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>Est. Finish Time</Text>
+            <Text style={styles.detailValue}>
+              {calculateEndTime(job.scheduled_time, job.estimated_duration)}
+            </Text>
           </View>
-
-          {/* Workers Section */}
-          <View style={styles.workersSection}>
-            <Text style={styles.sectionTitle}>Team Members</Text>
-            <View style={styles.workersList}>
-              <View style={styles.workerItem}>
-                <View style={styles.workerAvatar}>
-                  <Ionicons name="person" size={20} color="#FFFFFF" />
-                </View>
-                <View style={styles.workerInfo}>
-                  <Text style={styles.workerName}>John Smith</Text>
-                  <Text style={styles.workerRole}>Lead Worker</Text>
-                </View>
-                <TouchableOpacity style={styles.chatButton}>
-                  <Ionicons name="chatbubble-outline" size={20} color="#3B82F6" />
-                </TouchableOpacity>
-              </View>
-              <View style={styles.workerItem}>
-                <View style={styles.workerAvatar}>
-                  <Ionicons name="person" size={20} color="#FFFFFF" />
-                </View>
-                <View style={styles.workerInfo}>
-                  <Text style={styles.workerName}>Sarah Johnson</Text>
-                  <Text style={styles.workerRole}>Worker</Text>
-                </View>
-                <TouchableOpacity style={styles.chatButton}>
-                  <Ionicons name="chatbubble-outline" size={20} color="#3B82F6" />
-                </TouchableOpacity>
-              </View>
-            </View>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>Service Type</Text>
+            <Text style={styles.detailValue}>{job.appointment_type?.name || 'General Service'}</Text>
           </View>
-
-          {/* Customer Info (shown after accepting) */}
-          {showCustomerInfo && (
-            <View style={styles.customerSection}>
-              <Text style={styles.sectionTitle}>Customer Information</Text>
-              <View style={styles.customerInfo}>
-                <View style={styles.customerRow}>
-                  <Ionicons name="person-outline" size={16} color="#64748B" />
-                  <Text style={styles.customerText}>John Doe</Text>
-                </View>
-                <View style={styles.customerRow}>
-                  <Ionicons name="location-outline" size={16} color="#64748B" />
-                  <Text style={styles.customerText}>{job.location_address}</Text>
-                </View>
-                <View style={styles.customerRow}>
-                  <Ionicons name="call-outline" size={16} color="#64748B" />
-                  <Text style={styles.customerText}>(555) 123-4567</Text>
-                </View>
-              </View>
+          {/* Job Size - Only show if it's available and not null */}
+          {job.estimated_duration && (
+            <View style={styles.detailRow}>
+              <Text style={styles.detailLabel}>Job Size</Text>
+              <Text style={styles.detailValue}>{job.estimated_duration} min</Text>
             </View>
           )}
-
-          {/* Action Buttons */}
-          <View style={styles.actionButtons}>
-            {!isAccepted ? (
-              <TouchableOpacity style={styles.acceptButton} onPress={handleAcceptJob}>
-                <Text style={styles.acceptButtonText}>Accept Job</Text>
-              </TouchableOpacity>
-            ) : (
-              <View style={styles.clockButtons}>
-                <TouchableOpacity style={styles.clockInButton} onPress={handleClockIn}>
-                  <Ionicons name="play" size={20} color="#FFFFFF" />
-                  <Text style={styles.clockButtonText}>Clock In</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.clockOutButton} onPress={handleClockOut}>
-                  <Ionicons name="stop" size={20} color="#FFFFFF" />
-                  <Text style={styles.clockButtonText}>Clock Out</Text>
-                </TouchableOpacity>
+          {isAccepted && (
+            <>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Customer Name</Text>
+                <Text style={styles.detailValue}>
+                  {job.customer ? `${job.customer.first_name} ${job.customer.last_name}` : 'N/A'}
+                </Text>
               </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Customer #</Text>
+                <Text style={styles.detailValue}>{job.customer?.phone || 'N/A'}</Text>
+              </View>
+              <View style={styles.detailRow}>
+                <Text style={styles.detailLabel}>Address</Text>
+                <Text style={styles.detailValue}>{job.location_address || 'N/A'}</Text>
+              </View>
+            </>
+          )}
+        </View>
+
+        {/* Additional Details Button */}
+        <TouchableOpacity style={styles.additionalDetailsButton} onPress={handleAdditionalDetails}>
+          <Text style={styles.additionalDetailsText}>Additional Details</Text>
+          <Ionicons 
+            name={showAdditionalDetails ? "remove" : "add"} 
+            size={24} 
+            color="#64748B" 
+          />
+        </TouchableOpacity>
+
+        {/* Additional Details Content */}
+        {showAdditionalDetails && (
+          <View style={styles.additionalDetailsContent}>
+            <Text style={styles.detailLabel}>Description</Text>
+            <Text style={styles.detailValue}>{job.description || 'No description available'}</Text>
+            <Text style={styles.detailLabel}>Estimated Earnings</Text>
+            <Text style={styles.detailValue}>${calculateEarnings(job)}</Text>
+            {formResponses.length > 0 && (
+              <>
+                <Text style={styles.detailLabel}>Form Responses</Text>
+                {formResponses.map((response, index) => (
+                  <View key={index} style={styles.formResponseItem}>
+                    <Text style={styles.formResponseLabel}>{response.form_name}:</Text>
+                    {response.answers.map((answer, answerIndex) => (
+                      <Text key={answerIndex} style={styles.formResponseValue}>{answer}</Text>
+                    ))}
+                  </View>
+                ))}
+              </>
             )}
           </View>
+        )}
 
-          {/* Total Earnings */}
-          <View style={styles.earningsContainer}>
-            <Text style={styles.earningsLabel}>Total Earning Potential</Text>
-            <Text style={styles.earningsAmount}>${calculateEarnings(job)}</Text>
-          </View>
-        </View>
+        {/* Add bottom padding for floating button */}
+        <View style={{ height: 100 }} />
       </ScrollView>
+
+      {/* Floating Action Button */}
+      {!isAccepted ? (
+        <View style={styles.floatingButtonContainer}>
+          <Animated.View
+            {...panResponder.panHandlers}
+            style={[
+              styles.floatingSwipeAcceptButton,
+              isAcceptingJob && styles.floatingSwipeAcceptButtonDisabled,
+              {
+                transform: [{ translateX }],
+                backgroundColor: swipeProgress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['#3B82F6', '#10B981'],
+                }),
+              },
+            ]}
+          >
+            <Animated.View style={styles.swipeContent}>
+              <Text style={styles.floatingSwipeAcceptText}>
+                {isAcceptingJob ? 'Accepting...' : (isSwiping ? 'Release to accept' : 'Swipe to accept')}
+              </Text>
+              <View style={styles.swipeArrows}>
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+              </View>
+            </Animated.View>
+            
+            {/* Swipe progress indicator */}
+            <Animated.View
+              style={[
+                styles.swipeProgressBar,
+                {
+                  width: swipeProgress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ['0%', '100%'],
+                  }),
+                },
+              ]}
+            />
+          </Animated.View>
+        </View>
+      ) : (
+        <View style={styles.floatingButtonContainer}>
+          <TouchableOpacity style={styles.floatingResourcesButton} onPress={handleResources}>
+            <Text style={styles.floatingResourcesText}>Resources</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </SafeAreaView>
   )
 }
@@ -204,224 +383,291 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
-  mapContainer: {
-    height: 200,
-    backgroundColor: '#F1F5F9',
+  header: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E2E8F0',
+    backgroundColor: '#FFFFFF',
   },
-  mapPlaceholder: {
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#1E293B',
+    lineHeight: 32,
+  },
+  imageMapContainer: {
+    height: 240,
+    backgroundColor: '#F1F5F9',
+    margin: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  imageMapPlaceholder: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  mapText: {
+  imageMapText: {
     fontSize: 18,
-    fontWeight: '600',
     color: '#64748B',
-    marginTop: 8,
-  },
-  mapSubtext: {
-    fontSize: 14,
-    color: '#94A3B8',
-    marginTop: 4,
-  },
-  detailsContainer: {
-    padding: 16,
-  },
-  jobHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  jobTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#1E293B',
-    flex: 1,
-  },
-  jobCategory: {
-    backgroundColor: '#F1F5F9',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 8,
-  },
-  categoryText: {
-    fontSize: 14,
-    color: '#64748B',
+    marginTop: 12,
+    textAlign: 'center',
     fontWeight: '500',
-  },
-  jobDescription: {
-    fontSize: 16,
-    color: '#64748B',
-    lineHeight: 24,
-    marginBottom: 20,
   },
   statsContainer: {
     flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 20,
     marginBottom: 24,
+    borderRadius: 16,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
   },
   statItem: {
     flex: 1,
-    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
-    padding: 16,
-    borderRadius: 8,
-    marginRight: 8,
-  },
-  statContent: {
-    marginLeft: 12,
   },
   statLabel: {
-    fontSize: 12,
-    color: '#64748B',
-    marginBottom: 2,
-  },
-  statValue: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#1E293B',
-  },
-  formSection: {
-    marginBottom: 24,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#1E293B',
-    marginBottom: 16,
-  },
-  formField: {
-    marginBottom: 16,
-  },
-  fieldLabel: {
     fontSize: 14,
+    color: '#64748B',
+    marginTop: 8,
+    textAlign: 'center',
     fontWeight: '500',
-    color: '#374151',
-    marginBottom: 8,
   },
-  textInput: {
+  teamIcons: {
+    flexDirection: 'row',
+    gap: 4,
+  },
+  detailsContainer: {
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 20,
+    marginBottom: 24,
+    padding: 24,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
     borderWidth: 1,
     borderColor: '#E2E8F0',
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    backgroundColor: '#FFFFFF',
-    minHeight: 40,
   },
-  workersSection: {
-    marginBottom: 24,
-  },
-  workersList: {
-    gap: 12,
-  },
-  workerItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: '#F8FAFC',
-    borderRadius: 8,
-  },
-  workerAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#3B82F6',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 12,
-  },
-  workerInfo: {
-    flex: 1,
-  },
-  workerName: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#1E293B',
-  },
-  workerRole: {
-    fontSize: 14,
-    color: '#64748B',
-  },
-  chatButton: {
-    padding: 8,
-  },
-  customerSection: {
-    marginBottom: 24,
-  },
-  customerInfo: {
-    backgroundColor: '#F8FAFC',
-    padding: 16,
-    borderRadius: 8,
-  },
-  customerRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8,
-  },
-  customerText: {
-    fontSize: 16,
-    color: '#1E293B',
-    marginLeft: 12,
-  },
-  actionButtons: {
-    marginBottom: 24,
-  },
-  acceptButton: {
-    backgroundColor: '#3B82F6',
-    borderRadius: 8,
-    paddingVertical: 16,
-    alignItems: 'center',
-  },
-  acceptButtonText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#FFFFFF',
-  },
-  clockButtons: {
-    flexDirection: 'row',
-    gap: 12,
-  },
-  clockInButton: {
-    flex: 1,
-    backgroundColor: '#10B981',
-    borderRadius: 8,
-    paddingVertical: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  clockOutButton: {
-    flex: 1,
-    backgroundColor: '#EF4444',
-    borderRadius: 8,
-    paddingVertical: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  clockButtonText: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    marginLeft: 8,
-  },
-  earningsContainer: {
+  detailRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
-    backgroundColor: '#F8FAFC',
-    borderRadius: 8,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9',
   },
-  earningsLabel: {
+  detailLabel: {
     fontSize: 16,
     color: '#64748B',
+    fontWeight: '500',
   },
-  earningsAmount: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#10B981',
+  detailValue: {
+    fontSize: 16,
+    color: '#1E293B',
+    fontWeight: '600',
+    textAlign: 'right',
+    flex: 1,
+    marginLeft: 20,
+  },
+  additionalDetailsButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 20,
+    marginBottom: 24,
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  additionalDetailsText: {
+    fontSize: 18,
+    color: '#1E293B',
+    fontWeight: '600',
+  },
+  additionalDetailsContent: {
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 20,
+    marginBottom: 24,
+    padding: 24,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+  },
+  actionButtonContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 32,
+  },
+  floatingButtonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
+    zIndex: 1000,
+  },
+  floatingSwipeAcceptButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#3B82F6',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  floatingSwipeAcceptButtonDisabled: {
+    backgroundColor: '#9CA3AF',
+  },
+  floatingSwipeAcceptText: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  swipeContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+  },
+  swipeProgressBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    height: 4,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 2,
+  },
+  floatingResourcesButton: {
+    backgroundColor: '#10B981',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  floatingResourcesText: {
+    fontSize: 20,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  swipeAcceptButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#3B82F6',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  swipeAcceptText: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  swipeArrows: {
+    flexDirection: 'row',
+    gap: 6,
+  },
+  resourcesButton: {
+    backgroundColor: '#10B981',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  resourcesText: {
+    fontSize: 20,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  formResponseItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F1F5F9',
+  },
+  formResponseLabel: {
+    fontSize: 16,
+    color: '#64748B',
+    fontWeight: '500',
+  },
+  formResponseValue: {
+    fontSize: 16,
+    color: '#1E293B',
+    fontWeight: '600',
+    textAlign: 'right',
+    flex: 1,
+    marginLeft: 20,
   },
 })
+
 

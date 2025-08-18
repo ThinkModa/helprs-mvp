@@ -18,6 +18,12 @@ export async function POST(request: NextRequest) {
       location_address,
       worker_count = 1,
       customer_id,
+      // Customer information for creating new customers
+      customer_first_name,
+      customer_last_name,
+      customer_phone,
+      customer_email,
+      customer_address,
       appointment_type_id,
       form_id,
       company_id = 'test-company-1' // Default to test company
@@ -33,6 +39,43 @@ export async function POST(request: NextRequest) {
 
     const supabase = createServerClient() as any;
 
+    // Handle customer creation if customer_id is not provided
+    let finalCustomerId = customer_id;
+    
+    if (!customer_id) {
+      // Check if we have customer information to create a new customer
+      if (customer_first_name && customer_last_name) {
+        console.log('Creating new customer for job:', { customer_first_name, customer_last_name });
+        
+        const { data: newCustomer, error: customerError } = await supabase
+          .from('customers')
+          .insert({
+            first_name: customer_first_name,
+            last_name: customer_last_name,
+            phone: customer_phone || null,
+            email: customer_email || null,
+            address: customer_address || location_address || null, // Use location_address as fallback
+            company_id
+          })
+          .select()
+          .single();
+
+        if (customerError) {
+          console.error('Error creating customer:', customerError);
+          return NextResponse.json(
+            { error: 'Failed to create customer' },
+            { status: 500 }
+          );
+        }
+
+        finalCustomerId = newCustomer.id;
+        console.log('Created new customer with ID:', finalCustomerId);
+      } else {
+        console.warn('No customer_id provided and no customer information available for job creation');
+        // Continue without customer_id - this will be null
+      }
+    }
+
     // Create the job
     const { data: job, error } = await supabase
       .from('jobs')
@@ -47,7 +90,7 @@ export async function POST(request: NextRequest) {
         minimum_price: minimum_price || 0,
         location_address,
         worker_count,
-        customer_id,
+        customer_id: finalCustomerId,
         appointment_type_id,
         form_id,
         company_id
@@ -59,6 +102,50 @@ export async function POST(request: NextRequest) {
       console.error('Error creating job:', error);
       return NextResponse.json(
         { error: 'Failed to create job' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+      job: job,
+      customer_created: !customer_id && finalCustomerId ? true : false
+    });
+
+  } catch (error) {
+    console.error('Unexpected error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { job_id, customer_id } = body;
+
+    if (!job_id || !customer_id) {
+      return NextResponse.json(
+        { error: 'job_id and customer_id are required' },
+        { status: 400 }
+      );
+    }
+
+    const supabase = createServerClient() as any;
+
+    const { data: job, error } = await supabase
+      .from('jobs')
+      .update({ customer_id })
+      .eq('id', job_id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating job:', error);
+      return NextResponse.json(
+        { error: 'Failed to update job' },
         { status: 500 }
       );
     }
@@ -154,6 +241,7 @@ export async function GET(request: NextRequest) {
         minimum_price: job.minimum_price,
         calculated_pay: calculatedPay,
         location_address: job.location_address,
+        customer_id: job.customer_id,
         assigned_worker_id: job.assigned_worker_id,
         assignment_date: job.assignment_date,
         assignment_type: job.assignment_type,

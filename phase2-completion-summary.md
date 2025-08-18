@@ -74,3 +74,4 @@ The foundation is now complete with:
 - Basic CRUD operations
 - UI/UX improvements
 
+

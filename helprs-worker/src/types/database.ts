@@ -342,3 +342,4 @@ export type JobStatus = Database['public']['Enums']['job_status']
 export type BackgroundCheckStatus = Database['public']['Enums']['background_check_status']
 export type NotificationType = Database['public']['Enums']['notification_type']
 
+

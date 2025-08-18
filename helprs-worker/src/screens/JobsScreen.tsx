@@ -13,6 +13,9 @@ import {
   FlatList,
 } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
+import { RootStackParamList } from '../../App'
 import { apiService, Job } from '../services/api'
 
 const { width } = Dimensions.get('window')
@@ -23,6 +26,7 @@ type ViewMode = 'list' | 'map'
 const TEST_WORKER_ID = 'worker-1' // Mock worker ID for testing
 
 export default function JobsScreen() {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>()
   const [activeTab, setActiveTab] = useState<JobTab>('available')
   const [viewMode, setViewMode] = useState<ViewMode>('list')
   const [jobs, setJobs] = useState<Job[]>([])
@@ -98,7 +102,14 @@ export default function JobsScreen() {
   }
 
   const formatTime = (timeString: string) => {
-    return timeString.substring(0, 5)
+    if (!timeString) return 'TBD'
+    const [hourStr, minuteRest] = timeString.split(':')
+    const minutes = (minuteRest || '00').slice(0, 2)
+    let hours = parseInt(hourStr, 10)
+    if (Number.isNaN(hours)) return 'TBD'
+    const ampm = hours >= 12 ? 'pm' : 'am'
+    hours = hours % 12 || 12
+    return `${hours}:${minutes} ${ampm}`
   }
 
   const getStatusColor = (status: string) => {
@@ -408,13 +419,20 @@ export default function JobsScreen() {
         ) : jobs.length === 0 ? (
           <View style={styles.emptyContainer}>
             <Ionicons name="briefcase-outline" size={48} color="#CBD5E1" />
-            <Text style={styles.emptyText}>No jobs found</Text>
+            <Text style={styles.emptyText}>
+              {activeTab === 'available' 
+                ? 'No jobs available'
+                : activeTab === 'my_jobs'
+                ? 'No jobs found'
+                : 'No jobs available'
+              }
+            </Text>
             <Text style={styles.emptySubtext}>
               {activeTab === 'available' 
-                ? 'No available jobs at the moment'
+                ? 'No jobs available'
                 : activeTab === 'my_jobs'
                 ? 'You haven\'t accepted any jobs yet'
-                : 'No jobs in the system'
+                : 'No jobs available'
               }
             </Text>
           </View>
@@ -435,7 +453,27 @@ export default function JobsScreen() {
                 
                 {/* Jobs for this date */}
                 {jobsForDate.map((job) => (
-                  <JobCard key={job.id} job={job} />
+                  <TouchableOpacity
+                    key={job.id}
+                    onPress={() => {
+                      // Only allow navigation for accepted jobs in My Jobs tab
+                      if (activeTab === 'my_jobs' && job.status !== 'open') {
+                        navigation.navigate('JobDetails', { 
+                          job, 
+                          isAccepted: true 
+                        })
+                      } else if (activeTab === 'available' || activeTab === 'all_jobs') {
+                        // Show unaccepted job view for available/all jobs
+                        navigation.navigate('JobDetails', { 
+                          job, 
+                          isAccepted: false 
+                        })
+                      }
+                    }}
+                    disabled={activeTab === 'my_jobs' && job.status === 'open'}
+                  >
+                    <JobCard job={job} />
+                  </TouchableOpacity>
                 ))}
               </View>
             )
@@ -721,6 +759,11 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  acceptButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
   statusBadgeOverlay: {
     position: 'absolute',
     top: 16,
@@ -801,27 +844,12 @@ const styles = StyleSheet.create({
     color: '#10B981',
     marginLeft: 8,
   },
-  acceptButton: {
-    backgroundColor: '#3B82F6',
-    paddingVertical: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  acceptButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '600',
-  },
+
   mapContainer: {
     backgroundColor: '#FFFFFF',
     height: 400,
   },
-  mapPlaceholder: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 32,
-  },
+
   mapPlaceholderText: {
     fontSize: 18,
     fontWeight: '600',

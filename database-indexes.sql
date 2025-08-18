@@ -285,3 +285,4 @@ WHERE schemaname = 'public'
   AND tablename IN ('users', 'workers', 'customers', 'companies', 'jobs', 'time_entries', 'payments', 'ratings')
 ORDER BY pg_relation_size(indexname::regclass) DESC;
 
+

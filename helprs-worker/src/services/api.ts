@@ -3,9 +3,9 @@
 const getApiBaseUrl = () => {
   // For development, prioritize network IP for mobile devices
   if (__DEV__) {
-    return 'http://localhost:3000/api/v1';
+    return 'http://192.168.1.118:3000/api/v1';
   }
-  return 'http://localhost:3000/api/v1';
+  return 'http://192.168.1.118:3000/api/v1';
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -61,10 +61,21 @@ export interface AcceptJobResponse {
   message: string;
 }
 
+export interface FormResponse {
+  form_name: string;
+  answers: string[];
+}
+
+export interface FormResponsesResponse {
+  form_responses: FormResponse[];
+  count: number;
+}
+
 class ApiService {
   private async makeRequest<T>(endpoint: string, options?: RequestInit): Promise<T> {
     // Try multiple URLs for development
     const urls = [
+      'http://192.168.1.118:3000/api/v1',
       'http://localhost:3000/api/v1',
       'http://10.0.2.2:3000/api/v1', // Android emulator
     ];
@@ -125,8 +136,15 @@ class ApiService {
       `/jobs/${jobId}/accept`,
       {
         method: 'POST',
-        body: JSON.stringify({ worker_id: workerId }),
+        body: JSON.stringify({ worker_id: workerId })
       }
+    );
+  }
+
+  // Get form responses for a specific job
+  async getFormResponses(jobId: string): Promise<FormResponsesResponse> {
+    return this.makeRequest<FormResponsesResponse>(
+      `/jobs/${jobId}/form-responses`
     );
   }
 

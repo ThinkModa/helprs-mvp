@@ -13,12 +13,12 @@ import ProfileScreen from './src/screens/ProfileScreen'
 import LoginScreen from './src/screens/LoginScreen'
 
 // Types
-import { Job } from './src/types/database'
+import { Job } from './src/services/api'
 
 export type RootStackParamList = {
   Login: undefined
   Main: undefined
-  JobDetails: { job: Job }
+  JobDetails: { job: Job; isAccepted?: boolean }
 }
 
 export type MainTabParamList = {
