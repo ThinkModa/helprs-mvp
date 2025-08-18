@@ -148,6 +148,28 @@ class ApiService {
     );
   }
 
+  // Clock in to a job
+  async clockIn(jobId: string, workerId: string): Promise<any> {
+    return this.makeRequest<any>(
+      `/jobs/${jobId}/clock-in`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ worker_id: workerId })
+      }
+    );
+  }
+
+  // Clock out from a job
+  async clockOut(jobId: string, workerId: string): Promise<any> {
+    return this.makeRequest<any>(
+      `/jobs/${jobId}/clock-out`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ worker_id: workerId })
+      }
+    );
+  }
+
   // Get jobs with different statuses
   async getOpenJobs(): Promise<JobsResponse> {
     return this.getJobsByType('available');

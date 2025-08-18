@@ -34,7 +34,17 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
   const [formResponses, setFormResponses] = useState<FormResponse[]>([])
   const [isAcceptingJob, setIsAcceptingJob] = useState(false)
   
-  // Animation values for swipe gesture
+  // Clock in/out state management
+  const [isJobActive, setIsJobActive] = useState(false)
+  const [isClockedIn, setIsClockedIn] = useState(false)
+  const [isClockingIn, setIsClockingIn] = useState(false)
+  const [isClockingOut, setIsClockingOut] = useState(false)
+  const [clockInTime, setClockInTime] = useState<Date | null>(null)
+  const [clockOutTime, setClockOutTime] = useState<Date | null>(null)
+  const [timeSpent, setTimeSpent] = useState<string>('')
+  const [jobComplete, setJobComplete] = useState(false)
+  
+  // Animation values for swipe gestures
   const translateX = useRef(new Animated.Value(0)).current
   const swipeProgress = useRef(new Animated.Value(0)).current
   const [isSwiping, setIsSwiping] = useState(false)
@@ -143,7 +153,8 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
     }
   }
 
-  const panResponder = useRef(
+  // PanResponder for job acceptance
+  const acceptPanResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
@@ -184,6 +195,151 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
       },
     })
   ).current
+
+  // PanResponder for clock in
+  const clockInPanResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        setIsSwiping(true)
+        translateX.setValue(0)
+        swipeProgress.setValue(0)
+      },
+      onPanResponderMove: (_, gestureState) => {
+        const translationX = Math.max(0, gestureState.dx)
+        translateX.setValue(translationX)
+        const progress = Math.max(0, Math.min(1, translationX / 200))
+        swipeProgress.setValue(progress)
+      },
+      onPanResponderRelease: (_, gestureState) => {
+        const translationX = gestureState.dx
+        
+        if (translationX > 150) {
+          handleClockIn()
+        }
+        
+        // Reset animations
+        Animated.parallel([
+          Animated.timing(translateX, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+          Animated.timing(swipeProgress, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+        ]).start()
+        
+        setIsSwiping(false)
+      },
+    })
+  ).current
+
+  // PanResponder for clock out
+  const clockOutPanResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderGrant: () => {
+        setIsSwiping(true)
+        translateX.setValue(0)
+        swipeProgress.setValue(0)
+      },
+      onPanResponderMove: (_, gestureState) => {
+        const translationX = Math.max(0, gestureState.dx)
+        translateX.setValue(translationX)
+        const progress = Math.max(0, Math.min(1, translationX / 200))
+        swipeProgress.setValue(progress)
+      },
+      onPanResponderRelease: (_, gestureState) => {
+        const translationX = gestureState.dx
+        
+        if (translationX > 150) {
+          handleClockOut()
+        }
+        
+        // Reset animations
+        Animated.parallel([
+          Animated.timing(translateX, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+          Animated.timing(swipeProgress, {
+            toValue: 0,
+            duration: 300,
+            useNativeDriver: false,
+          }),
+        ]).start()
+        
+        setIsSwiping(false)
+      },
+    })
+  ).current
+
+  const handleActivateJob = () => {
+    setIsJobActive(true)
+    Alert.alert('Job Activated', 'Job is now active for clock in/out functionality.')
+  }
+
+  const handleClockIn = async () => {
+    if (isClockingIn) return
+    
+    setIsClockingIn(true)
+    try {
+      const response = await apiService.clockIn(job.id, TEST_WORKER_ID)
+      
+      if (response.success) {
+        const now = new Date()
+        setClockInTime(now)
+        setIsClockedIn(true)
+        Alert.alert('Clocked In!', `Started work at ${now.toLocaleTimeString()}`)
+      } else {
+        Alert.alert('Error', response.error || 'Failed to clock in')
+      }
+    } catch (error) {
+      console.error('Error clocking in:', error)
+      Alert.alert('Error', 'Failed to clock in. Please try again.')
+    } finally {
+      setIsClockingIn(false)
+    }
+  }
+
+  const handleClockOut = async () => {
+    if (isClockingOut || !isClockedIn) return
+    
+    setIsClockingOut(true)
+    try {
+      const response = await apiService.clockOut(job.id, TEST_WORKER_ID)
+      
+      if (response.success) {
+        const now = new Date()
+        setClockOutTime(now)
+        
+        // Use the hours worked from the API response
+        const hoursWorked = response.hours_worked || 0
+        const hours = Math.floor(hoursWorked)
+        const minutes = Math.floor((hoursWorked - hours) * 60)
+        const timeSpentStr = `${hours}h ${minutes}m`
+        setTimeSpent(timeSpentStr)
+        
+        setIsClockedIn(false)
+        setJobComplete(true)
+        
+        Alert.alert('Clocked Out!', `Work completed. Time spent: ${timeSpentStr}`)
+      } else {
+        Alert.alert('Error', response.error || 'Failed to clock out')
+      }
+    } catch (error) {
+      console.error('Error clocking out:', error)
+      Alert.alert('Error', 'Failed to clock out. Please try again.')
+    } finally {
+      setIsClockingOut(false)
+    }
+  }
 
   const handleResources = () => {
     // TODO: Implement resources functionality
@@ -318,15 +474,38 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
           </View>
         )}
 
+        {/* Activate Job Button - Only show for accepted jobs that aren't active yet */}
+        {isAccepted && !isJobActive && !isClockedIn && !jobComplete && (
+          <View style={styles.activateJobContainer}>
+            <TouchableOpacity style={styles.activateJobButton} onPress={handleActivateJob}>
+              <Text style={styles.activateJobText}>Activate Job</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {/* Job Complete Status */}
+        {jobComplete && (
+          <View style={styles.jobCompleteContainer}>
+            <Text style={styles.jobCompleteTitle}>Job Complete!</Text>
+            <Text style={styles.jobCompleteTime}>Time Spent: {timeSpent}</Text>
+            {clockInTime && clockOutTime && (
+              <Text style={styles.jobCompleteDetails}>
+                Clock In: {clockInTime.toLocaleTimeString()} | Clock Out: {clockOutTime.toLocaleTimeString()}
+              </Text>
+            )}
+          </View>
+        )}
+
         {/* Add bottom padding for floating button */}
         <View style={{ height: 100 }} />
       </ScrollView>
 
       {/* Floating Action Button */}
       {!isAccepted ? (
+        // Job not accepted - show swipe to accept
         <View style={styles.floatingButtonContainer}>
           <Animated.View
-            {...panResponder.panHandlers}
+            {...acceptPanResponder.panHandlers}
             style={[
               styles.floatingSwipeAcceptButton,
               isAcceptingJob && styles.floatingSwipeAcceptButtonDisabled,
@@ -364,7 +543,92 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
             />
           </Animated.View>
         </View>
+      ) : isJobActive && !isClockedIn && !jobComplete ? (
+        // Job active but not clocked in - show clock in button
+        <View style={styles.floatingButtonContainer}>
+          <Animated.View
+            {...clockInPanResponder.panHandlers}
+            style={[
+              styles.floatingClockInButton,
+              isClockingIn && styles.floatingSwipeAcceptButtonDisabled,
+              {
+                transform: [{ translateX }],
+                backgroundColor: swipeProgress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['#10B981', '#059669'],
+                }),
+              },
+            ]}
+          >
+            <Animated.View style={styles.swipeContent}>
+              <Text style={styles.floatingClockInText}>
+                {isClockingIn ? 'Clocking In...' : (isSwiping ? 'Release to clock in' : 'Swipe to clock in')}
+              </Text>
+              <View style={styles.swipeArrows}>
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+              </View>
+            </Animated.View>
+            
+            {/* Swipe progress indicator */}
+            <Animated.View
+              style={[
+                styles.swipeProgressBar,
+                {
+                  width: swipeProgress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ['0%', '100%'],
+                  }),
+                },
+              ]}
+            />
+          </Animated.View>
+        </View>
+      ) : isClockedIn && !jobComplete ? (
+        // Clocked in - show clock out button
+        <View style={styles.floatingButtonContainer}>
+          <Animated.View
+            {...clockOutPanResponder.panHandlers}
+            style={[
+              styles.floatingClockOutButton,
+              isClockingOut && styles.floatingSwipeAcceptButtonDisabled,
+              {
+                transform: [{ translateX }],
+                backgroundColor: swipeProgress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ['#EF4444', '#DC2626'],
+                }),
+              },
+            ]}
+          >
+            <Animated.View style={styles.swipeContent}>
+              <Text style={styles.floatingClockOutText}>
+                {isClockingOut ? 'Clocking Out...' : (isSwiping ? 'Release to clock out' : 'Swipe to clock out')}
+              </Text>
+              <View style={styles.swipeArrows}>
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+                <Ionicons name="chevron-forward" size={20} color="#FFFFFF" />
+              </View>
+            </Animated.View>
+            
+            {/* Swipe progress indicator */}
+            <Animated.View
+              style={[
+                styles.swipeProgressBar,
+                {
+                  width: swipeProgress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: ['0%', '100%'],
+                  }),
+                },
+              ]}
+            />
+          </Animated.View>
+        </View>
       ) : (
+        // Default state - show resources button
         <View style={styles.floatingButtonContainer}>
           <TouchableOpacity style={styles.floatingResourcesButton} onPress={handleResources}>
             <Text style={styles.floatingResourcesText}>Resources</Text>
@@ -600,6 +864,96 @@ const styles = StyleSheet.create({
   },
   floatingResourcesText: {
     fontSize: 20,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  activateJobContainer: {
+    marginHorizontal: 20,
+    marginBottom: 24,
+  },
+  activateJobButton: {
+    backgroundColor: '#3B82F6',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  activateJobText: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  jobCompleteContainer: {
+    backgroundColor: '#10B981',
+    marginHorizontal: 20,
+    marginBottom: 24,
+    padding: 20,
+    borderRadius: 16,
+    alignItems: 'center',
+  },
+  jobCompleteTitle: {
+    fontSize: 20,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  jobCompleteTime: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  jobCompleteDetails: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    textAlign: 'center',
+  },
+  floatingClockInButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#10B981',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  floatingClockInText: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    fontWeight: '600',
+  },
+  floatingClockOutButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#EF4444',
+    padding: 20,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  floatingClockOutText: {
+    fontSize: 18,
     color: '#FFFFFF',
     fontWeight: '600',
   },
