@@ -182,7 +182,7 @@ export default function HomeScreen() {
         {/* Next Upcoming Job Section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Next Upcoming Job</Text>
+            <Text style={styles.sectionTitle}>Your Next Upcoming Job</Text>
             <TouchableOpacity onPress={loadNextJob}>
               <Text style={styles.seeAllText}>Refresh</Text>
             </TouchableOpacity>
