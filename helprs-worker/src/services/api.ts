@@ -203,7 +203,16 @@ class ApiService {
         errorCode: error?.code
       });
 
-      if (error && error.code !== 'PGRST116') {
+      // Handle PGRST116 (no rows found) as a normal case, not an error
+      if (error && error.code === 'PGRST116') {
+        console.log('ℹ️ No next job found for worker - this is normal');
+        return {
+          next_job: null
+        };
+      }
+
+      // Handle other errors
+      if (error) {
         this.logError('getNextJob', error, { workerId });
         throw error;
       }
@@ -211,9 +220,18 @@ class ApiService {
       return {
         next_job: data || null
       };
-    } catch (error) {
-      this.logError('getNextJob', error, { workerId });
-      throw error;
+    } catch (error: any) {
+      // Only log and throw if it's not a PGRST116 error
+      if (error?.code !== 'PGRST116') {
+        this.logError('getNextJob', error, { workerId });
+        throw error;
+      }
+      
+      // For PGRST116, return null job (normal case)
+      console.log('ℹ️ No next job found for worker - returning null');
+      return {
+        next_job: null
+      };
     }
   }
 
