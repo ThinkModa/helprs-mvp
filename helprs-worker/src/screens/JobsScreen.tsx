@@ -57,11 +57,17 @@ export default function JobsScreen() {
       console.log('✅ JobsScreen: Jobs loaded successfully:', {
         tab: activeTab,
         jobCount: response.jobs.length,
-        jobs: response.jobs
+        jobs: response.jobs.map(job => ({
+          id: job.id,
+          title: job.title,
+          status: job.status,
+          date: job.scheduled_date,
+          time: job.scheduled_time
+        }))
       });
       
       setJobs(response.jobs)
-    } catch (err) {
+    } catch (err: any) {
       console.error('❌ JobsScreen: Failed to load jobs:', {
         error: err,
         message: err?.message,
@@ -107,7 +113,9 @@ export default function JobsScreen() {
   }, [jobs])
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
+    // Parse date without timezone conversion by creating date in local timezone
+    const [year, month, day] = dateString.split('-').map(Number)
+    const date = new Date(year, month - 1, day) // month is 0-indexed
     return date.toLocaleDateString('en-US', { 
       month: 'short', 
       day: 'numeric' 
