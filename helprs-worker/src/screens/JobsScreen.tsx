@@ -225,7 +225,10 @@ export default function JobsScreen() {
 
   // Format date for display
   const formatDateForDisplay = (dateString: string) => {
-    const date = new Date(dateString)
+    // Parse date without timezone conversion
+    const [yearStr, monthStr, dayStr] = dateString.split('-').map(Number)
+    const date = new Date(yearStr, monthStr - 1, dayStr) // month is 0-indexed
+    
     const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
     const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     

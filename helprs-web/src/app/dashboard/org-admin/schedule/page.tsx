@@ -262,7 +262,9 @@ export default function SchedulePage() {
 
   const getAppointmentsForDate = (date: Date) => {
     return allAppointments.filter(apt => {
-      const aptDate = new Date(apt.date)
+      // Parse date without timezone conversion
+      const [year, month, day] = apt.date.split('-').map(Number)
+      const aptDate = new Date(year, month - 1, day) // month is 0-indexed
       return aptDate.toDateString() === date.toDateString() &&
              selectedCalendars.includes(apt.calendarId)
     })
@@ -865,7 +867,9 @@ export default function SchedulePage() {
                     {/* Check for appointments in this time slot */}
                     {allAppointments
                       .filter(apt => {
-                        const aptDate = new Date(apt.date)
+                        // Parse date without timezone conversion
+                        const [year, month, day] = apt.date.split('-').map(Number)
+                        const aptDate = new Date(year, month - 1, day) // month is 0-indexed
                         return aptDate.toDateString() === date.toDateString() && 
                                apt.time === time &&
                                selectedCalendars.includes(apt.calendarId)
@@ -934,7 +938,9 @@ export default function SchedulePage() {
                   {/* Check for appointments in this time slot */}
                   {allAppointments
                     .filter(apt => {
-                      const aptDate = new Date(apt.date)
+                      // Parse date without timezone conversion
+                      const [year, month, day] = apt.date.split('-').map(Number)
+                      const aptDate = new Date(year, month - 1, day) // month is 0-indexed
                       return aptDate.toDateString() === currentDate.toDateString() && 
                              apt.time === time &&
                              selectedCalendars.includes(apt.calendarId)
