@@ -284,7 +284,10 @@ export default function AppointmentCreationPanel({
         title: `${formData.customerInfo.firstName} ${formData.customerInfo.lastName} - ${appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.name || 'Appointment'} (Draft)`,
         date: formData.scheduledDate ? 
           `${formData.scheduledDate.getFullYear()}-${String(formData.scheduledDate.getMonth() + 1).padStart(2, '0')}-${String(formData.scheduledDate.getDate()).padStart(2, '0')}` : 
-          new Date().toISOString().split('T')[0],
+          (() => {
+            const today = new Date()
+            return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
+          })(),
         time: formData.scheduledTime,
         duration: appointmentTypes.find(apt => apt.id === formData.appointmentTypeId)?.base_duration || 60,
         calendarId: formData.calendarId,
@@ -329,7 +332,10 @@ export default function AppointmentCreationPanel({
         description: `Appointment for ${formData.customerInfo.firstName} ${formData.customerInfo.lastName}`,
         scheduled_date: formData.scheduledDate ? 
           `${formData.scheduledDate.getFullYear()}-${String(formData.scheduledDate.getMonth() + 1).padStart(2, '0')}-${String(formData.scheduledDate.getDate()).padStart(2, '0')}` : 
-          new Date().toISOString().split('T')[0],
+          (() => {
+            const today = new Date()
+            return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
+          })(),
         scheduled_time: formData.scheduledTime,
         estimated_duration: selectedAppointmentType?.base_duration || 60,
         base_price: basePrice,
@@ -710,7 +716,12 @@ export default function AppointmentCreationPanel({
                 <input
                   type="date"
                   value={formData.scheduledDate ? formData.scheduledDate.toISOString().split('T')[0] : ''}
-                  onChange={(e) => handleInputChange('scheduledDate', new Date(e.target.value))}
+                  onChange={(e) => {
+                    // Parse date without timezone conversion
+                    const [year, month, day] = e.target.value.split('-').map(Number)
+                    const date = new Date(year, month - 1, day) // month is 0-indexed
+                    handleInputChange('scheduledDate', date)
+                  }}
                   style={{
                     flex: 1,
                     padding: '10px 12px',

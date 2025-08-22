@@ -94,7 +94,9 @@ export default function Calendar({ companyId }: CalendarProps) {
       timeSlots: timeSlots.map(time => ({
         time,
         appointments: appointments.filter(apt => {
-          const aptDate = new Date(apt.date)
+          // Parse date without timezone conversion
+          const [year, month, day] = apt.date.split('-').map(Number)
+          const aptDate = new Date(year, month - 1, day) // month is 0-indexed
           return aptDate.toDateString() === date.toDateString() && apt.startTime === time
         })
       }))
@@ -208,13 +210,15 @@ export default function Calendar({ companyId }: CalendarProps) {
     if (!draggedAppointment) return
 
     const newDate = weekDates[dayIndex]
-    const newDateTime = `${newDate.toISOString().split('T')[0]} ${timeSlot}:00`
+    // Format date without timezone conversion
+    const formattedDate = `${newDate.getFullYear()}-${String(newDate.getMonth() + 1).padStart(2, '0')}-${String(newDate.getDate()).padStart(2, '0')}`
+    const newDateTime = `${formattedDate} ${timeSlot}:00`
 
     try {
       const { error } = await supabase
         .from('jobs')
         .update({
-          scheduled_date: newDate.toISOString().split('T')[0],
+          scheduled_date: formattedDate,
           scheduled_time: timeSlot
         })
         .eq('id', draggedAppointment.id)
