@@ -15,21 +15,18 @@ This guide sets up a complete staging environment for both the mobile and deskto
 
 ## **🔧 Setup Instructions**
 
-### **Step 1: Get Supabase Credentials**
-1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
-2. Select your project (or create one)
-3. Go to **Settings → API**
-4. Copy:
-   - **Project URL** (e.g., `https://your-project-id.supabase.co`)
-   - **anon/public key** (starts with `eyJ...`)
+### **Step 1: Supabase Credentials (Already Found!)**
+✅ **Project Name**: helprs-dev  
+✅ **Project URL**: `https://wgwlbfyviiljkcbevpaq.supabase.co`  
+✅ **Anon Key**: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnd2xiZnl2aWlsamtjYmV2cGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxODQ0NzcsImV4cCI6MjA3MDc2MDQ3N30.68KWeW1uMZNoLdNA6d-C_Du1-stMn_iy5t3XoTOgfR4`
 
 ### **Step 2: Configure GitHub Secrets**
 In your GitHub repository, go to **Settings → Secrets and variables → Actions** and add:
 
 #### **Required Secrets:**
 ```
-STAGING_SUPABASE_URL=https://your-project-id.supabase.co
-STAGING_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.your-key
+STAGING_SUPABASE_URL=https://wgwlbfyviiljkcbevpaq.supabase.co
+STAGING_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnd2xiZnl2aWlsamtjYmV2cGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxODQ0NzcsImV4cCI6MjA3MDc2MDQ3N30.68KWeW1uMZNoLdNA6d-C_Du1-stMn_iy5t3XoTOgfR4
 EXPO_TOKEN=your-expo-token
 ```
 
@@ -72,21 +69,21 @@ git push origin staging
 ## **📊 Monitoring**
 - **Mobile**: https://expo.dev/accounts/helprs_dev/projects/helprs-worker/updates
 - **Desktop**: Your Vercel dashboard
-- **Database**: Supabase dashboard
+- **Database**: https://supabase.com/dashboard/project/wgwlbfyviiljkcbevpaq
 
 ## **🔄 Environment Variables**
 
 ### **Mobile App (.env)**
 ```bash
-EXPO_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+EXPO_PUBLIC_SUPABASE_URL=https://wgwlbfyviiljkcbevpaq.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnd2xiZnl2aWlsamtjYmV2cGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxODQ0NzcsImV4cCI6MjA3MDc2MDQ3N30.68KWeW1uMZNoLdNA6d-C_Du1-stMn_iy5t3XoTOgfR4
 EXPO_PUBLIC_APP_ENV=staging
 ```
 
 ### **Desktop App (.env)**
 ```bash
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_URL=https://wgwlbfyviiljkcbevpaq.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnd2xiZnl2aWlsamtjYmV2cGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxODQ0NzcsImV4cCI6MjA3MDc2MDQ3N30.68KWeW1uMZNoLdNA6d-C_Du1-stMn_iy5t3XoTOgfR4
 NEXT_PUBLIC_APP_ENV=staging
 ```
 
