@@ -9,5 +9,10 @@
     "app/api/**/*.ts": {
       "maxDuration": 30
     }
+  },
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://wgwlbfyviiljkcbevpaq.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indnd2xiZnl2aWlsamtjYmV2cGFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxODQ0NzcsImV4cCI6MjA3MDc2MDQ3N30.68KWeW1uMZNoLdNA6d-C_Du1-stMn_iy5t3XoTOgfR4",
+    "NEXT_PUBLIC_APP_ENV": "staging"
   }
 }
