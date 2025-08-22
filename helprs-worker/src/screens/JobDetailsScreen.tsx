@@ -70,7 +70,10 @@ export default function JobDetailsScreen({ route }: JobDetailsScreenProps) {
   }
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
+    // Parse date without timezone conversion by creating date in local timezone
+    const [year, month, day] = dateString.split('-').map(Number)
+    const date = new Date(year, month - 1, day) // month is 0-indexed
+    
     const today = new Date()
     const tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)

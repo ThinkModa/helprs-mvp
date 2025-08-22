@@ -24,6 +24,17 @@ const TIME_OPTIONS = [
   '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
 ]
 
+const formatTimeForDisplay = (timeString: string) => {
+  const [hourStr, minuteStr] = timeString.split(':')
+  const hour = parseInt(hourStr, 10)
+  const minute = minuteStr
+  
+  if (hour === 0) return `12:${minute} AM`
+  if (hour < 12) return `${hour}:${minute} AM`
+  if (hour === 12) return `12:${minute} PM`
+  return `${hour - 12}:${minute} PM`
+}
+
 const COLOR_OPTIONS = [
   '#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#06B6D4', '#84CC16', '#F97316',
   '#EC4899', '#6366F1', '#14B8A6', '#F43F5E', '#A855F7', '#0EA5E9', '#22C55E', '#EAB308'
@@ -335,7 +346,7 @@ export default function CreateCalendarModal({ onClose, onCreate }: CreateCalenda
                         }}
                       >
                         {TIME_OPTIONS.map(time => (
-                          <option key={time} value={time}>{time}</option>
+                          <option key={time} value={time}>{formatTimeForDisplay(time)}</option>
                         ))}
                       </select>
                       <span style={{ fontSize: '14px', color: '#6b7280' }}>to</span>
@@ -351,7 +362,7 @@ export default function CreateCalendarModal({ onClose, onCreate }: CreateCalenda
                         }}
                       >
                         {TIME_OPTIONS.map(time => (
-                          <option key={time} value={time}>{time}</option>
+                          <option key={time} value={time}>{formatTimeForDisplay(time)}</option>
                         ))}
                       </select>
                     </>

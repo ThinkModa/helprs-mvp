@@ -57,6 +57,17 @@ export default function Calendar({ companyId }: CalendarProps) {
     return slots
   }
 
+  const formatTimeForDisplay = (timeString: string) => {
+    const [hourStr, minuteStr] = timeString.split(':')
+    const hour = parseInt(hourStr, 10)
+    const minute = minuteStr
+    
+    if (hour === 0) return `12:${minute} AM`
+    if (hour < 12) return `${hour}:${minute} AM`
+    if (hour === 12) return `12:${minute} PM`
+    return `${hour - 12}:${minute} PM`
+  }
+
   const timeSlots = generateTimeSlots()
 
   // Get week dates
@@ -295,7 +306,7 @@ export default function Calendar({ companyId }: CalendarProps) {
               {timeSlots.map((time, index) => (
                 <div key={index} className="h-16 border-b border-gray-100 flex items-center justify-end pr-4">
                   <span className="text-xs text-gray-500 font-medium">
-                    {time}
+                    {formatTimeForDisplay(time)}
                   </span>
                 </div>
               ))}

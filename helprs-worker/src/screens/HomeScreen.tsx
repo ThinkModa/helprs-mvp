@@ -92,6 +92,16 @@ export default function HomeScreen() {
     return time.substring(0, 5) // Convert "09:00" to "9:00 AM" format
   }
 
+  const formatDate = (dateString: string) => {
+    // Parse date without timezone conversion by creating date in local timezone
+    const [year, month, day] = dateString.split('-').map(Number)
+    const date = new Date(year, month - 1, day) // month is 0-indexed
+    return date.toLocaleDateString('en-US', { 
+      month: 'short', 
+      day: 'numeric' 
+    })
+  }
+
   const NextJobCard = ({ job }: { job: Job }) => (
     <View style={styles.nextJobCard}>
       <View style={styles.nextJobHeader}>
@@ -111,7 +121,7 @@ export default function HomeScreen() {
         <View style={styles.detailRow}>
           <Ionicons name="calendar-outline" size={16} color="#64748B" />
           <Text style={styles.detailText}>
-            {job.scheduled_date} at {formatTime(job.scheduled_time)}
+            {formatDate(job.scheduled_date)} at {formatTime(job.scheduled_time)}
           </Text>
         </View>
         

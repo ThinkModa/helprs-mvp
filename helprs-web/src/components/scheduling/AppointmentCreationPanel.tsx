@@ -735,9 +735,15 @@ export default function AppointmentCreationPanel({
                     const hour = Math.floor(i / 4)
                     const minute = (i % 4) * 15
                     const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`
+                    const displayTime = (() => {
+                      if (hour === 0) return `12:${minute.toString().padStart(2, '0')} AM`
+                      if (hour < 12) return `${hour}:${minute.toString().padStart(2, '0')} AM`
+                      if (hour === 12) return `12:${minute.toString().padStart(2, '0')} PM`
+                      return `${hour - 12}:${minute.toString().padStart(2, '0')} PM`
+                    })()
                     return (
                       <option key={timeString} value={timeString}>
-                        {timeString}
+                        {displayTime}
                       </option>
                     )
                   })}
