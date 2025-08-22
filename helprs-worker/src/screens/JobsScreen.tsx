@@ -38,6 +38,7 @@ export default function JobsScreen() {
 
   const loadJobs = async () => {
     try {
+      console.log('🔄 JobsScreen: Loading jobs for tab:', activeTab);
       setError(null)
       let response
       
@@ -53,9 +54,21 @@ export default function JobsScreen() {
           break
       }
       
+      console.log('✅ JobsScreen: Jobs loaded successfully:', {
+        tab: activeTab,
+        jobCount: response.jobs.length,
+        jobs: response.jobs
+      });
+      
       setJobs(response.jobs)
     } catch (err) {
-      console.error('Failed to load jobs:', err)
+      console.error('❌ JobsScreen: Failed to load jobs:', {
+        error: err,
+        message: err?.message,
+        code: err?.code,
+        tab: activeTab,
+        workerId: TEST_WORKER_ID
+      });
       setError('Failed to load jobs. Please check your connection.')
     } finally {
       setLoading(false)

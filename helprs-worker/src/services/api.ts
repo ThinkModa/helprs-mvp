@@ -64,9 +64,26 @@ export interface FormResponsesResponse {
 }
 
 class ApiService {
+  // Enhanced logging function
+  private logError(method: string, error: any, additionalInfo?: any) {
+    console.error(`🚨 API Error in ${method}:`, {
+      error: error,
+      message: error?.message,
+      code: error?.code,
+      details: error?.details,
+      additionalInfo: additionalInfo,
+      timestamp: new Date().toISOString(),
+      supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
+      hasAnonKey: !!process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY
+    });
+  }
+
   // Get available jobs for the test company
   async getJobs(status: string = 'open'): Promise<JobsResponse> {
     try {
+      console.log('🔍 getJobs called with status:', status);
+      console.log('🔍 Using company_id:', TEST_COMPANY_ID);
+      
       const { data, error, count } = await supabase
         .from('jobs')
         .select(`
@@ -79,14 +96,24 @@ class ApiService {
         .eq('company_id', TEST_COMPANY_ID)
         .eq('status', status);
 
-      if (error) throw error;
+      console.log('📊 getJobs result:', {
+        dataLength: data?.length || 0,
+        count: count,
+        error: error,
+        hasData: !!data
+      });
+
+      if (error) {
+        this.logError('getJobs', error, { status, companyId: TEST_COMPANY_ID });
+        throw error;
+      }
 
       return {
         jobs: data || [],
         count: count || 0
       };
     } catch (error) {
-      console.error('Error fetching jobs:', error);
+      this.logError('getJobs', error, { status, companyId: TEST_COMPANY_ID });
       throw error;
     }
   }
@@ -94,6 +121,8 @@ class ApiService {
   // Get jobs by type (available, my_jobs, all_jobs)
   async getJobsByType(type: 'available' | 'my_jobs' | 'all_jobs', workerId?: string): Promise<JobsResponse> {
     try {
+      console.log('🔍 getJobsByType called with:', { type, workerId });
+      
       let query = supabase
         .from('jobs')
         .select(`
@@ -121,14 +150,24 @@ class ApiService {
 
       const { data, error, count } = await query;
 
-      if (error) throw error;
+      console.log('📊 getJobsByType result:', {
+        type,
+        dataLength: data?.length || 0,
+        count: count,
+        error: error
+      });
+
+      if (error) {
+        this.logError('getJobsByType', error, { type, workerId });
+        throw error;
+      }
 
       return {
         jobs: data || [],
         count: count || 0
       };
     } catch (error) {
-      console.error('Error fetching jobs by type:', error);
+      this.logError('getJobsByType', error, { type, workerId });
       throw error;
     }
   }
@@ -136,6 +175,9 @@ class ApiService {
   // Get worker's next upcoming job
   async getNextJob(workerId: string): Promise<{ next_job: Job | null }> {
     try {
+      console.log('🔍 getNextJob called with workerId:', workerId);
+      console.log('🔍 Current date:', new Date().toISOString().split('T')[0]);
+      
       const { data, error } = await supabase
         .from('jobs')
         .select(`
@@ -154,15 +196,43 @@ class ApiService {
         .limit(1)
         .single();
 
-      if (error && error.code !== 'PGRST116') throw error; // PGRST116 is "no rows returned"
+      console.log('📊 getNextJob result:', {
+        hasData: !!data,
+        data: data,
+        error: error,
+        errorCode: error?.code
+      });
+
+      if (error && error.code !== 'PGRST116') {
+        this.logError('getNextJob', error, { workerId });
+        throw error;
+      }
 
       return {
         next_job: data || null
       };
     } catch (error) {
-      console.error('Error fetching next job:', error);
+      this.logError('getNextJob', error, { workerId });
       throw error;
     }
+  }
+
+  // Get available jobs (alias for getJobsByType with 'available')
+  async getAvailableJobs(): Promise<JobsResponse> {
+    console.log('🔍 getAvailableJobs called');
+    return this.getJobsByType('available');
+  }
+
+  // Get my jobs (alias for getJobsByType with 'my_jobs')
+  async getMyJobs(workerId: string): Promise<JobsResponse> {
+    console.log('🔍 getMyJobs called with workerId:', workerId);
+    return this.getJobsByType('my_jobs', workerId);
+  }
+
+  // Get all jobs (alias for getJobsByType with 'all_jobs')
+  async getAllJobs(): Promise<JobsResponse> {
+    console.log('🔍 getAllJobs called');
+    return this.getJobsByType('all_jobs');
   }
 
   // Accept a job
@@ -327,21 +397,6 @@ class ApiService {
 
   async getInProgressJobs(): Promise<JobsResponse> {
     return this.getJobs('in_progress');
-  }
-
-  // Get available jobs (open jobs that can be accepted)
-  async getAvailableJobs(): Promise<JobsResponse> {
-    return this.getJobsByType('available');
-  }
-
-  // Get worker's assigned jobs
-  async getMyJobs(workerId: string): Promise<JobsResponse> {
-    return this.getJobsByType('my_jobs', workerId);
-  }
-
-  // Get all jobs
-  async getAllJobs(): Promise<JobsResponse> {
-    return this.getJobsByType('all_jobs');
   }
 }
 

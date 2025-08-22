@@ -6,17 +6,23 @@ import { Database } from '../types/database'
 const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY
 
+console.log('🔧 Supabase Client Initialization:');
+console.log('  - EXPO_PUBLIC_SUPABASE_URL:', supabaseUrl ? '✅ Set' : '❌ Missing');
+console.log('  - EXPO_PUBLIC_SUPABASE_ANON_KEY:', supabaseAnonKey ? '✅ Set' : '❌ Missing');
+console.log('  - Full URL:', supabaseUrl);
+
 // Validate environment variables
 if (!supabaseUrl) {
+  console.error('❌ EXPO_PUBLIC_SUPABASE_URL is not defined!');
   throw new Error('EXPO_PUBLIC_SUPABASE_URL is not defined. Please check your environment configuration.')
 }
 
 if (!supabaseAnonKey) {
+  console.error('❌ EXPO_PUBLIC_SUPABASE_ANON_KEY is not defined!');
   throw new Error('EXPO_PUBLIC_SUPABASE_ANON_KEY is not defined. Please check your environment configuration.')
 }
 
-console.log('Supabase URL:', supabaseUrl)
-console.log('Supabase connection initialized successfully')
+console.log('✅ Supabase connection initialized successfully')
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -37,20 +43,21 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
 // Test connection function
 export const testSupabaseConnection = async () => {
   try {
+    console.log('🔍 Testing Supabase connection...');
     const { data, error } = await supabase
       .from('jobs')
       .select('count')
       .limit(1)
     
     if (error) {
-      console.error('Supabase connection test failed:', error)
+      console.error('❌ Supabase connection test failed:', error)
       return false
     }
     
-    console.log('Supabase connection test successful')
+    console.log('✅ Supabase connection test successful')
     return true
   } catch (err) {
-    console.error('Supabase connection test error:', err)
+    console.error('❌ Supabase connection test error:', err)
     return false
   }
 }

@@ -43,11 +43,21 @@ export default function HomeScreen() {
   // Load next upcoming job from API
   const loadNextJob = async () => {
     try {
+      console.log('🔄 HomeScreen: Loading next job...');
       setError(null)
       const response = await apiService.getNextJob(TEST_WORKER_ID)
+      console.log('✅ HomeScreen: Next job loaded successfully:', {
+        hasNextJob: !!response.next_job,
+        nextJob: response.next_job
+      });
       setNextJob(response.next_job)
     } catch (err) {
-      console.error('Failed to load next job:', err)
+      console.error('❌ HomeScreen: Failed to load next job:', {
+        error: err,
+        message: err?.message,
+        code: err?.code,
+        workerId: TEST_WORKER_ID
+      });
       setError('Failed to load next job. Please check your connection.')
     } finally {
       setLoading(false)
