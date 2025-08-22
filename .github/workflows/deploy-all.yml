@@ -1,0 +1,83 @@
+name: Deploy All Apps
+
+on:
+  push:
+    branches: [ staging, main ]
+  workflow_dispatch:
+
+jobs:
+  deploy-mobile:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.modified, 'helprs-worker/') || contains(github.event.head_commit.added, 'helprs-worker/') || contains(github.event.head_commit.removed, 'helprs-worker/') || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: helprs-worker/package-lock.json
+        
+    - name: Install dependencies
+      working-directory: helprs-worker
+      run: npm ci
+      
+    - name: Setup Expo CLI
+      run: npm install -g @expo/cli
+      
+    - name: Login to Expo
+      run: npx expo login --non-interactive
+      env:
+        EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        
+    - name: Deploy to Expo EAS
+      working-directory: helprs-worker
+      run: |
+        if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+          npx eas update --channel production --message "Auto-deploy from GitHub Actions"
+        else
+          npx eas update --channel staging --message "Auto-deploy from GitHub Actions"
+        fi
+      env:
+        EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+        EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.STAGING_SUPABASE_ANON_KEY }}
+        EXPO_PUBLIC_APP_ENV: staging
+
+  deploy-desktop:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.modified, 'helprs-web/') || contains(github.event.head_commit.added, 'helprs-web/') || contains(github.event.head_commit.removed, 'helprs-web/') || github.event_name == 'workflow_dispatch'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: helprs-web/package-lock.json
+        
+    - name: Install dependencies
+      working-directory: helprs-web
+      run: npm ci
+      
+    - name: Build application
+      working-directory: helprs-web
+      run: npm run build
+      env:
+        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.STAGING_SUPABASE_URL }}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.STAGING_SUPABASE_ANON_KEY }}
+        NEXT_PUBLIC_APP_ENV: staging
+        
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: ./helprs-web
+        vercel-args: '--prod'
