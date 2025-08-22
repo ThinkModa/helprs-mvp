@@ -138,3 +138,4 @@ The app follows a modern, minimalist design with:
 This is part of the Helprs MVP platform. For development guidelines and contribution information, please refer to the main project documentation.
 
 
+

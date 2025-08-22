@@ -1,14 +1,6 @@
-// API service for mobile app
-// Try multiple connection methods for development
-const getApiBaseUrl = () => {
-  // For development, prioritize network IP for mobile devices
-  if (__DEV__) {
-    return 'http://192.168.1.118:3000/api/v1';
-  }
-  return 'http://192.168.1.118:3000/api/v1';
-};
+// API service for mobile app - Direct Supabase integration
+import { supabase } from '../lib/supabase';
 
-const API_BASE_URL = getApiBaseUrl();
 const TEST_COMPANY_ID = 'test-company-1';
 
 export interface Job {
@@ -72,102 +64,256 @@ export interface FormResponsesResponse {
 }
 
 class ApiService {
-  private async makeRequest<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    // Try multiple URLs for development
-    const urls = [
-      'http://192.168.1.118:3000/api/v1',
-      'http://localhost:3000/api/v1',
-      'http://10.0.2.2:3000/api/v1', // Android emulator
-    ];
-
-    for (const baseUrl of urls) {
-      try {
-        console.log(`Trying API URL: ${baseUrl}${endpoint}`);
-        const response = await fetch(`${baseUrl}${endpoint}`, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          ...options,
-        });
-
-        if (!response.ok) {
-          throw new Error(`API request failed: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log(`API request successful: ${baseUrl}${endpoint}`);
-        return result;
-      } catch (error) {
-        console.error(`Failed to connect to ${baseUrl}${endpoint}:`, error);
-        // Continue to next URL
-      }
-    }
-
-    // If all URLs fail, throw the last error
-    throw new Error('All API endpoints failed. Please check your network connection and ensure the web server is running.');
-  }
-
   // Get available jobs for the test company
   async getJobs(status: string = 'open'): Promise<JobsResponse> {
-    return this.makeRequest<JobsResponse>(
-      `/jobs?status=${status}&company_id=${TEST_COMPANY_ID}`
-    );
+    try {
+      const { data, error, count } = await supabase
+        .from('jobs')
+        .select(`
+          *,
+          customer:customers(first_name, last_name, phone, email),
+          appointment_type:appointment_types(name, description, base_duration),
+          assigned_worker:workers(id, hourly_rate),
+          form:forms(name)
+        `)
+        .eq('company_id', TEST_COMPANY_ID)
+        .eq('status', status);
+
+      if (error) throw error;
+
+      return {
+        jobs: data || [],
+        count: count || 0
+      };
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+      throw error;
+    }
   }
 
   // Get jobs by type (available, my_jobs, all_jobs)
   async getJobsByType(type: 'available' | 'my_jobs' | 'all_jobs', workerId?: string): Promise<JobsResponse> {
-    let endpoint = `/jobs?type=${type}&company_id=${TEST_COMPANY_ID}`;
-    if (type === 'my_jobs' && workerId) {
-      endpoint += `&worker_id=${workerId}`;
+    try {
+      let query = supabase
+        .from('jobs')
+        .select(`
+          *,
+          customer:customers(first_name, last_name, phone, email),
+          appointment_type:appointment_types(name, description, base_duration),
+          assigned_worker:workers(id, hourly_rate),
+          form:forms(name)
+        `)
+        .eq('company_id', TEST_COMPANY_ID);
+
+      switch (type) {
+        case 'available':
+          query = query.eq('status', 'open');
+          break;
+        case 'my_jobs':
+          if (workerId) {
+            query = query.eq('assigned_worker_id', workerId);
+          }
+          break;
+        case 'all_jobs':
+          // No additional filters needed
+          break;
+      }
+
+      const { data, error, count } = await query;
+
+      if (error) throw error;
+
+      return {
+        jobs: data || [],
+        count: count || 0
+      };
+    } catch (error) {
+      console.error('Error fetching jobs by type:', error);
+      throw error;
     }
-    return this.makeRequest<JobsResponse>(endpoint);
   }
 
   // Get worker's next upcoming job
   async getNextJob(workerId: string): Promise<{ next_job: Job | null }> {
-    return this.makeRequest<{ next_job: Job | null }>(
-      `/workers/${workerId}/next-job?company_id=${TEST_COMPANY_ID}`
-    );
+    try {
+      const { data, error } = await supabase
+        .from('jobs')
+        .select(`
+          *,
+          customer:customers(first_name, last_name, phone, email),
+          appointment_type:appointment_types(name, description, base_duration),
+          assigned_worker:workers(id, hourly_rate),
+          form:forms(name)
+        `)
+        .eq('company_id', TEST_COMPANY_ID)
+        .eq('assigned_worker_id', workerId)
+        .in('status', ['scheduled', 'in_progress'])
+        .gte('scheduled_date', new Date().toISOString().split('T')[0])
+        .order('scheduled_date', { ascending: true })
+        .order('scheduled_time', { ascending: true })
+        .limit(1)
+        .single();
+
+      if (error && error.code !== 'PGRST116') throw error; // PGRST116 is "no rows returned"
+
+      return {
+        next_job: data || null
+      };
+    } catch (error) {
+      console.error('Error fetching next job:', error);
+      throw error;
+    }
   }
 
   // Accept a job
   async acceptJob(jobId: string, workerId: string): Promise<AcceptJobResponse> {
-    return this.makeRequest<AcceptJobResponse>(
-      `/jobs/${jobId}/accept`,
-      {
-        method: 'POST',
-        body: JSON.stringify({ worker_id: workerId })
+    try {
+      // First, get the current job to check if it can be accepted
+      const { data: job, error: jobError } = await supabase
+        .from('jobs')
+        .select('*')
+        .eq('id', jobId)
+        .single();
+
+      if (jobError) throw jobError;
+      if (!job) throw new Error('Job not found');
+
+      if (job.status !== 'open') {
+        return {
+          success: false,
+          job_status: job.status,
+          accepted_workers: 0,
+          required_workers: 1,
+          message: 'Job is not available for acceptance'
+        };
       }
-    );
+
+      // Update the job to assign it to the worker
+      const { data, error } = await supabase
+        .from('jobs')
+        .update({
+          assigned_worker_id: workerId,
+          status: 'scheduled',
+          assignment_date: new Date().toISOString(),
+          assignment_type: 'manual'
+        })
+        .eq('id', jobId)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      return {
+        success: true,
+        job_status: 'scheduled',
+        accepted_workers: 1,
+        required_workers: 1,
+        message: 'Job accepted successfully'
+      };
+    } catch (error) {
+      console.error('Error accepting job:', error);
+      throw error;
+    }
   }
 
   // Get form responses for a specific job
   async getFormResponses(jobId: string): Promise<FormResponsesResponse> {
-    return this.makeRequest<FormResponsesResponse>(
-      `/jobs/${jobId}/form-responses`
-    );
+    try {
+      const { data, error, count } = await supabase
+        .from('form_responses')
+        .select('*')
+        .eq('job_id', jobId);
+
+      if (error) throw error;
+
+      // Transform the data to match the expected format
+      const formResponses = (data || []).map(response => ({
+        form_name: response.form_name || 'Unknown Form',
+        answers: response.answers || []
+      }));
+
+      return {
+        form_responses: formResponses,
+        count: count || 0
+      };
+    } catch (error) {
+      console.error('Error fetching form responses:', error);
+      throw error;
+    }
   }
 
   // Clock in to a job
   async clockIn(jobId: string, workerId: string): Promise<any> {
-    return this.makeRequest<any>(
-      `/jobs/${jobId}/clock-in`,
-      {
-        method: 'POST',
-        body: JSON.stringify({ worker_id: workerId })
-      }
-    );
+    try {
+      // Create a time entry for clock in
+      const { data, error } = await supabase
+        .from('time_entries')
+        .insert({
+          job_id: jobId,
+          worker_id: workerId,
+          clock_in_time: new Date().toISOString(),
+          entry_type: 'clock_in'
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Update job status to in_progress
+      await supabase
+        .from('jobs')
+        .update({ status: 'in_progress' })
+        .eq('id', jobId);
+
+      return {
+        success: true,
+        message: 'Clocked in successfully',
+        time_entry: data
+      };
+    } catch (error) {
+      console.error('Error clocking in:', error);
+      throw error;
+    }
   }
 
   // Clock out from a job
   async clockOut(jobId: string, workerId: string): Promise<any> {
-    return this.makeRequest<any>(
-      `/jobs/${jobId}/clock-out`,
-      {
-        method: 'POST',
-        body: JSON.stringify({ worker_id: workerId })
-      }
-    );
+    try {
+      // Find the most recent clock in entry for this job/worker
+      const { data: clockInEntry, error: findError } = await supabase
+        .from('time_entries')
+        .select('*')
+        .eq('job_id', jobId)
+        .eq('worker_id', workerId)
+        .eq('entry_type', 'clock_in')
+        .is('clock_out_time', null)
+        .order('clock_in_time', { ascending: false })
+        .limit(1)
+        .single();
+
+      if (findError) throw findError;
+
+      // Update the time entry with clock out time
+      const { data, error } = await supabase
+        .from('time_entries')
+        .update({
+          clock_out_time: new Date().toISOString()
+        })
+        .eq('id', clockInEntry.id)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      return {
+        success: true,
+        message: 'Clocked out successfully',
+        time_entry: data
+      };
+    } catch (error) {
+      console.error('Error clocking out:', error);
+      throw error;
+    }
   }
 
   // Get jobs with different statuses

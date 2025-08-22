@@ -15,17 +15,31 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.helprs.worker"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.helprs.worker"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": "helprs-worker"
+    "scheme": "helprs-worker",
+    "owner": "helprs_dev",
+    "extra": {
+      "eas": {
+        "projectId": "b68031f1-ff17-4f1b-863b-958b1292f759"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/b68031f1-ff17-4f1b-863b-958b1292f759"
+    }
   }
 }

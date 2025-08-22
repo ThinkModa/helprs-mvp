@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
+import { View, Text, StyleSheet } from 'react-native'
 
 // Screens
 import HomeScreen from './src/screens/HomeScreen'
@@ -11,6 +12,9 @@ import JobsScreen from './src/screens/JobsScreen'
 import JobDetailsScreen from './src/screens/JobDetailsScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
 import LoginScreen from './src/screens/LoginScreen'
+
+// Supabase
+import { testSupabaseConnection } from './src/lib/supabase'
 
 // Types
 import { Job } from './src/services/api'
@@ -80,9 +84,48 @@ function MainTabs() {
   )
 }
 
+function LoadingScreen() {
+  return (
+    <View style={styles.loadingContainer}>
+      <Text style={styles.loadingText}>Connecting to database...</Text>
+    </View>
+  )
+}
+
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true)
+  const [connectionStatus, setConnectionStatus] = useState<string>('Connecting...')
+  
   // For testing - bypass authentication
   const isAuthenticated = true
+
+  useEffect(() => {
+    const testConnection = async () => {
+      try {
+        setConnectionStatus('Testing database connection...')
+        const isConnected = await testSupabaseConnection()
+        
+        if (isConnected) {
+          setConnectionStatus('Connected successfully!')
+          console.log('✅ Database connection successful')
+        } else {
+          setConnectionStatus('Connection failed')
+          console.error('❌ Database connection failed')
+        }
+      } catch (error) {
+        setConnectionStatus('Connection error')
+        console.error('❌ Database connection error:', error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    testConnection()
+  }, [])
+
+  if (isLoading) {
+    return <LoadingScreen />
+  }
 
   return (
     <NavigationContainer>
@@ -108,3 +151,17 @@ export default function App() {
     </NavigationContainer>
   )
 }
+
+const styles = StyleSheet.create({
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+  },
+  loadingText: {
+    fontSize: 16,
+    color: '#64748B',
+    marginTop: 16,
+  },
+})

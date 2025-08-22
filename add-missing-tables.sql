@@ -150,3 +150,4 @@ INSERT INTO availability_time_blocks (worker_availability_id, start_time, end_ti
 ((SELECT id FROM worker_availability WHERE worker_id = 'worker_12345678' AND date = CURRENT_DATE + INTERVAL '1 day' LIMIT 1), '08:00', '16:00', true);
 
 
+

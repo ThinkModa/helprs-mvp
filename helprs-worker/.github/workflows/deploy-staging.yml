@@ -1,0 +1,49 @@
+name: Deploy Mobile App to Staging
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd helprs-worker
+          npm install
+
+      - name: Setup Expo
+        uses: expo/expo-github-action@v8
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Deploy to Expo Staging
+        run: |
+          cd helprs-worker
+          
+          # Set staging environment variables
+          echo "EXPO_PUBLIC_SUPABASE_URL=${{ secrets.STAGING_SUPABASE_URL }}" >> .env
+          echo "EXPO_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.STAGING_SUPABASE_ANON_KEY }}" >> .env
+          echo "EXPO_PUBLIC_APP_ENV=staging" >> .env
+          
+          # Publish update to staging channel
+          eas update --channel staging --message "Deploy to staging - ${{ github.sha }}"
+
+      - name: Notify deployment
+        run: |
+          echo "🚀 Mobile app deployed to staging!"
+          echo "📱 Access via Expo Go: exp://exp.host/@helprs_dev/helprs-worker"
+          echo "🔄 Updates will be available automatically"
+          echo "📊 View deployment: https://expo.dev/accounts/helprs_dev/projects/helprs-worker/updates"

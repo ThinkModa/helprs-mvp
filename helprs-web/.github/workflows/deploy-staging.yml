@@ -1,0 +1,50 @@
+name: Deploy Web App to Staging
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd helprs-web
+          npm install
+
+      - name: Setup environment variables
+        run: |
+          cd helprs-web
+          echo "NEXT_PUBLIC_SUPABASE_URL=${{ secrets.STAGING_SUPABASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.STAGING_SUPABASE_ANON_KEY }}" >> .env
+          echo "NEXT_PUBLIC_APP_ENV=staging" >> .env
+
+      - name: Build application
+        run: |
+          cd helprs-web
+          npm run build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./helprs-web
+          vercel-args: '--prod'
+
+      - name: Notify deployment
+        run: |
+          echo "🚀 Web app deployed to staging!"
+          echo "🌐 Access via: https://your-staging-app.vercel.app"

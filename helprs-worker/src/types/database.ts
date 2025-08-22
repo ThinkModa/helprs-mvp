@@ -343,3 +343,4 @@ export type BackgroundCheckStatus = Database['public']['Enums']['background_chec
 export type NotificationType = Database['public']['Enums']['notification_type']
 
 
+

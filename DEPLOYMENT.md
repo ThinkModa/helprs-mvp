@@ -1,274 +1,256 @@
 # 🚀 Helprs Deployment Guide
 
-This guide will help you deploy the Helprs workforce scheduling platform to your own environment.
+## **Overview**
+This guide covers deploying both the Helprs mobile app (React Native/Expo) and desktop app (Next.js) to staging environments.
 
-## 📋 Prerequisites
+## **🏗️ Architecture**
+- **Mobile App**: Direct Supabase connection (no local server dependencies)
+- **Desktop App**: Next.js API routes → Supabase database
+- **Database**: Supabase (shared between both apps)
 
-- Node.js 18+ installed
-- npm or yarn package manager
-- Git for version control
-- Supabase account (free tier available)
-- Expo account (for mobile app)
+## **📱 Mobile App (helprs-worker)**
 
-## 🔐 Environment Variables Setup
-
-### Step 1: Create Supabase Project
-
-1. Go to [supabase.com](https://supabase.com) and create a new project
-2. Note down your project URL and API keys
-3. Run the database migrations (see Database Setup below)
-
-### Step 2: Web Dashboard Environment Variables
-
-1. Navigate to `helprs-web/` directory
-2. Copy the environment template:
-   ```bash
-   cp .env.example .env.local
+### **Environment Setup**
+1. **Development Environment** (`.env`)
    ```
-3. Edit `.env.local` with your actual values:
-
-```env
-# Required: Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
-
-# Required: Database URL (from Supabase)
-DATABASE_URL=postgresql://postgres:[password]@db.[project-id].supabase.co:5432/postgres
-
-# Required: Authentication Secret
-NEXTAUTH_SECRET=your_random_secret_here
-NEXTAUTH_URL=http://localhost:3000
-
-# Optional: Stripe (for payments)
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_PUBLISHABLE_KEY=pk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-
-# Optional: Email Configuration
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_app_password
-
-# Optional: File Storage (Cloudinary)
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-```
-
-### Step 3: Mobile App Environment Variables
-
-1. Navigate to `helprs-worker/` directory
-2. Copy the environment template:
-   ```bash
-   cp .env.example .env
-   ```
-3. Edit `.env` with your actual values:
-
-```env
-# Required: Supabase Configuration
-EXPO_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-EXPO_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
-
-# Optional: Push Notifications
-EXPO_PUBLIC_PUSH_NOTIFICATION_TOKEN=your_token_here
-
-# Optional: Google Maps API
-EXPO_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-
-# Optional: Analytics
-EXPO_PUBLIC_ANALYTICS_ID=your_analytics_id
-```
-
-## 🗄️ Database Setup
-
-### Step 1: Run Migrations
-
-1. Install Supabase CLI:
-   ```bash
-   npm install -g supabase
+   EXPO_PUBLIC_SUPABASE_URL=http://127.0.0.1:54331
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=your-local-anon-key
+   EXPO_PUBLIC_APP_ENV=development
    ```
 
-2. Login to Supabase:
-   ```bash
-   supabase login
+2. **Staging Environment** (`.env.staging`)
+   ```
+   EXPO_PUBLIC_SUPABASE_URL=https://your-staging-project.supabase.co
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=your-staging-anon-key
+   EXPO_PUBLIC_APP_ENV=staging
    ```
 
-3. Link your project:
-   ```bash
-   cd supabase
-   supabase link --project-ref your-project-id
-   ```
-
-4. Run migrations:
-   ```bash
-   supabase db push
-   ```
-
-### Step 2: Seed Data (Optional)
-
-Run the seed script to add test data:
-```bash
-supabase db reset
-```
-
-## 🖥️ Web Dashboard Deployment
-
-### Local Development
-
-1. Install dependencies:
-   ```bash
-   cd helprs-web
-   npm install
-   ```
-
-2. Start development server:
-   ```bash
-   npm run dev
-   ```
-
-3. Access at: http://localhost:3000
-
-### Production Deployment
-
-#### Option 1: Vercel (Recommended)
-
-1. Connect your GitHub repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on push
-
-#### Option 2: Netlify
-
-1. Connect your GitHub repository to Netlify
-2. Add environment variables in Netlify dashboard
-3. Set build command: `npm run build`
-4. Set publish directory: `.next`
-
-#### Option 3: Self-hosted
-
-1. Build the application:
-   ```bash
-   npm run build
-   ```
-
-2. Start production server:
-   ```bash
-   npm start
-   ```
-
-## 📱 Mobile App Deployment
-
-### Development Testing
-
-1. Install dependencies:
+### **Deployment Steps**
+1. **Install Dependencies**
    ```bash
    cd helprs-worker
    npm install
    ```
 
-2. Start Expo development server:
+2. **Build for Staging**
    ```bash
-   npm start
+   # Set environment to staging
+   cp .env.staging .env
+   
+   # Build for Expo
+   npx expo build:android --release-channel staging
+   npx expo build:ios --release-channel staging
    ```
 
-3. Scan QR code with Expo Go app
-
-### Production Build
-
-1. Build for iOS:
+3. **Deploy to Expo**
    ```bash
-   eas build --platform ios
+   npx expo publish --release-channel staging
    ```
 
-2. Build for Android:
-   ```bash
-   eas build --platform android
+## **💻 Desktop App (helprs-web)**
+
+### **Environment Setup**
+1. **Development Environment** (`.env.local`)
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54331
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-local-anon-key
+   NEXT_PUBLIC_APP_ENV=development
    ```
 
-3. Submit to app stores:
-   ```bash
-   eas submit --platform ios
-   eas submit --platform android
+2. **Staging Environment** (`.env.staging`)
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=https://your-staging-project.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-staging-anon-key
+   NEXT_PUBLIC_APP_ENV=staging
    ```
 
-## 🔧 Configuration Files
+### **Deployment Steps**
+1. **Install Dependencies**
+   ```bash
+   cd helprs-web
+   npm install
+   ```
 
-### Supabase Configuration
+2. **Build for Staging**
+   ```bash
+   # Set environment to staging
+   cp .env.staging .env.local
+   
+   # Build Next.js app
+   npm run build
+   ```
 
-The project includes these Supabase files:
-- `supabase/config.toml` - Project configuration
-- `supabase/migrations/` - Database migrations
-- `supabase/seed.sql` - Initial data
+3. **Deploy to Vercel/Netlify**
+   ```bash
+   # For Vercel
+   npx vercel --prod
+   
+   # For Netlify
+   npx netlify deploy --prod
+   ```
 
-### Environment Variable Security
+## **🗄️ Database Setup**
 
-⚠️ **Important Security Notes:**
+### **Staging Database**
+1. **Create Supabase Project**
+   - Go to [supabase.com](https://supabase.com)
+   - Create new project for staging
+   - Note down URL and anon key
 
-1. **Never commit `.env` files** to version control
-2. **Use different keys** for development and production
-3. **Rotate keys regularly** for security
-4. **Use environment-specific** configurations
+2. **Run Migrations**
+   ```bash
+   cd supabase
+   npx supabase db push --project-ref your-staging-project-ref
+   ```
 
-## 🚀 Quick Start Script
+3. **Seed Data** (if needed)
+   ```bash
+   npx supabase db reset --project-ref your-staging-project-ref
+   ```
 
-Create a `setup.sh` script for easy deployment:
+## **🔧 Configuration Checklist**
 
+### **Mobile App**
+- [ ] Environment variables configured
+- [ ] Supabase connection tested
+- [ ] No localhost dependencies
+- [ ] Error handling implemented
+- [ ] Staging build successful
+
+### **Desktop App**
+- [ ] Environment variables configured
+- [ ] API routes working
+- [ ] Database connections verified
+- [ ] Staging build successful
+
+### **Database**
+- [ ] Staging project created
+- [ ] Migrations applied
+- [ ] RLS policies configured
+- [ ] Test data loaded
+
+## **🧪 Testing**
+
+### **Pre-Deployment Tests**
+1. **Mobile App**
+   ```bash
+   cd helprs-worker
+   npx expo start --tunnel
+   # Test on device/simulator
+   ```
+
+2. **Desktop App**
+   ```bash
+   cd helprs-web
+   npm run dev
+   # Test in browser
+   ```
+
+3. **Database Connection**
+   - Verify both apps can read/write data
+   - Test job creation and acceptance
+   - Verify real-time updates
+
+### **Post-Deployment Tests**
+1. **Mobile App**
+   - Install from Expo/App Store
+   - Test all features
+   - Verify database connectivity
+
+2. **Desktop App**
+   - Access staging URL
+   - Test all features
+   - Verify data persistence
+
+## **🚨 Troubleshooting**
+
+### **Common Issues**
+1. **Mobile App Can't Connect**
+   - Check environment variables
+   - Verify Supabase URL is accessible
+   - Check network connectivity
+
+2. **Desktop App API Errors**
+   - Verify environment variables
+   - Check database connection
+   - Review API route logs
+
+3. **Database Connection Issues**
+   - Verify RLS policies
+   - Check API keys
+   - Review Supabase logs
+
+### **Debug Commands**
 ```bash
-#!/bin/bash
+# Test Supabase connection
+npx supabase status
 
-# Clone the repository
-git clone https://github.com/ThinkModa/helprs-workforce-platform.git
-cd helprs-workforce-platform
+# Check environment variables
+echo $EXPO_PUBLIC_SUPABASE_URL
+echo $NEXT_PUBLIC_SUPABASE_URL
 
-# Setup web dashboard
-cd helprs-web
-cp .env.example .env.local
-echo "Please edit .env.local with your Supabase credentials"
-npm install
-
-# Setup mobile app
-cd ../helprs-worker
-cp .env.example .env
-echo "Please edit .env with your Supabase credentials"
-npm install
-
-# Setup database
-cd ../supabase
-supabase db push
-
-echo "Setup complete! Edit environment files and start servers."
+# View logs
+npx expo logs
+npm run dev
 ```
 
-## 🔍 Troubleshooting
+## **📋 Environment Variables Reference**
 
-### Common Issues
+### **Required Variables**
+| Variable | Mobile | Desktop | Description |
+|----------|--------|---------|-------------|
+| `SUPABASE_URL` | ✅ | ✅ | Supabase project URL |
+| `SUPABASE_ANON_KEY` | ✅ | ✅ | Supabase anonymous key |
+| `APP_ENV` | ✅ | ✅ | Environment (dev/staging/prod) |
 
-1. **Environment variables not loading**
-   - Ensure `.env.local` is in the correct directory
-   - Restart the development server after changes
+### **Optional Variables**
+| Variable | Mobile | Desktop | Description |
+|----------|--------|---------|-------------|
+| `API_TIMEOUT` | ✅ | ❌ | API request timeout |
+| `DEBUG_MODE` | ✅ | ✅ | Enable debug logging |
 
-2. **Database connection errors**
-   - Verify Supabase project is active
-   - Check DATABASE_URL format
-   - Ensure RLS policies are configured
+## **🔄 CI/CD Pipeline**
 
-3. **Mobile app not connecting**
-   - Verify EXPO_PUBLIC_ variables are set
-   - Check network connectivity
-   - Ensure Supabase project allows anonymous access
+### **GitHub Actions Example**
+```yaml
+name: Deploy to Staging
 
-### Support
+on:
+  push:
+    branches: [staging]
 
-For deployment issues:
-1. Check the [Supabase documentation](https://supabase.com/docs)
-2. Review [Next.js deployment guide](https://nextjs.org/docs/deployment)
-3. Check [Expo deployment docs](https://docs.expo.dev/distribution/introduction/)
+jobs:
+  deploy-mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Deploy Mobile App
+        run: |
+          cd helprs-worker
+          npm install
+          cp .env.staging .env
+          npx expo publish --release-channel staging
 
-## 📞 Getting Help
+  deploy-desktop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy Desktop App
+        run: |
+          cd helprs-web
+          npm install
+          cp .env.staging .env.local
+          npm run build
+          npx vercel --prod
+```
 
-If you encounter issues during deployment:
-1. Check the troubleshooting section above
-2. Review the environment variable setup
-3. Ensure all prerequisites are met
-4. Contact the development team for support
+## **📞 Support**
+For deployment issues, check:
+1. Environment variable configuration
+2. Database connectivity
+3. Build logs
+4. Supabase project settings
